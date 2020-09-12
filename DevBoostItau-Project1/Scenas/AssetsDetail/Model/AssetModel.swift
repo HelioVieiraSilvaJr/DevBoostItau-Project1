@@ -44,8 +44,29 @@ extension AssetModel {
         return formatter
     }
     
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        return formatter
+    }
+    
     func getPricePurchase() -> String {
         return currencyFormatter.string(from: NSNumber(value: purchasePrice)) ?? "R$ 0,00"
     }
+    
+    func getDatePurchase() -> String {
+        guard let purchaseDate = purchaseDate else {return "---"}
+        return dateFormatter.string(from: purchaseDate)
+    }
+    
+    func getTotalValuePurchase() -> String {
+        let quantity = Double(quantityOfStocks)
+        let pricePurchase = purchasePrice
+
+        let totalValue = quantity * pricePurchase
+        return currencyFormatter.string(from: NSNumber(value: totalValue)) ?? "R$ 0,00"
+    }
+    
+    
 }
 
