@@ -169,9 +169,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13/05/2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qn6-d0-PPt">
-                                                <rect key="frame" x="0.0" y="22" width="108" height="24"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <nil key="textColor"/>
+                                                <rect key="frame" x="0.0" y="22" width="117" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <color key="textColor" red="0.4257047176" green="0.67769575120000003" blue="0.19855162500000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -186,9 +186,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$ 4.589,90" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeY-63-lWM">
-                                                <rect key="frame" x="72.5" y="22" width="114.5" height="24"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <nil key="textColor"/>
+                                                <rect key="frame" x="65" y="22" width="122" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <color key="textColor" red="0.4257047176" green="0.67769575120000003" blue="0.19855162500000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -201,7 +201,7 @@
                                 <color key="textColor" red="0.4257047176" green="0.67769575120000003" blue="0.19855162500000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWh-4r-eHN">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWh-4r-eHN">
                                 <rect key="frame" x="20" y="782" width="374" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Editar informações" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E48-rZ-bEz">
@@ -262,12 +262,13 @@
                         <outlet property="imgIconClose" destination="1fP-mW-Cm0" id="k3Z-Fz-mal"/>
                         <outlet property="labelAssetName" destination="PsA-xC-dWh" id="4mx-P5-35U"/>
                         <outlet property="labelDatePurchase" destination="d0J-0N-FGX" id="7Vm-bt-mN3"/>
+                        <outlet property="labelDateToday" destination="qn6-d0-PPt" id="ior-45-2Ba"/>
                         <outlet property="labelPricePurchase" destination="ogB-jR-cjJ" id="3gY-Dg-c7g"/>
                         <outlet property="labelQuantity" destination="nYq-Rf-Do3" id="hYx-wa-z0n"/>
                         <outlet property="labelRentabilityPercent" destination="Y4O-uL-vdP" id="JWE-wB-3ld"/>
-                        <outlet property="labelTodayQuote" destination="qn6-d0-PPt" id="YTk-Sl-ZbY"/>
-                        <outlet property="labelTotalToday" destination="MeY-63-lWM" id="a8R-D1-Xiw"/>
                         <outlet property="labelTotalValue" destination="yvB-pS-fae" id="kUW-bk-fvj"/>
+                        <outlet property="labelTotalValueToday" destination="MeY-63-lWM" id="wHk-GA-lhj"/>
+                        <outlet property="viewButtonEdit" destination="bWh-4r-eHN" id="LkV-SE-jdF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTb-CD-kdL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -276,6 +277,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icClose" width="42.666667938232422" height="42.666667938232422"/>
+        <image name="icClose" width="128" height="128"/>
     </resources>
 </document>

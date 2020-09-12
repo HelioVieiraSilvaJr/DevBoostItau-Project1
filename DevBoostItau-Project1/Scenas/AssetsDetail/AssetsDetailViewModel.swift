@@ -11,7 +11,7 @@ import Foundation
 class AssetsDetailViewModel {
     
     let repository: AssetDetailRepository!
-    var asset: Investment?
+    var asset: Investment!
     var detail: AssetDetail?
     
     var currencyFormatter: NumberFormatter {
@@ -27,7 +27,7 @@ class AssetsDetailViewModel {
         return formatter
     }
     
-    init(asset: Investment?, _ repository: AssetDetailRepository = AssetDetailRepository()) {
+    init(asset: Investment, _ repository: AssetDetailRepository = AssetDetailRepository()) {
         self.asset = asset
         self.repository = repository
     }
@@ -35,7 +35,11 @@ class AssetsDetailViewModel {
     var onSuccess: (() -> Void)?
     var onFail: ((String) -> Void)?
     
-    func getAssetsWith(code: String) {
+    func getAssetDetail() {
+        
+        // FIXME: Passar valor do codigo dinâmico, assim que finalizarmos o CRUD com o CoreData.
+//        guard let code = asset?.brokerCode else {return}
+        let code = "ITSA4"
         
         repository.getAsset(code: code, onSussecc: { [weak self] assetDetail in
             self?.detail = assetDetail
@@ -50,20 +54,20 @@ class AssetsDetailViewModel {
     }
     
     func getDatePurchase() -> String {
-        guard let purchaseDate = asset?.purchaseDate else {return "---"}
+        guard let purchaseDate = asset.purchaseDate else {return "---"}
         return dateFormatter.string(from: purchaseDate)
     }
     
     func getTotalValuePurchase() -> String {
-        let quantity = Double(10)//Double(asset.quantityOfStocks)
-        let pricePurchase = 30.50//asset.purchasePrice
+        let quantity = Double(asset.quantityOfStocks)
+        let pricePurchase = asset.purchasePrice
         
         let totalValue = quantity * pricePurchase
         return currencyFormatter.string(from: NSNumber(value: totalValue)) ?? "R$ 0,00"
     }
     
     func getTotalValueToday() -> String {
-        let quantity = Double(10)//Double(asset.quantityOfStocks)
+        let quantity = Double(asset.quantityOfStocks)
         let priceToday = detail?.getPriceNumber ?? 0.0
         
         let totalValue = quantity * priceToday
@@ -71,9 +75,9 @@ class AssetsDetailViewModel {
     }
     
     func getRentabilityValue() -> Double {
-        let quantity = Double(10)//Double(asset.quantityOfStocks)
-        let pricePurchase = 10.0//asset.purchasePrice
-        let priceToday = 9.0//detail?.getPriceNumber ?? 0.0
+        let quantity = Double(asset.quantityOfStocks)
+        let pricePurchase = asset.purchasePrice
+        let priceToday = detail?.getPriceNumber ?? 0.0
         
         let totalPurchase = quantity * pricePurchase
         let totalToday = quantity * priceToday

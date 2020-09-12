@@ -119,11 +119,10 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let asset = self.investments[indexPath.row]
-//        guard let _ = asset.brokerCode else {return}
+        let asset = self.investments[indexPath.row]
+        guard let _ = asset.brokerCode else {return}
         
-//        let viewController = AssetsDetailBuilder().builder(asset: asset)
-        let viewController = AssetsDetailBuilder().builder(code: "ITSA4")
+        let viewController = AssetsDetailBuilder().builder(asset: asset)
         present(viewController, animated: true, completion: nil)
     }
 }

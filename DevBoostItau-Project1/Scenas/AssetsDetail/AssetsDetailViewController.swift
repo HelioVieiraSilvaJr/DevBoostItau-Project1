@@ -15,22 +15,13 @@ class AssetsDetailBuilder {
         viewController.asset = asset
         return viewController
     }
-    
-    // TODO: Remover, somente teste.
-    func builder(code: String) -> AssetsDetailViewController {
-        let viewController = UIStoryboard(name: "AssetsDetailViewController", bundle: nil)
-            .instantiateViewController(withIdentifier: "AssetsDetailViewController") as! AssetsDetailViewController
-//        let asset = Investment()
-//        viewController.asset = asset
-        return viewController
-    }
 }
 
 final class AssetsDetailViewController: BaseViewController {
     
     // MARK: Properties
     var viewModel: AssetsDetailViewModel!
-    var asset: Investment? //TODO: Forçar
+    var asset: Investment!
     var detail: AssetDetail?
     
     // MARK: Outlets
@@ -39,10 +30,11 @@ final class AssetsDetailViewController: BaseViewController {
     @IBOutlet weak var labelPricePurchase: UILabel!
     @IBOutlet weak var labelDatePurchase: UILabel!
     @IBOutlet weak var labelTotalValue: UILabel!
-    @IBOutlet weak var labelTodayQuote: UILabel!
-    @IBOutlet weak var labelTotalToday: UILabel!
+    @IBOutlet weak var labelDateToday: UILabel!
+    @IBOutlet weak var labelTotalValueToday: UILabel!
     @IBOutlet weak var labelRentabilityPercent: UILabel!
     @IBOutlet weak var imgIconClose: UIImageView!
+    @IBOutlet weak var viewButtonEdit: UIView!
     
     
     // MARK: Overrides
@@ -53,7 +45,8 @@ final class AssetsDetailViewController: BaseViewController {
         
         setupView()
         bindEvents()
-        viewModel.getAssetsWith(code: asset?.brokerCode ?? "ITSA4")
+        showLoading()
+        viewModel.getAssetDetail()
     }
     
     
@@ -70,24 +63,39 @@ final class AssetsDetailViewController: BaseViewController {
         viewModel.onSuccess = { [weak self] in
             DispatchQueue.main.async {
                 self?.setupView()
+                self?.closeLoading()
             }
         }
         
-        viewModel.onFail = { error in
+        viewModel.onFail = { [weak self] error in
             print("==> Error: \(error)")
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+                self?.closeLoading()
+            }
         }
     }
     
     private func setupView() {
         imgIconClose.tintImage(color: .gray)
+        viewButtonEdit.layer.cornerRadius = 25
+        viewButtonEdit.applyGradient(style: .vertical, colors: [UIColor.itiOrange, UIColor.itiPink])
         
         labelAssetName.text = detail?.getName
         labelQuantity.text = viewModel.asset?.quantityOfStocks.description
         labelPricePurchase.text = viewModel.getPricePurchase()
         labelDatePurchase.text = viewModel.getDatePurchase()
         labelTotalValue.text = viewModel.getTotalValuePurchase()
-        labelTodayQuote.text = viewModel.dateFormatter.string(from: Date())
-        labelTotalToday.text = viewModel.getTotalValueToday()
+        labelDateToday.text = viewModel.dateFormatter.string(from: Date())
+        labelTotalValueToday.text = viewModel.getTotalValueToday()
         labelRentabilityPercent.text = viewModel.getRentability()
+        
+        var color = UIColor(red: 109/255, green: 173/255, blue: 51/255, alpha: 1)
+        if viewModel.getRentabilityValue() < 0 {
+            color = .red
+        }
+        
+        labelRentabilityPercent.textColor = color
+        labelDateToday.textColor = color
+        labelTotalValueToday.textColor = color
     }
 }
