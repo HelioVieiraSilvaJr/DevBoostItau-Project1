@@ -25,6 +25,7 @@ final class AssetsDetailViewController: BaseViewController {
     // MARK: Overrides
     override func loadView() {
         view = AssetDetailView()
+        customView.delegate = self
         view.backgroundColor = .white
     }
     
@@ -61,6 +62,7 @@ final class AssetsDetailViewController: BaseViewController {
             print("==> Error: \(error)")
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
                 self?.closeLoading()
+                self?.customView.showNotFound()
             }
         }
     }
@@ -72,6 +74,6 @@ extension AssetsDetailViewController: AssetDetailViewDelegate {
     }
     
     func pressCloseButton() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
 }
