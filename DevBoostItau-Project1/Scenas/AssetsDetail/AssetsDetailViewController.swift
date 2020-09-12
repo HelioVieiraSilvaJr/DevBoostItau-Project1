@@ -68,7 +68,7 @@ final class AssetsDetailViewController: BaseViewController {
 
 extension AssetsDetailViewController: AssetDetailViewDelegate {
     func pressEditButton() {
-        
+        print("==> Botão Editar Informações")
     }
     
     func pressCloseButton() {
