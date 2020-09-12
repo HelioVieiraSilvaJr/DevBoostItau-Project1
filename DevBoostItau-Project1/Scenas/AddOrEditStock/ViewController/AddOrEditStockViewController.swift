@@ -23,15 +23,15 @@ final class AddOrEditStockViewController: UIViewController, HasCodeView {
     private let viewModel = AddOrEditStockViewModel()
     
     // MARK: - Init
-    convenience init(stock: Stock) {
+    convenience init(stock: Investment) {
         self.init()
-        self.viewModel.stock = stock
+        self.viewModel.investment = stock
     }
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDatePicker()
-        if viewModel.stock != nil {
+        if viewModel.investment != nil {
             setupDateAndViews()
         }
         addKeyboardController(for: [customView.startDateTextField, customView.stockTextField, customView.quantityTextField, customView.priceTextField])
@@ -50,10 +50,13 @@ final class AddOrEditStockViewController: UIViewController, HasCodeView {
         customView.startDateTextField.inputView = datePicker
     }
     private func setupDateAndViews() {
-        customView.startDateTextField.text = viewModel.stock?.startDate
-        customView.stockTextField.text = viewModel.stock?.name
-        customView.quantityTextField.text = viewModel.stock?.quantity
-        customView.priceTextField.text = viewModel.stock?.price
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        
+        customView.startDateTextField.text = dateFormatter.string(from: viewModel.investment?.purchaseDate ?? Date())
+        customView.stockTextField.text = viewModel.investment?.brokerName
+        customView.quantityTextField.text = "\(viewModel.investment?.quantityOfStocks)"
+        customView.priceTextField.text = "\(viewModel.investment?.purchasePrice)"
         customView.setSaveButton()
     }
     // MARK: - Taps
@@ -65,7 +68,7 @@ final class AddOrEditStockViewController: UIViewController, HasCodeView {
     
     // MARK: - Functions
     private func callSaveInfo() {
-        viewModel.saveInfo()
+        viewModel.saveInfo(brokerName: customView.stockTextField.text!, brokerCode: "0", qtyOfStocks: customView.quantityTextField.text!, purchasePrice: customView.priceTextField.text!, purchaseDate: customView.startDateTextField.text!)
     }
 }
 // MARK: - AddOrEditStockViewDelegate

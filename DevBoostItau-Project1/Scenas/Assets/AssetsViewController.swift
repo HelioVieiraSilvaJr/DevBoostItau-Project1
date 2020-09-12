@@ -98,7 +98,7 @@ extension AssetsViewController: AssetsViewDelegate {
     }
 
     func goToNewInvestment() {
-//        coordinator.editInvestment()
-        navigationController?.present(AddOrEditStockViewController(), animated: true, completion: nil)
+        self.coordinator?.editInvestment()
+//        navigationController?.present(AddOrEditStockViewController(), animated: true, completion: nil)
     }
 }
