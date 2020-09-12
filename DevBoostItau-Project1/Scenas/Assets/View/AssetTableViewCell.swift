@@ -154,7 +154,6 @@ class AssetTableViewCell: UITableViewCell {
         nameLabel.setContentHuggingPriority(UILayoutPriority(251), for: .vertical)
         nameLabel.setContentHuggingPriority(UILayoutPriority(251), for: .horizontal)
         
-//        lineBalanceStackView.trailingAnchor.constraint(equalTo: lineAndNameStackView.trailingAnchor).isActive = true
         lineBalanceStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
         
         currentBalanceStackView.setContentCompressionResistancePriority(UILayoutPriority(1000), for: .horizontal)
@@ -172,17 +171,14 @@ class AssetTableViewCell: UITableViewCell {
         
         
     }
-    //    override func awakeFromNib() {
-//        super.awakeFromNib()
-//
-//    }
 
-    func configure(with investment: Investment, percent: Double) {
-        nameLabel.text = investment.brokerName
-        let total = InvestmentsManager.getInvestmentValue(investment: investment)
+    func configure(with viewModel: AssetCellViewModel, percent: Double) {
+        nameLabel.text = viewModel.brokerName
+        let total = viewModel.getInvestmentValue()
         currentBalanceLabel.text = total.formatMoney()
         percentBalanceLabel.text = "\(String(format: "%.2f", percent))%"
     }
+    
 }
 
 
