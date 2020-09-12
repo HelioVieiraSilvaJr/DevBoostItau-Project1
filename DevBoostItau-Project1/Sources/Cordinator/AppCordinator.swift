@@ -21,9 +21,9 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-//        let childCoordinator = ##Instanciar o Cordinator da Home
-//        childCoordinator.parentCoordinator = self
-//        add(childCoordinator: childCoordinator)
-//        childCoordinator.start()
+        let childCoordinator = HomeCoordinator(navigationController: navigationController)
+        childCoordinator.parentCoordinator = self
+        add(childCoordinator: childCoordinator)
+        childCoordinator.start()
     }
 }

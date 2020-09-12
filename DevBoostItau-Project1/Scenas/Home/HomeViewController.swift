@@ -14,6 +14,7 @@ final class HomeViewController: BaseViewController {
     let viewModel = HomeViewModel()
     var menuCards: [CardMenu]?
     var backImages = [UIImage(named: "money"), UIImage(named: "card"), UIImage(named: "question")]
+    weak var coordinator: HomeCoordinator?
     
     // MARK: Outlets
     @IBOutlet weak var userNameLabel: UILabel!
