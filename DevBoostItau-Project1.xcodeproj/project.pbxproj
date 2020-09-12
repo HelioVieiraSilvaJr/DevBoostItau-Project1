@@ -51,6 +51,8 @@
 		F5F80CF0250CFA1500EEEB16 /* AssetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CEF250CFA1500EEEB16 /* AssetsView.swift */; };
 		F5F80CF3250D206C00EEEB16 /* AssetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CF2250D206C00EEEB16 /* AssetsViewModel.swift */; };
 		F5F80CF5250D21DE00EEEB16 /* AssetCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CF4250D21DE00EEEB16 /* AssetCellViewModel.swift */; };
+		F5F80CF8250D31D600EEEB16 /* AssetsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CF7250D31D600EEEB16 /* AssetsCoordinator.swift */; };
+		F5F80CFA250D37CF00EEEB16 /* Margin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CF9250D37CF00EEEB16 /* Margin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +102,8 @@
 		F5F80CEF250CFA1500EEEB16 /* AssetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsView.swift; sourceTree = "<group>"; };
 		F5F80CF2250D206C00EEEB16 /* AssetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsViewModel.swift; sourceTree = "<group>"; };
 		F5F80CF4250D21DE00EEEB16 /* AssetCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCellViewModel.swift; sourceTree = "<group>"; };
+		F5F80CF7250D31D600EEEB16 /* AssetsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsCoordinator.swift; sourceTree = "<group>"; };
+		F5F80CF9250D37CF00EEEB16 /* Margin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Margin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,6 +345,7 @@
 				F5F80CEC250CF95E00EEEB16 /* Protocol */,
 				F1F116782503E924007466DE /* Managers */,
 				F5F80CE7250CF82E00EEEB16 /* BaseView.swift */,
+				F5F80CF9250D37CF00EEEB16 /* Margin.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -364,6 +369,7 @@
 		F5DD49FD2503F34800120661 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				F5F80CF6250D31C500EEEB16 /* Coordinator */,
 				F5F80CF1250D205A00EEEB16 /* ViewModel */,
 				F5DD49FE2503F34800120661 /* AssetsViewController.swift */,
 				F5DD4A002503F34800120661 /* View */,
@@ -395,6 +401,14 @@
 				F5F80CF4250D21DE00EEEB16 /* AssetCellViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F5F80CF6250D31C500EEEB16 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F5F80CF7250D31D600EEEB16 /* AssetsCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -472,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD829CA2250D006900499A52 /* Cordinator.swift in Sources */,
+				F5F80CF8250D31D600EEEB16 /* AssetsCoordinator.swift in Sources */,
 				BD829CA0250D005E00499A52 /* AppCordinator.swift in Sources */,
 				4C2466152503CA37004E1323 /* AddOrEditStockViewController.swift in Sources */,
 				BDB1F2A82503ECAE0070079B /* Network.swift in Sources */,
@@ -495,6 +510,7 @@
 				F5DD4A1125040CAF00120661 /* UIViewController+Extensions.swift in Sources */,
 				BDB1F2AB2503F0390070079B /* AssetsDetailRepository.swift in Sources */,
 				F5DD4A132504129D00120661 /* Double+Extensions.swift in Sources */,
+				F5F80CFA250D37CF00EEEB16 /* Margin.swift in Sources */,
 				F5F80CF0250CFA1500EEEB16 /* AssetsView.swift in Sources */,
 				BD96DC6B2503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld in Sources */,
 				BD829CA4250D00A900499A52 /* HomeViewController.swift in Sources */,

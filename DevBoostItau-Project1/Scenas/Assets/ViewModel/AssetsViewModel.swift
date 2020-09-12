@@ -40,12 +40,9 @@ class AssetsViewModel {
                 do {
                     investments = try context.fetch(fetchRequest)
                     delegate?.updateList()
-//                    customView.tableView.reloadData()
-//                    updateTotalFunds()
                 } catch {
                     print("error")
                 }
-//                investmentManager.performFetch()
         delegate?.fetchInvestment()
     }
     
@@ -78,6 +75,10 @@ class AssetsViewModel {
     
     func cellViewModelFor(indexPath: IndexPath) -> AssetCellViewModel{
         AssetCellViewModel(investment: getInvestment(at: indexPath))
+    }
+    
+    func getAssetViewModelFor(_ indexPath: IndexPath) -> AssetsDetailViewModel{
+        return AssetsDetailViewModel(asset: AssetModel(from: getInvestment(at: indexPath)))
     }
 
     

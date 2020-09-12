@@ -17,6 +17,7 @@ class AssetsViewController: BaseViewController, HasCodeView {
     private var totalFunds: Double = 0.0
     private var balanceHidded = false
     lazy var viewModel = AssetsViewModel(context: context)
+    weak var coordinator: AssetsCoordinator?
     
     lazy var investmentManager: InvestmentsManager = {[weak self] in
         let investmentManager = InvestmentsManager(context: context)
@@ -110,8 +111,8 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
         let asset = viewModel.getInvestment(at: indexPath)
         guard let _ = asset.brokerCode else {return}
         
-//        let viewController = AssetsDetailBuilder().builder(asset: asset)
-//        present(viewController, animated: true, completion: nil)
+        let assetDetailViewModel = viewModel.getAssetViewModelFor(indexPath)
+        coordinator?.showInvestment(viewModel: assetDetailViewModel)
     }
     
     func updateTotalFunds() {
@@ -129,6 +130,7 @@ extension AssetsViewController: AssetsViewDelegate {
     }
 
     func goToNewInvestment() {
+//        coordinator.editInvestment()
         navigationController?.present(AddOrEditStockViewController(), animated: true, completion: nil)
     }
 }
