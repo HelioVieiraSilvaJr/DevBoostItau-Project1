@@ -38,12 +38,12 @@
 		F1F1167A2503E938007466DE /* InvestmentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F116792503E938007466DE /* InvestmentsManager.swift */; };
 		F1F1167D2503EB5B007466DE /* MenuCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F1167C2503EB5B007466DE /* MenuCardCell.swift */; };
 		F5DD4A022503F34800120661 /* AssetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD49FE2503F34800120661 /* AssetsViewController.swift */; };
-		F5DD4A032503F34800120661 /* Assets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5DD49FF2503F34800120661 /* Assets.storyboard */; };
 		F5DD4A042503F34800120661 /* AssetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD4A012503F34800120661 /* AssetTableViewCell.swift */; };
 		F5DD4A1125040CAF00120661 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD4A1025040CAE00120661 /* UIViewController+Extensions.swift */; };
 		F5DD4A132504129D00120661 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD4A122504129D00120661 /* Double+Extensions.swift */; };
 		F5F80CE8250CF82E00EEEB16 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CE7250CF82E00EEEB16 /* BaseView.swift */; };
 		F5F80CEE250CF96D00EEEB16 /* HasCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CED250CF96D00EEEB16 /* HasCodeView.swift */; };
+		F5F80CF0250CFA1500EEEB16 /* AssetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CEF250CFA1500EEEB16 /* AssetsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,12 +80,12 @@
 		F1F116792503E938007466DE /* InvestmentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentsManager.swift; sourceTree = "<group>"; };
 		F1F1167C2503EB5B007466DE /* MenuCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCardCell.swift; sourceTree = "<group>"; };
 		F5DD49FE2503F34800120661 /* AssetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetsViewController.swift; sourceTree = "<group>"; };
-		F5DD49FF2503F34800120661 /* Assets.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Assets.storyboard; sourceTree = "<group>"; };
 		F5DD4A012503F34800120661 /* AssetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetTableViewCell.swift; sourceTree = "<group>"; };
 		F5DD4A1025040CAE00120661 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		F5DD4A122504129D00120661 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		F5F80CE7250CF82E00EEEB16 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		F5F80CED250CF96D00EEEB16 /* HasCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasCodeView.swift; sourceTree = "<group>"; };
+		F5F80CEF250CFA1500EEEB16 /* AssetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,7 +330,6 @@
 			isa = PBXGroup;
 			children = (
 				F5DD49FE2503F34800120661 /* AssetsViewController.swift */,
-				F5DD49FF2503F34800120661 /* Assets.storyboard */,
 				F5DD4A002503F34800120661 /* View */,
 			);
 			path = Assets;
@@ -340,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				F5DD4A012503F34800120661 /* AssetTableViewCell.swift */,
+				F5F80CEF250CFA1500EEEB16 /* AssetsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -413,7 +413,6 @@
 				BD96DC7F2503B93100D569DA /* HomeViewController.storyboard in Resources */,
 				BDB1F29D2503D4C60070079B /* LoadingCustom.xib in Resources */,
 				BD96DC702503B6B800D569DA /* LaunchScreen.storyboard in Resources */,
-				F5DD4A032503F34800120661 /* Assets.storyboard in Resources */,
 				BD96DC6D2503B6B800D569DA /* Assets.xcassets in Resources */,
 				4C2466162503CA37004E1323 /* AddOrEditStockViewController.xib in Resources */,
 				BDB1F2952503D4040070079B /* AssetsDetailViewController.storyboard in Resources */,
@@ -446,6 +445,7 @@
 				F5DD4A1125040CAF00120661 /* UIViewController+Extensions.swift in Sources */,
 				BDB1F2AB2503F0390070079B /* AssetsDetailRepository.swift in Sources */,
 				F5DD4A132504129D00120661 /* Double+Extensions.swift in Sources */,
+				F5F80CF0250CFA1500EEEB16 /* AssetsView.swift in Sources */,
 				BD96DC6B2503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld in Sources */,
 				BD829CA4250D00A900499A52 /* HomeViewController.swift in Sources */,
 				BDB1F2AE2503F1C20070079B /* AssetDetailService.swift in Sources */,

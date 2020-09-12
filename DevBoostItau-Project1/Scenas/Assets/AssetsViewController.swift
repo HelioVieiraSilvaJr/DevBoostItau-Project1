@@ -9,7 +9,9 @@
 import UIKit
 import CoreData
 
-class AssetsViewController: BaseViewController {
+class AssetsViewController: BaseViewController, HasCodeView{
+
+    typealias CustomView = AssetsView
 
     // MARK: Properties
     private var balanceHidded = false
@@ -20,44 +22,27 @@ class AssetsViewController: BaseViewController {
         return investmentManager
     }()
     
-    // MARK: Outlets
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var balanceLabel: UILabel!
-    @IBOutlet weak var seeBalanceButton: UIButton!
-    @IBOutlet weak var newInvestmentButton: UIButton!
-    
     // MARK: Overrides
+    
+    override func loadView() {
+        view = AssetsView(delegate: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        customView.tableView.delegate = self
+        customView.tableView.dataSource = self
         
-        setupView()
         loadInvestments()
         setupMockData() //TODO: remove me
     }
 
-    // MARK: Actions
-    @IBAction func showBalance(_ sender: Any) {
-        balanceHidded.toggle()
-        balanceLabel.text = balanceHidded ? "--" : "R$ 3150,00"
-    }
-    
-    @IBAction func goToNewInvestment(_ sender: Any) {
-        navigationController?.present(AddOrEditStockViewController(), animated: true, completion: nil)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.customView.applyGradient(style: .vertical, colors: [UIColor.itiOrange, UIColor.itiPink])
     }
     
     // MARK: Mathods
-    func setupView(){
-        self.view.applyGradient(style: .vertical, colors: [UIColor.itiOrange, UIColor.itiPink])
-        newInvestmentButton.applyGradient(style: .horizontal, colors: [UIColor.itiOrange, UIColor.itiPink])
-        
-        newInvestmentButton.clipsToBounds = true
-        newInvestmentButton.layer.cornerRadius = 25
-        
-        tableView.clipsToBounds = true
-        tableView.layer.cornerRadius = 8
-    }
     
     func setupMockData() {
         let investment1 = Investment(context: context)
@@ -80,7 +65,7 @@ class AssetsViewController: BaseViewController {
         fetchRequest.sortDescriptors = [sortDescriptor]
        do{
            investments = try context.fetch(fetchRequest)
-           tableView.reloadData()
+        customView.tableView.reloadData()
        }catch{
            print("error")
        }
@@ -127,6 +112,17 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension AssetsViewController: AssetsViewDelegate{
+    func showBalance() {
+            balanceHidded.toggle()
+            customView.balncelabel.text = balanceHidded ? "--" : "R$ 3150,00"
+        }
+
+        func goToNewInvestment() {
+            navigationController?.present(AddOrEditStockViewController(), animated: true, completion: nil)
+        }
+}
+
 extension AssetsViewController: NSFetchedResultsControllerDelegate {
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
@@ -147,6 +143,6 @@ extension AssetsViewController: NSFetchedResultsControllerDelegate {
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.reloadData()
+        customView.tableView.reloadData()
     }
 }
