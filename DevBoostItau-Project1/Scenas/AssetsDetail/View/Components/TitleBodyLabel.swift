@@ -11,7 +11,7 @@ import UIKit
 class TitleBodyLabel: UIStackView {
     
     enum Style {
-        case simple, colorGreen, colorRed
+        case simple, colorGreen, colorRed, gigantColorGreen, gigantColorRed
     }
     
     var style: Style = .simple
@@ -64,6 +64,12 @@ class TitleBodyLabel: UIStackView {
         case .colorRed:
             bodyColor = .red
             bodyFont = UIFont.boldSystemFont(ofSize: 18)
+        case .gigantColorGreen:
+            bodyColor = UIColor(red: 109/255, green: 173/255, blue: 51/255, alpha: 1)
+            bodyFont = UIFont.boldSystemFont(ofSize: 90)
+        case .gigantColorRed:
+            bodyColor = .red
+            bodyFont = UIFont.boldSystemFont(ofSize: 90)
         default:
             break
         }
@@ -73,7 +79,7 @@ class TitleBodyLabel: UIStackView {
         bodyLabel.font = bodyFont
         bodyLabel.textColor = bodyColor
         axis = .vertical
-        distribution = .fillEqually
+        distribution = .fill
         alignment = .center
         spacing = 0
         translatesAutoresizingMaskIntoConstraints = false

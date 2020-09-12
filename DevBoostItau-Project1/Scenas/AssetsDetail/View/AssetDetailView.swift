@@ -23,6 +23,15 @@ class AssetDetailView: BaseView {
         return contentView
     }()
     
+    let assetNameLabel: UILabel = {
+        var label = UILabel()
+        label.text = "ITSA4 - TTAUSA"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     let line1StackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
         stackView.axis = .horizontal
@@ -55,7 +64,7 @@ class AssetDetailView: BaseView {
     
     let separetedView: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = UIColor(white: 0.9, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -66,11 +75,14 @@ class AssetDetailView: BaseView {
     let stackValuePurchase = TitleBodyLabel(title: "Valor total", body: "R$ 12.980,00", style: .simple)
     let stackDateToday = TitleBodyLabel(title: "Cotação de Hoje", body: "12/09/2020", style: .colorGreen)
     let stackValueToday = TitleBodyLabel(title: "Valor total", body: "R$ 14.923,30", style: .colorRed)
+    let stackRentability = TitleBodyLabel(title: "Rentabilidade obtida até hoje", body: "25%", style: .gigantColorGreen)
     
     // MARK: Overrides
     override func initialize() {
         addSubview(contentView)
         contentView.addSubview(line1StackView)
+        
+        contentView.addSubview(assetNameLabel)
         
         line1StackView.addArrangedSubview(stackQuantity)
         line1StackView.addArrangedSubview(stackPricePurchase)
@@ -83,14 +95,15 @@ class AssetDetailView: BaseView {
         stackDatePurchase.alignment = .leading
         stackValuePurchase.alignment = .trailing
         
+        contentView.addSubview(separetedView)
+
         contentView.addSubview(line3StackView)
         line3StackView.addArrangedSubview(stackDateToday)
         line3StackView.addArrangedSubview(stackValueToday)
         stackDateToday.alignment = .leading
         stackValueToday.alignment = .trailing
         
-        contentView.addSubview(separetedView)
-        
+        contentView.addSubview(stackRentability)
     }
     
     override func installConstraints() {
@@ -99,7 +112,11 @@ class AssetDetailView: BaseView {
         contentView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
         contentView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
         
-        line1StackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100).isActive = true
+        assetNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50).isActive = true
+        assetNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
+        assetNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
+        
+        line1StackView.topAnchor.constraint(equalTo: assetNameLabel.bottomAnchor, constant: 30).isActive = true
         line1StackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
         line1StackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
         
@@ -107,13 +124,16 @@ class AssetDetailView: BaseView {
         line2StackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
         line2StackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
         
-        separetedView.topAnchor.constraint(equalTo: line2StackView.bottomAnchor, constant: 20).isActive = true
+        separetedView.topAnchor.constraint(equalTo: line2StackView.bottomAnchor, constant: 25).isActive = true
         separetedView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
         separetedView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
         separetedView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
-        line3StackView.topAnchor.constraint(equalTo: separetedView.bottomAnchor, constant: 20).isActive = true
+        line3StackView.topAnchor.constraint(equalTo: separetedView.bottomAnchor, constant: 25).isActive = true
         line3StackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
         line3StackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
+        
+        stackRentability.topAnchor.constraint(equalTo: line3StackView.bottomAnchor, constant: 30).isActive = true
+        stackRentability.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
     }
 }
