@@ -21,6 +21,7 @@ final class AssetsDetailViewController: BaseViewController {
     
     // MARK: Properties
     var viewModel: AssetsDetailViewModel!
+    var cordinator: AssetDetailCordinator?
     var asset: Investment!
     var detail: AssetDetail?
     
