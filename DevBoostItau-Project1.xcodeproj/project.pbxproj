@@ -39,6 +39,7 @@
 		F5DD4A042503F34800120661 /* AssetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD4A012503F34800120661 /* AssetTableViewCell.swift */; };
 		F5DD4A1125040CAF00120661 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD4A1025040CAE00120661 /* UIViewController+Extensions.swift */; };
 		F5DD4A132504129D00120661 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD4A122504129D00120661 /* Double+Extensions.swift */; };
+		F5F80CE8250CF82E00EEEB16 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CE7250CF82E00EEEB16 /* BaseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		F5DD4A012503F34800120661 /* AssetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetTableViewCell.swift; sourceTree = "<group>"; };
 		F5DD4A1025040CAE00120661 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		F5DD4A122504129D00120661 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		F5F80CE7250CF82E00EEEB16 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				F1F116782503E924007466DE /* Managers */,
+				F5F80CE7250CF82E00EEEB16 /* BaseView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				F1F1167D2503EB5B007466DE /* MenuCardCell.swift in Sources */,
 				BD96DC852503B9C400D569DA /* BaseViewController.swift in Sources */,
 				F5DD4A022503F34800120661 /* AssetsViewController.swift in Sources */,
+				F5F80CE8250CF82E00EEEB16 /* BaseView.swift in Sources */,
 				4C2466122503CA23004E1323 /* AddOrEditStockViewModel.swift in Sources */,
 				BD96DC612503B6B700D569DA /* AppDelegate.swift in Sources */,
 				BDB1F2B525040AB30070079B /* UIImageView+Extensions.swift in Sources */,
