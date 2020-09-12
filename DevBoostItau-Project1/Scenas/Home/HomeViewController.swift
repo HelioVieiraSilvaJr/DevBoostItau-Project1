@@ -8,7 +8,9 @@
 
 import UIKit
 
-final class HomeViewController: BaseViewController {
+final class HomeViewController: BaseViewController, HasCodeView, HomeViewDelegate {
+    
+    typealias CustomView = HomeView
     
     // MARK: Properties
     let viewModel = HomeViewModel()
@@ -17,10 +19,14 @@ final class HomeViewController: BaseViewController {
     weak var coordinator: HomeCoordinator?
     
     // MARK: Outlets
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var totalInvestmentsLabel: UILabel!
-    @IBOutlet weak var menuCollectionView: UICollectionView!
-    @IBOutlet weak var fundsContainerView: UIView!
+//    @IBOutlet weak var userNameLabel: UILabel!
+//    @IBOutlet weak var totalInvestmentsLabel: UILabel!
+//    @IBOutlet weak var menuCollectionView: UICollectionView!
+//    @IBOutlet weak var fundsContainerView: UIView!
+    
+    override func loadView() {
+        view = HomeView(delegate: self)
+    }
     
     // MARK: Overrides
     override func viewDidLoad() {
@@ -47,19 +53,27 @@ final class HomeViewController: BaseViewController {
     }
     
     func setupView() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapFundsSegue))
-        fundsContainerView.addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapFundsSegue))
+//        fundsContainerView.addGestureRecognizer(tapGesture)
 
     }
     
     func setupDelegates() {
-        menuCollectionView.dataSource = self
+//        menuCollectionView.dataSource = self
+    }
+    
+    func showBalance() {
+        <#code#>
+    }
+    
+    func fundsContainer() {
+        performSegue(withIdentifier: "AssetsSegue", sender: nil)
     }
     
     // MARK: Actions
-    @objc func didTapFundsSegue() {
-        performSegue(withIdentifier: "AssetsSegue", sender: nil)
-    }
+//    @objc func didTapFundsSegue() {
+//        performSegue(withIdentifier: "AssetsSegue", sender: nil)
+//    }
 }
 
 extension HomeViewController: UICollectionViewDataSource {
