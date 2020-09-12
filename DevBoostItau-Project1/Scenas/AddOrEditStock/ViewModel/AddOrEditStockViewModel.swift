@@ -14,6 +14,9 @@ final class AddOrEditStockViewModel {
     var context: NSManagedObjectContext?
     var investment: Investment?
     
+    init(investment: Investment) {
+        self.investment = investment
+    }
     func saveInfo(brokerName: String,
                   brokerCode: String,
                   qtyOfStocks: String,

@@ -56,7 +56,7 @@ class AssetsViewModel: NSObject {
         }
     }
     
-    func getInvestment(at indexPath: IndexPath) -> Investment {
+    private func getInvestment(at indexPath: IndexPath) -> Investment {
         investments[indexPath.row]
     }
     
@@ -77,6 +77,10 @@ class AssetsViewModel: NSObject {
 
     func getAssetViewModelFor(_ indexPath: IndexPath) -> AssetsDetailViewModel{
         return AssetsDetailViewModel(asset: AssetModel(from: getInvestment(at: indexPath)))
+    }
+    
+    func getEditInvestmentViewModelFor(_ indexPath: IndexPath) -> AddOrEditStockViewModel{
+        return AddOrEditStockViewModel(investment: getInvestment(at: indexPath))
     }
 }
 
