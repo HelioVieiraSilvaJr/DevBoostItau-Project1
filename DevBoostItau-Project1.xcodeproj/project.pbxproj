@@ -13,6 +13,8 @@
 		BD829CA0250D005E00499A52 /* AppCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829C9F250D005E00499A52 /* AppCordinator.swift */; };
 		BD829CA2250D006900499A52 /* Cordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CA1250D006900499A52 /* Cordinator.swift */; };
 		BD829CA4250D00A900499A52 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CA3250D00A900499A52 /* HomeViewController.swift */; };
+		4C2B4FBD250CFF9A003DCEFE /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B4FBC250CFF9A003DCEFE /* GradientButton.swift */; };
+		4C2B4FBF250D019F003DCEFE /* AddOrEditStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B4FBE250D019F003DCEFE /* AddOrEditStockView.swift */; };
 		BD96DC612503B6B700D569DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96DC602503B6B700D569DA /* AppDelegate.swift */; };
 		BD96DC682503B6B700D569DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD96DC662503B6B700D569DA /* Main.storyboard */; };
 		BD96DC6B2503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BD96DC692503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld */; };
@@ -48,10 +50,15 @@
 /* Begin PBXFileReference section */
 		4C2466112503CA23004E1323 /* AddOrEditStockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditStockViewModel.swift; sourceTree = "<group>"; };
 		4C2466132503CA37004E1323 /* AddOrEditStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditStockViewController.swift; sourceTree = "<group>"; };
+
 		4C2466142503CA37004E1323 /* AddOrEditStockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddOrEditStockViewController.xib; sourceTree = "<group>"; };
 		BD829C9F250D005E00499A52 /* AppCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCordinator.swift; sourceTree = "<group>"; };
 		BD829CA1250D006900499A52 /* Cordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cordinator.swift; sourceTree = "<group>"; };
 		BD829CA3250D00A900499A52 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+
+		4C2B4FBC250CFF9A003DCEFE /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		4C2B4FBE250D019F003DCEFE /* AddOrEditStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditStockView.swift; sourceTree = "<group>"; };
+
 		BD96DC5D2503B6B700D569DA /* DevBoostItau-Project1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DevBoostItau-Project1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD96DC602503B6B700D569DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD96DC672503B6B700D569DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -102,11 +109,12 @@
 			children = (
 				4C2466112503CA23004E1323 /* AddOrEditStockViewModel.swift */,
 				4C2466132503CA37004E1323 /* AddOrEditStockViewController.swift */,
-				4C2466142503CA37004E1323 /* AddOrEditStockViewController.xib */,
+				4C2B4FBE250D019F003DCEFE /* AddOrEditStockView.swift */,
 			);
 			path = AddOrEditStock;
 			sourceTree = "<group>";
 		};
+
 		BD829C9E250D004F00499A52 /* Cordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +122,22 @@
 				BD829CA1250D006900499A52 /* Cordinator.swift */,
 			);
 			path = Cordinator;
+
+		4C2B4FBA250CFF28003DCEFE /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				4C2B4FBB250CFF81003DCEFE /* GradientButton */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		4C2B4FBB250CFF81003DCEFE /* GradientButton */ = {
+			isa = PBXGroup;
+			children = (
+				4C2B4FBC250CFF9A003DCEFE /* GradientButton.swift */,
+			);
+			path = GradientButton;
+
 			sourceTree = "<group>";
 		};
 		BD96DC542503B6B700D569DA = {
@@ -284,6 +308,7 @@
 		F1F116772503E91E007466DE /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4C2B4FBA250CFF28003DCEFE /* Component */,
 				F5F80CEC250CF95E00EEEB16 /* Protocol */,
 				F1F116782503E924007466DE /* Managers */,
 				F5F80CE7250CF82E00EEEB16 /* BaseView.swift */,
@@ -396,7 +421,6 @@
 				BD96DC702503B6B800D569DA /* LaunchScreen.storyboard in Resources */,
 				F5DD4A032503F34800120661 /* Assets.storyboard in Resources */,
 				BD96DC6D2503B6B800D569DA /* Assets.xcassets in Resources */,
-				4C2466162503CA37004E1323 /* AddOrEditStockViewController.xib in Resources */,
 				BDB1F2952503D4040070079B /* AssetsDetailViewController.storyboard in Resources */,
 				BD96DC682503B6B700D569DA /* Main.storyboard in Resources */,
 			);
@@ -430,10 +454,12 @@
 				BD96DC6B2503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld in Sources */,
 				BD829CA4250D00A900499A52 /* HomeViewController.swift in Sources */,
 				BDB1F2AE2503F1C20070079B /* AssetDetailService.swift in Sources */,
+				4C2B4FBD250CFF9A003DCEFE /* GradientButton.swift in Sources */,
 				BDB1F2B925040AD70070079B /* UIView+Extensions.swift in Sources */,
 				BD96DC6B2503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld in Sources */,
 				F5DD4A042503F34800120661 /* AssetTableViewCell.swift in Sources */,
 				F1F1167A2503E938007466DE /* InvestmentsManager.swift in Sources */,
+				4C2B4FBF250D019F003DCEFE /* AddOrEditStockView.swift in Sources */,
 				BD96DC812503B93F00D569DA /* HomeViewModel.swift in Sources */,
 				BDB1F2B725040AB30070079B /* UIColor+Extensions.swift in Sources */,
 				F5F80CEE250CF96D00EEEB16 /* HasCodeView.swift in Sources */,
@@ -513,7 +539,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -567,7 +593,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
