@@ -18,6 +18,7 @@ class AssetDetailView: BaseView {
     // MARK: Properties
     weak var delegate: AssetDetailViewDelegate?
     private var assetDetail: AssetDetail?
+    private var asset: AssetModel?
     
     let contentView: UIView = {
         let contentView = UIView(frame: .zero)
@@ -92,11 +93,12 @@ class AssetDetailView: BaseView {
     
     // MARK: Overrides
     override func initialize() {
-        initialize(assetDetail: nil)
+        initialize(assetDetail: nil, asset: nil)
     }
     
-    func initialize(assetDetail: AssetDetail?) {
+    func initialize(assetDetail: AssetDetail?, asset: AssetModel?) {
         self.assetDetail = assetDetail
+        self.asset = asset
         
         addSubview(contentView)
         contentView.addSubview(line1StackView)
@@ -107,7 +109,9 @@ class AssetDetailView: BaseView {
         assetName.text = assetDetail?.getName
         contentView.addSubview(assetName)
         
+        stackQuantity.body = asset?.quantityOfStocks.description ?? "0"
         line1StackView.addArrangedSubview(stackQuantity)
+        stackPricePurchase.body = asset?.getPricePurchase() ?? "R$ 0,00"
         line1StackView.addArrangedSubview(stackPricePurchase)
         stackQuantity.alignment = .leading
         stackPricePurchase.alignment = .trailing

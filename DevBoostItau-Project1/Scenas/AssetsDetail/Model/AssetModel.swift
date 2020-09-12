@@ -36,3 +36,16 @@ struct AssetModel {
     }
 }
 
+extension AssetModel {
+    var currencyFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale(identifier: "pt_BR")
+        return formatter
+    }
+    
+    func getPricePurchase() -> String {
+        return currencyFormatter.string(from: NSNumber(value: purchasePrice)) ?? "R$ 0,00"
+    }
+}
+

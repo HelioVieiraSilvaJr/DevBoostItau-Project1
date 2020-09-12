@@ -13,7 +13,6 @@ final class AssetsDetailViewController: BaseViewController {
     // MARK: Properties
     var viewModel: AssetsDetailViewModel!
     var cordinator: AssetDetailCordinator?
-    var asset: AssetModel!
     var detail: AssetDetail?
     
     var customView: AssetDetailView {
@@ -32,8 +31,6 @@ final class AssetsDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = AssetsDetailViewModel(asset: asset)
-
         bindEvents()
         showLoading()
         viewModel.getAssetDetail()
@@ -53,8 +50,9 @@ final class AssetsDetailViewController: BaseViewController {
         viewModel.onSuccess = { [weak self] in
             DispatchQueue.main.async {
                 guard let self = self else {return}
-                guard let assetDetail = self.viewModel.detail else {return}
-                self.customView.initialize(assetDetail: assetDetail)
+                guard let assetDetail = self.viewModel.detail,
+                    let asset = self.viewModel.asset else {return}
+                self.customView.initialize(assetDetail: assetDetail, asset: asset)
                 self.closeLoading()
             }
         }
