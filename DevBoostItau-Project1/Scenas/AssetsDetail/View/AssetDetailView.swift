@@ -97,13 +97,13 @@ class AssetDetailView: UIView {
         self.assetDetail = assetDetail
         self.asset = asset
         
-        let stackQuantity = TitleBodyLabel(title: "Quantidade", body: "\(asset?.quantityOfStocks ?? 0)", style: .simple)
-        let stackPricePurchase = TitleBodyLabel(title: "Preço compra", body: asset?.getPricePurchase() ?? "R$ 0,00", style: .simple)
-        let stackDatePurchase = TitleBodyLabel(title: "Data da compra", body: asset?.getDatePurchase() ?? "-", style: .simple)
-        let stackValuePurchase = TitleBodyLabel(title: "Valor total", body: asset?.getTotalValuePurchase() ?? "-", style: .simple)
-        let stackDateToday = TitleBodyLabel(title: "Cotação de Hoje", body: asset?.dateFormatter.string(from: Date()) ?? "-", style: getRentabilityValue() >= 0 ? .colorGreen : .colorRed)
-        let stackValueToday = TitleBodyLabel(title: "Valor total", body: getTotalValueToday(), style: getRentabilityValue() >= 0 ? .colorGreen : .colorRed)
-        let stackRentability = TitleBodyLabel(title: "Rentabilidade obtida até hoje", body: getRentability(), style: getRentabilityValue() >= 0 ? .gigantColorGreen : .gigantColorRed)
+        let stackQuantity = TitleBodyLabel(title: Localization.quantity, body: "\(asset?.quantityOfStocks ?? 0)", style: .simple)
+        let stackPricePurchase = TitleBodyLabel(title: Localization.purchasePrice, body: asset?.getPricePurchase() ?? "R$ 0,00", style: .simple)
+        let stackDatePurchase = TitleBodyLabel(title: Localization.purchaseDate, body: asset?.getDatePurchase() ?? "-", style: .simple)
+        let stackValuePurchase = TitleBodyLabel(title: Localization.valueToday, body: asset?.getTotalValuePurchase() ?? "-", style: .simple)
+        let stackDateToday = TitleBodyLabel(title: Localization.quotationPriceToday, body: asset?.dateFormatter.string(from: Date()) ?? "-", style: getRentabilityValue() >= 0 ? .colorGreen : .colorRed)
+        let stackValueToday = TitleBodyLabel(title: Localization.valueToday, body: getTotalValueToday(), style: getRentabilityValue() >= 0 ? .colorGreen : .colorRed)
+        let stackRentability = TitleBodyLabel(title: Localization.rentabilityObtainedUpToToday, body: getRentability(), style: getRentabilityValue() >= 0 ? .gigantColorGreen : .gigantColorRed)
         
         
         addSubview(contentView)
