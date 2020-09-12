@@ -44,4 +44,14 @@ class InvestmentsManager {
     func getInvestmentAt(_ indexPath: IndexPath) -> Investment {
         fetchedResultsController.object(at: indexPath)
     }
+    
+    static func getTotalInvestmentsValue(investments: [Investment]) -> Double {
+        var total = 0.0
+        investments.forEach({total += Double($0.quantityOfStocks) * $0.purchasePrice})
+        return total
+    }
+    
+    static func getInvestmentValue(investment: Investment) -> Double {
+        return Double(investment.quantityOfStocks) * investment.purchasePrice
+    }
 }

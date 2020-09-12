@@ -9,89 +9,46 @@
 import UIKit
 import CoreData
 
-class AssetsViewController: BaseViewController {
+class AssetsViewController: BaseViewController, HasCodeView {
+
+    typealias CustomView = AssetsView
 
     // MARK: Properties
-    private var balanceHidded = false
-    var investments: [Investment] = []
-    lazy var investmentManager: InvestmentsManager = {[weak self] in
-        let investmentManager = InvestmentsManager(context: context)
-        investmentManager.delegate = self
-        return investmentManager
-    }()
-    
-    // MARK: Outlets
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var balanceLabel: UILabel!
-    @IBOutlet weak var seeBalanceButton: UIButton!
-    @IBOutlet weak var newInvestmentButton: UIButton!
+    private var totalFunds: Double = 0.0
+    private var balanceHidden = false
+    lazy var viewModel = AssetsViewModel(context: context)
+    weak var coordinator: AssetsCoordinator?
     
     // MARK: Overrides
+    
+    override func loadView() {
+        view = AssetsView(delegate: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        viewModel.investmentsDidUpdate = investmentsDidUpdate
+        self.customView.applyGradient(style: .vertical, colors: [UIColor.itiOrange, UIColor.itiPink])
+        customView.tableView.delegate = self
+        customView.tableView.dataSource = self
         
-        setupView()
-        loadInvestments()
-        setupMockData() //TODO: remove me
-    }
-
-    // MARK: Actions
-    @IBAction func showBalance(_ sender: Any) {
-        balanceHidded.toggle()
-        balanceLabel.text = balanceHidded ? "--" : "R$ 3150,00"
+        viewModel.loadInvestments()
     }
     
-    @IBAction func goToNewInvestment(_ sender: Any) {
-        navigationController?.present(AddOrEditStockViewController(), animated: true, completion: nil)
-    }
+    // MARK: Methods
     
-    // MARK: Mathods
-    func setupView(){
-        self.view.applyGradient(style: .vertical, colors: [UIColor.itiOrange, UIColor.itiPink])
-        newInvestmentButton.applyGradient(style: .horizontal, colors: [UIColor.itiOrange, UIColor.itiPink])
-        
-        newInvestmentButton.clipsToBounds = true
-        newInvestmentButton.layer.cornerRadius = 25
-        
-        tableView.clipsToBounds = true
-        tableView.layer.cornerRadius = 8
-    }
-    
-    func setupMockData() {
-        let investment1 = Investment(context: context)
-        investment1.brokerCode = "inv1"
-        investment1.brokerName = "Clear Corretora"
-        investment1.quantityOfStocks = 100
-        investment1.purchaseDate = Date()
-        investment1.purchasePrice = 5.56
-        
-        do {
-            try context.save()
-        } catch {
-            print("Deu ruim")
+    func investmentsDidUpdate(){
+        DispatchQueue.main.async {
+            self.customView.tableView.reloadData()
+            self.updateTotalFunds()
         }
-    }
-    
-    func loadInvestments() {
-        let fetchRequest: NSFetchRequest<Investment> = Investment.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "purchaseDate", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-       do{
-           investments = try context.fetch(fetchRequest)
-           tableView.reloadData()
-       }catch{
-           print("error")
-       }
-        investmentManager.performFetch()
     }
 }
 
 extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return investments.count
+        return viewModel.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,54 +56,49 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
 
-        let investment = investments[indexPath.row]
-        cell.configure(with: investment)
+        let investmentCellViewModel = viewModel.cellViewModelFor(indexPath: indexPath)
+        cell.configure(with: investmentCellViewModel, percent: viewModel.getInvestmentPercentFor(indexPath))
 
         return cell
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .default, title: "editar", handler: { (action, indexPath) in
-            
+            self.navigationController?.present(AddOrEditStockViewController(investment: self.viewModel.getInvestment(at: indexPath)), animated: true, completion: nil)
         })
         editAction.backgroundColor = UIColor.lightGray
         
         let deleteAction = UITableViewRowAction(style: .default, title: "excluir", handler: { (action, indexPath) in
-            
+            self.viewModel.deleteInvestment(at: indexPath)
         })
         
         return [editAction, deleteAction]
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let asset = self.investments[indexPath.row]
+        let asset = viewModel.getInvestment(at: indexPath)
         guard let _ = asset.brokerCode else {return}
         
-        let viewController = AssetsDetailBuilder().builder(asset: asset)
-        present(viewController, animated: true, completion: nil)
+        let assetDetailViewModel = viewModel.getAssetViewModelFor(indexPath)
+        coordinator?.showInvestment(viewModel: assetDetailViewModel)
+    }
+    
+    func updateTotalFunds() {
+        totalFunds = viewModel.getTotalBalance()
+        if !balanceHidden {
+            customView.balanceLabel.text = "R$ \(totalFunds)"
+        }
     }
 }
 
-extension AssetsViewController: NSFetchedResultsControllerDelegate {
-
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        if let investment = anObject as? Investment {
-            switch type {
-            case .delete:
-                print("Código para excluir o invesment da tabela")
-            case .move:
-                print("Código para atualizar a posição o invesment da tabela")
-            case .update:
-                print("Código para atualizar o invesment da tabela")
-            case .insert:
-                investments.append(investment)
-            @unknown default:
-                print("Cenário desconhecido")
-            }
-        }
+extension AssetsViewController: AssetsViewDelegate {
+    func showBalance() {
+        balanceHidden.toggle()
+        customView.balanceLabel.text = balanceHidden ? "--" : "R$ \(totalFunds)"
     }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.reloadData()
+
+    func goToNewInvestment() {
+//        coordinator.editInvestment()
+        navigationController?.present(AddOrEditStockViewController(), animated: true, completion: nil)
     }
 }

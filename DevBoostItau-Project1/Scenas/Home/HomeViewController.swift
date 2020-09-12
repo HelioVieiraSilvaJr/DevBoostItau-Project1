@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 final class HomeViewController: BaseViewController, HasCodeView, HomeViewDelegate {
     
@@ -19,10 +20,10 @@ final class HomeViewController: BaseViewController, HasCodeView, HomeViewDelegat
     weak var coordinator: HomeCoordinator?
     
     // MARK: Outlets
-//    @IBOutlet weak var userNameLabel: UILabel!
-//    @IBOutlet weak var totalInvestmentsLabel: UILabel!
-//    @IBOutlet weak var menuCollectionView: UICollectionView!
-//    @IBOutlet weak var fundsContainerView: UIView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var totalInvestmentsLabel: UILabel!
+    @IBOutlet weak var menuCollectionView: UICollectionView!
+    @IBOutlet weak var fundsContainerView: UIView!
     
     override func loadView() {
         view = HomeView(delegate: self)
@@ -37,6 +38,11 @@ final class HomeViewController: BaseViewController, HasCodeView, HomeViewDelegat
         setupDelegates()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupTotalFunds()
+    }
+    
     // MARK: Mathods
     func setupNavigationBar(){
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -46,34 +52,37 @@ final class HomeViewController: BaseViewController, HasCodeView, HomeViewDelegat
     }
     
     func setupMenuCards() {
-        let investCard = CardMenu(title: "investir", subtitle: "seu dinheiro")
-        let signupCard = CardMenu(title: "cadastrar", subtitle: "cartão")
-        let helpCard = CardMenu(title: "pedir ajuda", subtitle: "fale com um assistente")
+        let investCard = CardMenu(title: "investir", subtitle: "seu dinheiro", image: UIImage(named: "money"))
+        let signupCard = CardMenu(title: "cadastrar", subtitle: "cartão", image: UIImage(named: "card"))
+        let helpCard = CardMenu(title: "pedir ajuda", subtitle: "fale com um assistente", image: UIImage(named: "question"))
         menuCards = [investCard, signupCard, helpCard]
     }
     
     func setupView() {
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapFundsSegue))
-//        fundsContainerView.addGestureRecognizer(tapGesture)
-
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapFundsSegue))
+        fundsContainerView.addGestureRecognizer(tapGesture)
     }
     
     func setupDelegates() {
-//        menuCollectionView.dataSource = self
+        menuCollectionView.dataSource = self
     }
     
-    func showBalance() {
-        <#code#>
-    }
-    
-    func fundsContainer() {
-        performSegue(withIdentifier: "AssetsSegue", sender: nil)
+    func setupTotalFunds() {
+        let fetchRequest: NSFetchRequest<Investment> = Investment.fetchRequest()
+        do {
+            let investments = try context.fetch(fetchRequest)
+            let total = InvestmentsManager.getTotalInvestmentsValue(investments: investments)
+            totalInvestmentsLabel.text = "R$ \(total)"
+        } catch {
+           print("error")
+        }
     }
     
     // MARK: Actions
-//    @objc func didTapFundsSegue() {
-//        performSegue(withIdentifier: "AssetsSegue", sender: nil)
-//    }
+    @objc func didTapFundsSegue() {
+        performSegue(withIdentifier: "AssetsSegue", sender: nil)
+//        coordinator?.showAssetsList()
+    }
 }
 
 extension HomeViewController: UICollectionViewDataSource {
@@ -89,7 +98,7 @@ extension HomeViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCardCell.identifier, for: indexPath) as! MenuCardCell
         if let cards = menuCards {
             let cardMenu = cards[indexPath.row]
-            cell.setupView(cardMenu: cardMenu, backImage: backImages[indexPath.row])
+            cell.setupView(cardMenu: cardMenu)
         }
         
         return cell

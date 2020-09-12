@@ -16,7 +16,7 @@ class AssetDetailRepository {
         self.service = service
     }
     
-    func getAsset(code: String, onSussecc: @escaping (AssetDetail) -> Void, onFail: @escaping (String) -> Void) {
+    func getAsset(code: String, onSuccess: @escaping (AssetDetail) -> Void, onFail: @escaping (String) -> Void) {
         
         guard let url = URL(string: String(format: "https://api.hgbrasil.com/finance/stock_price?key=a6f97fc3&symbol=%@", code)) else {
             onFail("URL inválida!")
@@ -24,7 +24,7 @@ class AssetDetailRepository {
         }
         
         service.getAsset(url: url, success: { assetDetail in
-            onSussecc(assetDetail)
+            onSuccess(assetDetail)
         }) { error in
             onFail(error)
         }

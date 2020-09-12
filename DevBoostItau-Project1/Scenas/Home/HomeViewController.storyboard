@@ -96,7 +96,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dollarsign.circle" translatesAutoresizingMaskIntoConstraints="NO" id="Num-kT-WTs">
-                                                            <rect key="frame" x="51" y="-34.5" width="160" height="144"/>
+                                                            <rect key="frame" x="51" y="-36.5" width="160" height="148"/>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="148" id="ISL-wN-ZWV"/>
@@ -240,7 +240,6 @@
                         <outlet property="menuCollectionView" destination="HXe-Vj-q8e" id="T1x-cD-Zm9"/>
                         <outlet property="totalInvestmentsLabel" destination="SBx-xa-JzC" id="1L1-IR-OsW"/>
                         <outlet property="userNameLabel" destination="C8s-YQ-8Jt" id="p0d-WQ-1fz"/>
-                        <segue destination="vCj-6R-OcF" kind="show" identifier="AssetsSegue" id="214-JB-Fye"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpl-1S-sF5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -273,16 +272,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="atb-HK-IX8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-194" y="136"/>
-        </scene>
-        <!--Assets-->
-        <scene sceneID="Ehm-qe-xUs">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Assets" id="vCj-6R-OcF" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="g9O-WD-om5"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1NN-YM-WY1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1328" y="80"/>
         </scene>
     </scenes>
     <resources>

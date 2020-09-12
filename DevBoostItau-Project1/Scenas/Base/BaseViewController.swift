@@ -13,17 +13,17 @@ class BaseViewController: UIViewController {
     
     private let loadingView: LoadingCustom = LoadingCustom.fromNib()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        configureLoadingView()
-    }
-
     var context: NSManagedObjectContext {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         }
         return appDelegate.persistentContainer.viewContext
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        configureLoadingView()
     }
 }
 
