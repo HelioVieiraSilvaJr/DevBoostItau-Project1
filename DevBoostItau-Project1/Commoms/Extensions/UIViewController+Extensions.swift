@@ -9,13 +9,13 @@
 import UIKit
 
 extension UIViewController{
-    func addKeyboarController(for textFields: [UITextField]){
+    func addKeyboardController(for textFields: [UITextField]){
         for (index, textField) in textFields.enumerated() {
             let toolbar: UIToolbar = UIToolbar()
             toolbar.sizeToFit()
 
             var items = [UIBarButtonItem]()
-              let previousButton = UIBarButtonItem(title: "previous", style: .plain, target: nil, action: nil)
+            let previousButton = UIBarButtonItem(title: Localization.previous, style: .plain, target: nil, action: nil)
               previousButton.width = 30
               if textField == textFields.first {
                 previousButton.isEnabled = false
@@ -24,7 +24,7 @@ extension UIViewController{
                 previousButton.action = #selector(UITextField.becomeFirstResponder)
               }
 
-            let nextButton = UIBarButtonItem(title: "Next", style: .plain, target: nil, action: nil)
+            let nextButton = UIBarButtonItem(title: Localization.next, style: .plain, target: nil, action: nil)
               nextButton.width = 30
               if textField == textFields.last {
                 nextButton.isEnabled = false

@@ -26,4 +26,11 @@ class AssetDetailCordinator: Coordinator {
         viewController.viewModel = viewModel
         navigationController.present(viewController, animated: true, completion: nil)
     }
+    
+    func editInvestment(viewModel: AddOrEditStockViewModel?){
+        let childCoordinator = AddOrEditStockCoordinator(navigationController: navigationController, viewModel: viewModel)
+        childCoordinator.parentCoordinator = self
+        add(childCoordinator: childCoordinator)
+        childCoordinator.start()
+    }
 }

@@ -38,13 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     func setupRootViewController() {
         window = UIWindow(frame: UIScreen.main.bounds)
-        
-        //DEPRECATED
-//        let viewController = UIStoryboard(name: "HomeViewController", bundle: nil)
-//            .instantiateViewController(withIdentifier: "NavHomeViewController")
-//        window?.rootViewController = viewController
-        
-        //SUBSTITUIR POR CORDINATOR
+        window?.backgroundColor = .white
+
         appCoordinator = AppCoordinator()
         window?.rootViewController = appCoordinator.navigationController
         appCoordinator.start()

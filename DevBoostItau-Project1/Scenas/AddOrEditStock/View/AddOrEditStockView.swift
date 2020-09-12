@@ -37,7 +37,7 @@ final class AddOrEditStockView: BaseView {
     }()
     let titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Preecha as informações sobre a nova compra de ações"
+        label.text = Localization.fillOutInvestmentTitle
         label.textAlignment = .left
         label.numberOfLines = 0
         label.textColor = UIColor.black
@@ -56,7 +56,7 @@ final class AddOrEditStockView: BaseView {
     }()
     let stockLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Ativo"
+        label.text = Localization.active
         label.numberOfLines = 1
         label.textAlignment = .left
         label.textColor = UIColor.darkGray
@@ -84,7 +84,7 @@ final class AddOrEditStockView: BaseView {
     }()
     let quantityLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Quantidade"
+        label.text = Localization.quantity
         label.numberOfLines = 1
         label.textAlignment = .left
         label.textColor = UIColor.darkGray
@@ -111,7 +111,7 @@ final class AddOrEditStockView: BaseView {
     }()
     let priceLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Preço de Compra"
+        label.text = Localization.purchasePrice
         label.numberOfLines = 1
         label.textAlignment = .left
         label.textColor = UIColor.darkGray
@@ -138,7 +138,7 @@ final class AddOrEditStockView: BaseView {
     }()
     let startDateLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Data de início"
+        label.text = Localization.startDate
         label.numberOfLines = 1
         label.textAlignment = .left
         label.textColor = UIColor.darkGray
@@ -165,7 +165,7 @@ final class AddOrEditStockView: BaseView {
     }()
     let investOrSaveButton: GradientButton = {
         let button = GradientButton()
-        button.setTitle("Investir", for: .normal)
+        button.setTitle(Localization.invest, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -261,6 +261,6 @@ final class AddOrEditStockView: BaseView {
         }
     }
     func setSaveButton() {
-        investOrSaveButton.setTitle("Save", for: .normal)
+        investOrSaveButton.setTitle(Localization.save, for: .normal)
     }
 }

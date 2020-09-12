@@ -37,14 +37,6 @@ final class AssetsDetailViewController: BaseViewController {
         viewModel.getAssetDetail()
     }
     
-    // MARK: Actions
-    @IBAction func handlerCloseButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func handlerButtonEdit(_ sender: Any) {
-//        present(AddOrEditStockViewController(investment: asset), animated: true, completion: nil)
-    }
     
     // MARK: Methods
     private func bindEvents() {
@@ -59,7 +51,6 @@ final class AssetsDetailViewController: BaseViewController {
         }
 
         viewModel.onFail = { [weak self] error in
-            print("==> Error: \(error)")
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
                 self?.closeLoading()
                 self?.customView.showNotFound()
@@ -70,7 +61,11 @@ final class AssetsDetailViewController: BaseViewController {
 
 extension AssetsDetailViewController: AssetDetailViewDelegate {
     func pressEditButton() {
-        print("==> Botão Editar Informações")
+        guard let investment = viewModel.asset?.investment else {return}
+        dismiss(animated: true) {
+            let addOrEditStockViewModel = AddOrEditStockViewModel(investment: investment)
+            self.cordinator?.editInvestment(viewModel: addOrEditStockViewModel)
+        }
     }
     
     func pressCloseButton() {

@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  DevBoostItau-Project1
+
+  Created by Gabriel den Hartog on 12/09/20.
+  Copyright © 2020 DevBoost-Itau. All rights reserved.
+*/
+"SEE_MY_PROFILE" = "mira mi perfil";
+"INVEST" = "invertir";
+"YOUR_MONEY" = "tu dinero";
+"SIGN_UP" = "regístrate";
+"CARD" = "tarjeta";
+"ASK_FOR_HELP" = "pedir ayuda";
+"SPEAK_WITH_AN_ASSISTANT" = "hablar con un asistente";
+"EVERYTHING_ABOUT_YOUR_ITI" = "todo sobre tu iti";
+"MY_WEALTH" = "mi riqueza";
+"NEW_INVESTMENT" = "nueva inversión";
+"EDIT_INFORMATION" = "editar informacion";
+"QUANTITY" = "cantidad";
+"PURCHASE_DATE" = "fecha de compra";
+"PURCHASE_PRICE" = "precio de compra";
+"QUOTATION_PRICE_TODAY" = "cita de hoy";
+"VALUE_TODAY" = "valor de hoy";
+"RENTABILITY_OBTAINED_UP_TO_TODAY" = "Rentabilidad obtenida hasta hoy";
+"PREVIOUS" = "Previa";
+"NEXT" = "Siguiente";
+"DELETE" = "eliminar";
+"EDIT" = "editar";
+"SAVE" = "salvar";
+"CURRENT_BALANCE" = "saldo actual";
+"PERCENT_WALLET" = "% en la billetera";
+"FILL_OUT_INVESTMENT_TITLE" = "Complete la información sobre su nueva compra de acciones";
+"TOTAL_VALUE" = "valor total";
+"ACTIVE" = "activo";
+"ITI_FUNDS" = "iti saldo";
+"USERNAME" = "Usuario";
+"START_DATE" = "Fecha de inicio";

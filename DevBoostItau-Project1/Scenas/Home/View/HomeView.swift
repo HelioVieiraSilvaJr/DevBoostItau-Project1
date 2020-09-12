@@ -39,7 +39,7 @@ class HomeView: BaseView {
     
     let userNameLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "User name"
+        label.text = Localization.userName
         label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
         label.textColor = UIColor.white
         label.alpha = 0.65
@@ -49,7 +49,7 @@ class HomeView: BaseView {
     
     let profileLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "ver meu perfil"
+        label.text = Localization.seeMyProfile
         label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         label.textColor = UIColor.white
         label.alpha = 0.65
@@ -66,7 +66,7 @@ class HomeView: BaseView {
     
     let itiBalanceLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "saldo iti"
+        label.text = Localization.itiFunds
         label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         label.textColor = UIColor.white
         label.alpha = 0.65
@@ -129,7 +129,7 @@ class HomeView: BaseView {
     
     let aboutItiLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "tudo sobre seu iti"
+        label.text = Localization.everythingAboutYourIti
         label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         label.textColor = UIColor.white
         label.alpha = 0.65
@@ -164,7 +164,7 @@ class HomeView: BaseView {
         
         profileLabel.leadingAnchor.constraint(equalTo: userNameLabel.leadingAnchor, constant: 0).isActive = true
         profileLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 13).isActive = true
-        
+
         divisionLine.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
         safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: divisionLine.trailingAnchor, constant: 12).isActive = true
         divisionLine.topAnchor.constraint(equalTo: emptyProfileImage.bottomAnchor, constant: 8).isActive = true

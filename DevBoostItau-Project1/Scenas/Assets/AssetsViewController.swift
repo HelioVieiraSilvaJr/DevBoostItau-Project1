@@ -28,16 +28,13 @@ class AssetsViewController: BaseViewController, HasCodeView {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.investmentsDidUpdate = investmentsDidUpdate
+        self.customView.applyGradient(style: .vertical, colors: [UIColor.itiOrange, UIColor.itiPink])
         customView.tableView.delegate = self
         customView.tableView.dataSource = self
         
         viewModel.loadInvestments()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.customView.applyGradient(style: .vertical, colors: [.itiOrange, .itiPink])
-    }
     // MARK: Methods
     
     func investmentsDidUpdate(){
@@ -66,12 +63,12 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editAction = UITableViewRowAction(style: .default, title: "editar", handler: { (action, indexPath) in
+        let editAction = UITableViewRowAction(style: .default, title: Localization.edit, handler: { (action, indexPath) in
             self.coordinator?.editInvestment(viewModel: self.viewModel.getEditInvestmentViewModelFor(indexPath))
         })
         editAction.backgroundColor = UIColor.lightGray
         
-        let deleteAction = UITableViewRowAction(style: .default, title: "excluir", handler: { (action, indexPath) in
+        let deleteAction = UITableViewRowAction(style: .default, title: Localization.delete, handler: { (action, indexPath) in
             self.viewModel.deleteInvestment(at: indexPath)
         })
         

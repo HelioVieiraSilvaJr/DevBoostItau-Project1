@@ -23,9 +23,9 @@ class AddOrEditStockViewController: UIViewController, HasCodeView {
     var viewModel: AddOrEditStockViewModel?
     
     // MARK: - Init
-    //    convenience init(stock: Investment) {
+//    convenience init(stock: Investment) {
 //        self.init(stock: stock)
-////        self.viewModel.investment = stock
+//        self.viewModel.investment = stock
 //    }
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class AddOrEditStockViewController: UIViewController, HasCodeView {
         if viewModel?.investment != nil {
             setupDateAndViews()
         }
-        addKeyboarController(for: [customView.startDateTextField, customView.stockTextField, customView.quantityTextField, customView.priceTextField])
+        addKeyboardController(for: [customView.startDateTextField, customView.stockTextField, customView.quantityTextField, customView.priceTextField])
     }
     // MARK: - Override
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -52,23 +52,26 @@ class AddOrEditStockViewController: UIViewController, HasCodeView {
     private func setupDateAndViews() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        
         customView.startDateTextField.text = dateFormatter.string(from: viewModel?.investment?.purchaseDate ?? Date())
         customView.stockTextField.text = viewModel?.investment?.brokerName
-        customView.quantityTextField.text = "\(viewModel?.investment?.quantityOfStocks)"
-        customView.priceTextField.text = "\(viewModel?.investment?.purchasePrice)"
+        customView.quantityTextField.text = "\(viewModel!.investment!.quantityOfStocks)"
+        customView.priceTextField.text = "\(viewModel!.investment!.purchasePrice)"
         customView.setSaveButton()
     }
     // MARK: - Taps
     @objc private func dateChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        // startDateTextField.text = dateFormatter.string(from: datePicker.date)
+        customView.startDateTextField.text! = dateFormatter.string(from: datePicker.date)
     }
     
     // MARK: - Functions
     private func callSaveInfo() {
-        viewModel?.saveInfo(brokerName: customView.stockTextField.text!, brokerCode: "0", qtyOfStocks: customView.quantityTextField.text!, purchasePrice: customView.priceTextField.text!, purchaseDate: customView.startDateTextField.text!)
+        let _ = viewModel!.saveInfo(brokerName: customView.stockTextField.text!,
+                                    brokerCode: "0",
+                                    qtyOfStocks: customView.quantityTextField.text!,
+                                    purchasePrice: customView.priceTextField.text!,
+                                    purchaseDate: customView.startDateTextField.text!)
     }
 }
 // MARK: - AddOrEditStockViewDelegate
