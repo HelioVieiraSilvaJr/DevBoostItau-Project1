@@ -39,15 +39,16 @@ extension AppDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
                 
                 //DEPRECATED
-                let viewController = UIStoryboard(name: "HomeViewController", bundle: nil)
-                    .instantiateViewController(withIdentifier: "NavHomeViewController")
-                window?.rootViewController = viewController
+//                let viewController = UIStoryboard(name: "HomeViewController", bundle: nil)
+//                    .instantiateViewController(withIdentifier: "NavHomeViewController")
+//                window?.rootViewController = viewController
                 
                 //SUBSTITUIR POR CORDINATOR
         //        appCoordinator = AppCoordinator()
         //        window?.rootViewController = appCoordinator?.navigationController
         //        appCoordinator?.start()
                 
-                window?.makeKeyAndVisible()
+        window?.rootViewController = UINavigationController(rootViewController: AssetsViewController())
+        window?.makeKeyAndVisible()
     }
 }

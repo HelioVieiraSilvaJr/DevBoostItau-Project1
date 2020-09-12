@@ -29,9 +29,9 @@ class MenuCardCell: UICollectionViewCell {
     }
     
     // MARK: - Methods
-    func setupView(cardMenu: CardMenu, backImage: UIImage?) {
-        titleLabel.text = cardMenu.title
-        subtitleLabel.text = cardMenu.subtitle
-        self.backImage.image = backImage
+    func setupView(cardMenu: CardMenu) {
+        self.titleLabel.text = cardMenu.title
+        self.subtitleLabel.text = cardMenu.subtitle
+        self.backImage.image = cardMenu.image
     }
 }

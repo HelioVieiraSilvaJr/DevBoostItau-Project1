@@ -6,15 +6,17 @@
 //  Copyright © 2020 DevBoost-Itau. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct CardMenu {
     
     var title: String
     var subtitle: String
+    var image: UIImage?
     
-    init(title: String, subtitle: String) {
+    init(title: String, subtitle: String, image: UIImage?) {
         self.title = title
         self.subtitle = subtitle
+        self.image = image
     }
 }

@@ -36,7 +36,7 @@ class AssetsDetailViewModel {
     var onFail: ((String) -> Void)?
     
     func getAssetDetail() {
-        repository.getAsset(code: asset.brokerCode, onSussecc: { [weak self] assetDetail in
+        repository.getAsset(code: asset.brokerCode, onSuccess: { [weak self] assetDetail in
             self?.detail = assetDetail
             self?.onSuccess?()
         }) { [weak self] error in

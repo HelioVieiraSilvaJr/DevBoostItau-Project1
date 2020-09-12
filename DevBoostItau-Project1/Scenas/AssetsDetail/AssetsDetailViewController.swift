@@ -40,13 +40,13 @@ final class AssetsDetailViewController: BaseViewController {
         viewModel.getAssetDetail()
     }
     
-    
     // MARK: Actions
     @IBAction func handlerCloseButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func handlerButtonEdit(_ sender: Any) {
+//        present(AddOrEditStockViewController(investment: asset), animated: true, completion: nil)
     }
     
     // MARK: Methods
