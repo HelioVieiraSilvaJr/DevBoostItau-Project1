@@ -30,6 +30,10 @@ enum Localization {
     static let next = "NEXT".localized
     static let delete = "DELETE".localized
     static let edit = "EDIT".localized
+    static let save = "SAVE".localized
+    static let currentBalance = "CURRENT_BALANCE".localized
+    static let percentWallet = "PERCENT_WALLET".localized
+    static let fillOutInvestmentTitle = "FILL_OUT_INVESTMENT_TITLE".localized
 }
 
 extension String {

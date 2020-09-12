@@ -24,7 +24,7 @@ class AssetsView: BaseView{
     
     private let myBelongslabel: UILabel = {
        let label = UILabel()
-        label.text = "meu patrimônio"
+        label.text = Localization.myWealth
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = .white
         label.alpha = 0.5
@@ -68,7 +68,7 @@ class AssetsView: BaseView{
     
     let newInvestmentButton: GradientButton = {
        let button = GradientButton()
-        button.setTitle("Novo investimento", for: .normal)
+        button.setTitle(Localization.newInvestment, for: .normal)
         button.clipsToBounds = true
         button.layer.cornerRadius = 25
         button.translatesAutoresizingMaskIntoConstraints = false

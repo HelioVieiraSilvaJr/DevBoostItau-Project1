@@ -63,12 +63,12 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editAction = UITableViewRowAction(style: .default, title: "editar", handler: { (action, indexPath) in
+        let editAction = UITableViewRowAction(style: .default, title: Localization.edit, handler: { (action, indexPath) in
             self.navigationController?.present(AddOrEditStockViewController(investment: self.viewModel.getInvestment(at: indexPath)), animated: true, completion: nil)
         })
         editAction.backgroundColor = UIColor.lightGray
         
-        let deleteAction = UITableViewRowAction(style: .default, title: "excluir", handler: { (action, indexPath) in
+        let deleteAction = UITableViewRowAction(style: .default, title: Localization.delete, handler: { (action, indexPath) in
             self.viewModel.deleteInvestment(at: indexPath)
         })
         

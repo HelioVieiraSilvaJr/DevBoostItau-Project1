@@ -26,3 +26,7 @@
 "NEXT" = "Anterior";
 "DELETE" = "excluir";
 "EDIT" = "editar";
+"SAVE" = "salvar";
+"CURRENT_BALANCE" = "saldo atual";
+"PERCENT_WALLET" = "% na carteira";
+"FILL_OUT_INVESTMENT_TITLE" = "Preencha as informações sobre a sua nova compra de ações";

@@ -30,7 +30,7 @@ class AssetTableViewCell: UITableViewCell {
     }()
     let currentBalanceDescLabel: UILabel = {
        let label = UILabel()
-        label.text = "saldo atual"
+        label.text = Localization.currentBalance
         label.textColor = .itiGrey
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -46,7 +46,7 @@ class AssetTableViewCell: UITableViewCell {
     }()
     let percentBalanceDescLabel: UILabel = {
        let label = UILabel()
-        label.text = "% na carteira"
+        label.text = Localization.percentWallet
         label.textColor = .itiGrey
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false

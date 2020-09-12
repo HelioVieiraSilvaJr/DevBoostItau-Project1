@@ -71,9 +71,9 @@ final class AddOrEditStockViewController: BaseViewController {
     }
     private func setupButton() {
         if viewModel.investment != nil {
-            investButton.setTitle("Salvar", for: .normal)
+            investButton.setTitle(Localization.save, for: .normal)
         } else {
-            investButton.setTitle("Investir", for: .normal)
+            investButton.setTitle(Localization.invest, for: .normal)
         }
     }
     

@@ -26,3 +26,7 @@
 "NEXT" = "Next";
 "DELETE" = "delete";
 "EDIT" = "edit";
+"SAVE" = "save";
+"CURRENT_BALANCE" = "current balance";
+"PERCENT_WALLET" = "% on the wallet";
+"FILL_OUT_INVESTMENT_TITLE" = "Fill in the information about your new stock purchase";

@@ -81,15 +81,15 @@ class AssetDetailView: BaseView {
         return view
     }()
     
-    let editButton: CustomButton = CustomButton(title: "Editar informações")
+    let editButton: CustomButton = CustomButton(title: Localization.editInformation)
     
-    let stackQuantity = TitleBodyLabel(title: "Quantidade", body: "R$ 4.987,09", style: .simple)
-    let stackPricePurchase = TitleBodyLabel(title: "Preço compra", body: "R$ 34,00", style: .simple)
-    let stackDatePurchase = TitleBodyLabel(title: "Data da compra", body: "10/01/1988", style: .simple)
-    let stackValuePurchase = TitleBodyLabel(title: "Valor total", body: "R$ 12.980,00", style: .simple)
-    let stackDateToday = TitleBodyLabel(title: "Cotação de Hoje", body: "12/09/2020", style: .colorGreen)
-    let stackValueToday = TitleBodyLabel(title: "Valor total", body: "R$ 14.923,30", style: .colorRed)
-    let stackRentability = TitleBodyLabel(title: "Rentabilidade obtida até hoje", body: "25%", style: .gigantColorGreen)
+    let stackQuantity = TitleBodyLabel(title: Localization.quantity, body: "R$ 4.987,09", style: .simple)
+    let stackPricePurchase = TitleBodyLabel(title: Localization.purchasePrice, body: "R$ 34,00", style: .simple)
+    let stackDatePurchase = TitleBodyLabel(title: Localization.purchaseDate, body: "10/01/1988", style: .simple)
+    let stackValuePurchase = TitleBodyLabel(title: Localization.quotationPriceToday, body: "R$ 12.980,00", style: .simple)
+    let stackDateToday = TitleBodyLabel(title: Localization.quotationPriceToday, body: "12/09/2020", style: .colorGreen)
+    let stackValueToday = TitleBodyLabel(title: Localization.valueToday, body: "R$ 14.923,30", style: .colorRed)
+    let stackRentability = TitleBodyLabel(title: Localization.rentabilityObtainedUpToToday, body: "25%", style: .gigantColorGreen)
     
     // MARK: Overrides
     override func initialize() {
