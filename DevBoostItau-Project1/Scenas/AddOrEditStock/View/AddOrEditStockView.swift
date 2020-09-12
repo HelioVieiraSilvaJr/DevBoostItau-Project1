@@ -138,7 +138,7 @@ final class AddOrEditStockView: BaseView {
     }()
     let startDateLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Preço de Compra"
+        label.text = "Data de início"
         label.numberOfLines = 1
         label.textAlignment = .left
         label.textColor = UIColor.darkGray
