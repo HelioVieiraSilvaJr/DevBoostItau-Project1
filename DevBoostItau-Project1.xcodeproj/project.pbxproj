@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32EF95E3250D0B15002D9AF2 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EF95E2250D0B15002D9AF2 /* HomeCoordinator.swift */; };
+		32EF95E5250D1CEF002D9AF2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EF95E4250D1CEF002D9AF2 /* HomeView.swift */; };
 		4C2466122503CA23004E1323 /* AddOrEditStockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2466112503CA23004E1323 /* AddOrEditStockViewModel.swift */; };
 		4C2466152503CA37004E1323 /* AddOrEditStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2466132503CA37004E1323 /* AddOrEditStockViewController.swift */; };
 		4C2466162503CA37004E1323 /* AddOrEditStockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2466142503CA37004E1323 /* AddOrEditStockViewController.xib */; };
@@ -56,6 +58,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32EF95E2250D0B15002D9AF2 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		32EF95E4250D1CEF002D9AF2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4C2466112503CA23004E1323 /* AddOrEditStockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditStockViewModel.swift; sourceTree = "<group>"; };
 		4C2466132503CA37004E1323 /* AddOrEditStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditStockViewController.swift; sourceTree = "<group>"; };
 		4C2466142503CA37004E1323 /* AddOrEditStockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddOrEditStockViewController.xib; sourceTree = "<group>"; };
@@ -117,6 +121,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32EF95E1250D0AF3002D9AF2 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				32EF95E2250D0B15002D9AF2 /* HomeCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		4C2466102503C9F7004E1323 /* AddOrEditStock */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +242,7 @@
 		BD96DC792503B6EE00D569DA /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				32EF95E1250D0AF3002D9AF2 /* Coordinator */,
 				F1F1167B2503EB46007466DE /* View */,
 				F1F116742503E271007466DE /* Model */,
 				BD96DC802503B93F00D569DA /* HomeViewModel.swift */,
@@ -362,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				F1F1167C2503EB5B007466DE /* MenuCardCell.swift */,
+				32EF95E4250D1CEF002D9AF2 /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -508,7 +522,9 @@
 				F5F80CF3250D206C00EEEB16 /* AssetsViewModel.swift in Sources */,
 				BD829CAD250D0E7B00499A52 /* TitleBodyLabel.swift in Sources */,
 				F5DD4A1125040CAF00120661 /* UIViewController+Extensions.swift in Sources */,
+				32EF95E5250D1CEF002D9AF2 /* HomeView.swift in Sources */,
 				BDB1F2AB2503F0390070079B /* AssetsDetailRepository.swift in Sources */,
+				32EF95E3250D0B15002D9AF2 /* HomeCoordinator.swift in Sources */,
 				F5DD4A132504129D00120661 /* Double+Extensions.swift in Sources */,
 				F5F80CFA250D37CF00EEEB16 /* Margin.swift in Sources */,
 				F5F80CF0250CFA1500EEEB16 /* AssetsView.swift in Sources */,

@@ -27,7 +27,7 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let childCoordinator = AssetsCoordinator(navigationController: navigationController) // FIX ME - Mudar para Home
+        let childCoordinator = HomeCoordinator(navigationController: navigationController)
         childCoordinator.parentCoordinator = self
         add(childCoordinator: childCoordinator)
         childCoordinator.start()
