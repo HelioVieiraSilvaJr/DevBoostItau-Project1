@@ -28,13 +28,16 @@ class AssetsViewController: BaseViewController, HasCodeView {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.investmentsDidUpdate = investmentsDidUpdate
-        self.customView.applyGradient(style: .vertical, colors: [UIColor.itiOrange, UIColor.itiPink])
         customView.tableView.delegate = self
         customView.tableView.dataSource = self
         
         viewModel.loadInvestments()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.customView.applyGradient(style: .vertical, colors: [.itiOrange, .itiPink])
+    }
     // MARK: Methods
     
     func investmentsDidUpdate(){
