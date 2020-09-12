@@ -35,11 +35,11 @@ class AssetsCoordinator: Coordinator {
         childCoordinator.start()
     }
        
-       func showInvestment(viewModel: AssetsDetailViewModel){
-            let childCoordinator = AssetDetailCordinator(navigationController: navigationController, viewModel: viewModel)
-            childCoordinator.parentCoordinator = self
-            add(childCoordinator: childCoordinator)
-            childCoordinator.start()
-       }
+    func showInvestment(viewModel: AssetsDetailViewModel){
+        let childCoordinator = AssetDetailCordinator(navigationController: navigationController, viewModel: viewModel)
+        childCoordinator.parentCoordinator = self
+        add(childCoordinator: childCoordinator)
+        childCoordinator.start()
+    }
     
 }

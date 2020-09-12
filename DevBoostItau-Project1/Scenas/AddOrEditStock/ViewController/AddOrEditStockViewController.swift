@@ -23,9 +23,9 @@ class AddOrEditStockViewController: UIViewController, HasCodeView {
     var viewModel: AddOrEditStockViewModel?
     
     // MARK: - Init
-    //    convenience init(stock: Investment) {
+//    convenience init(stock: Investment) {
 //        self.init(stock: stock)
-////        self.viewModel.investment = stock
+//        self.viewModel.investment = stock
 //    }
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -62,12 +62,16 @@ class AddOrEditStockViewController: UIViewController, HasCodeView {
     @objc private func dateChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        // startDateTextField.text = dateFormatter.string(from: datePicker.date)
+        customView.startDateTextField.text! = dateFormatter.string(from: datePicker.date)
     }
     
     // MARK: - Functions
     private func callSaveInfo() {
-        let _ = viewModel!.saveInfo(brokerName: customView.stockTextField.text!, brokerCode: "0", qtyOfStocks: customView.quantityTextField.text!, purchasePrice: customView.priceTextField.text!, purchaseDate: customView.startDateTextField.text!)
+        let _ = viewModel!.saveInfo(brokerName: customView.stockTextField.text!,
+                                    brokerCode: "0",
+                                    qtyOfStocks: customView.quantityTextField.text!,
+                                    purchasePrice: customView.priceTextField.text!,
+                                    purchaseDate: customView.startDateTextField.text!)
     }
 }
 // MARK: - AddOrEditStockViewDelegate
