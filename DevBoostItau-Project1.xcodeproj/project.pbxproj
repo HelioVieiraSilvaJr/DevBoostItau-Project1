@@ -44,6 +44,8 @@
 		F5F80CE8250CF82E00EEEB16 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CE7250CF82E00EEEB16 /* BaseView.swift */; };
 		F5F80CEE250CF96D00EEEB16 /* HasCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CED250CF96D00EEEB16 /* HasCodeView.swift */; };
 		F5F80CF0250CFA1500EEEB16 /* AssetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CEF250CFA1500EEEB16 /* AssetsView.swift */; };
+		F5F80CF3250D206C00EEEB16 /* AssetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CF2250D206C00EEEB16 /* AssetsViewModel.swift */; };
+		F5F80CF5250D21DE00EEEB16 /* AssetCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CF4250D21DE00EEEB16 /* AssetCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,8 @@
 		F5F80CE7250CF82E00EEEB16 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		F5F80CED250CF96D00EEEB16 /* HasCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasCodeView.swift; sourceTree = "<group>"; };
 		F5F80CEF250CFA1500EEEB16 /* AssetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsView.swift; sourceTree = "<group>"; };
+		F5F80CF2250D206C00EEEB16 /* AssetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsViewModel.swift; sourceTree = "<group>"; };
+		F5F80CF4250D21DE00EEEB16 /* AssetCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +333,7 @@
 		F5DD49FD2503F34800120661 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				F5F80CF1250D205A00EEEB16 /* ViewModel */,
 				F5DD49FE2503F34800120661 /* AssetsViewController.swift */,
 				F5DD4A002503F34800120661 /* View */,
 			);
@@ -350,6 +355,15 @@
 				F5F80CED250CF96D00EEEB16 /* HasCodeView.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		F5F80CF1250D205A00EEEB16 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F5F80CF2250D206C00EEEB16 /* AssetsViewModel.swift */,
+				F5F80CF4250D21DE00EEEB16 /* AssetCellViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,6 +456,7 @@
 				BDB1F2A32503E0660070079B /* AssetsDetailViewModel.swift in Sources */,
 				BDB1F2932503D3E50070079B /* AssetsDetailViewController.swift in Sources */,
 				BDB1F2A62503E9780070079B /* AssetDetail.swift in Sources */,
+				F5F80CF3250D206C00EEEB16 /* AssetsViewModel.swift in Sources */,
 				F5DD4A1125040CAF00120661 /* UIViewController+Extensions.swift in Sources */,
 				BDB1F2AB2503F0390070079B /* AssetsDetailRepository.swift in Sources */,
 				F5DD4A132504129D00120661 /* Double+Extensions.swift in Sources */,
@@ -453,6 +468,7 @@
 				BD96DC6B2503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld in Sources */,
 				F5DD4A042503F34800120661 /* AssetTableViewCell.swift in Sources */,
 				F1F1167A2503E938007466DE /* InvestmentsManager.swift in Sources */,
+				F5F80CF5250D21DE00EEEB16 /* AssetCellViewModel.swift in Sources */,
 				4C2B4FC3250D0943003DCEFE /* GradientButton.swift in Sources */,
 				BD96DC812503B93F00D569DA /* HomeViewModel.swift in Sources */,
 				BDB1F2B725040AB30070079B /* UIColor+Extensions.swift in Sources */,
