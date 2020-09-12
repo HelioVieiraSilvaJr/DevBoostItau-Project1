@@ -38,6 +38,7 @@ enum Localization {
     static let active = "ACTIVE".localized
     static let itiFunds = "ITI_FUNDS".localized
     static let userName = "USERNAME".localized
+    static let startDate = "START_DATE".localized
 }
 
 extension String {
