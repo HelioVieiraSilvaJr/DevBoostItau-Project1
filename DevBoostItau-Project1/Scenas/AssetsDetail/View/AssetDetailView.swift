@@ -9,7 +9,8 @@
 import UIKit
 
 protocol AssetDetailViewDelegate: AnyObject {
-    func pressButtonEdit()
+    func pressEditButton()
+    func pressCloseButton()
 }
 
 class AssetDetailView: BaseView {
@@ -22,6 +23,15 @@ class AssetDetailView: BaseView {
         let contentView = UIView(frame: .zero)
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
+    }()
+    
+    let closeButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.setBackgroundImage(#imageLiteral(resourceName: "icClose"), for: .normal)
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 20
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     let assetNameLabel: UILabel = {
@@ -70,6 +80,8 @@ class AssetDetailView: BaseView {
         return view
     }()
     
+    let editButton: CustomButton = CustomButton(title: "Editar informações")
+    
     let stackQuantity = TitleBodyLabel(title: "Quantidade", body: "R$ 4.987,09", style: .simple)
     let stackPricePurchase = TitleBodyLabel(title: "Preço compra", body: "R$ 34,00", style: .simple)
     let stackDatePurchase = TitleBodyLabel(title: "Data da compra", body: "10/01/1988", style: .simple)
@@ -88,6 +100,8 @@ class AssetDetailView: BaseView {
         
         addSubview(contentView)
         contentView.addSubview(line1StackView)
+        
+        contentView.addSubview(closeButton)
         
         let assetName = assetNameLabel
         assetName.text = assetDetail?.getName
@@ -114,7 +128,10 @@ class AssetDetailView: BaseView {
         
         contentView.addSubview(stackRentability)
         
+        contentView.addSubview(editButton)
+        
         installConstraints()
+        setupExtraConfigurations()
     }
     
     override func installConstraints() {
@@ -122,6 +139,11 @@ class AssetDetailView: BaseView {
         contentView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
         contentView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
         contentView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+        
+        closeButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
+        closeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        closeButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
         
         assetNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50).isActive = true
         assetNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
@@ -146,6 +168,27 @@ class AssetDetailView: BaseView {
         
         stackRentability.topAnchor.constraint(equalTo: line3StackView.bottomAnchor, constant: 30).isActive = true
         stackRentability.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        
+        editButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
+        editButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        editButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+    }
+    
+    override func setupExtraConfigurations() {
+        closeButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        editButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
+    @objc
+    private func buttonTapped(sender: UIButton) {
+        switch sender {
+        case closeButton:
+            delegate?.pressCloseButton()
+        case editButton:
+            delegate?.pressEditButton()
+        default:
+            break
+        }
     }
 }
 

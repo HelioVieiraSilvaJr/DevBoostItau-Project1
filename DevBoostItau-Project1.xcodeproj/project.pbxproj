@@ -19,6 +19,7 @@
 		BD829CAD250D0E7B00499A52 /* TitleBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CAC250D0E7B00499A52 /* TitleBodyLabel.swift */; };
 		BD829CAF250D1FD800499A52 /* AssetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CAE250D1FD800499A52 /* AssetModel.swift */; };
 		BD829CB1250D22AC00499A52 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CB0250D22AC00499A52 /* String+Extensions.swift */; };
+		BD829CB3250D2F0200499A52 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CB2250D2F0200499A52 /* CustomButton.swift */; };
 		BD96DC612503B6B700D569DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96DC602503B6B700D569DA /* AppDelegate.swift */; };
 		BD96DC682503B6B700D569DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD96DC662503B6B700D569DA /* Main.storyboard */; };
 		BD96DC6B2503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BD96DC692503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld */; };
@@ -63,6 +64,7 @@
 		BD829CAC250D0E7B00499A52 /* TitleBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBodyLabel.swift; sourceTree = "<group>"; };
 		BD829CAE250D1FD800499A52 /* AssetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetModel.swift; sourceTree = "<group>"; };
 		BD829CB0250D22AC00499A52 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		BD829CB2250D2F0200499A52 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		BD96DC5D2503B6B700D569DA /* DevBoostItau-Project1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DevBoostItau-Project1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD96DC602503B6B700D569DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD96DC672503B6B700D569DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				BD829CAC250D0E7B00499A52 /* TitleBodyLabel.swift */,
+				BD829CB2250D2F0200499A52 /* CustomButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				F1F1167D2503EB5B007466DE /* MenuCardCell.swift in Sources */,
 				BD829CAF250D1FD800499A52 /* AssetModel.swift in Sources */,
 				BD96DC852503B9C400D569DA /* BaseViewController.swift in Sources */,
+				BD829CB3250D2F0200499A52 /* CustomButton.swift in Sources */,
 				F5DD4A022503F34800120661 /* AssetsViewController.swift in Sources */,
 				F5F80CE8250CF82E00EEEB16 /* BaseView.swift in Sources */,
 				4C2466122503CA23004E1323 /* AddOrEditStockViewModel.swift in Sources */,

@@ -21,9 +21,10 @@ class AssetDetailCordinator: Coordinator {
     }
     
     func start() {
-        let viewController = UIStoryboard(name: "AssetsDetailViewController", bundle: nil).instantiateViewController(withIdentifier: "AssetsDetailViewController") as! AssetsDetailViewController
+        let viewController = AssetsDetailViewController()
         viewController.cordinator = self
         viewController.asset = asset
-        navigationController.pushViewController(viewController, animated: false)
+        navigationController.pushViewController(viewController, animated: true)
+//        navigationController.present(viewController, animated: true, completion: nil)
     }
 }

@@ -17,7 +17,9 @@ final class AssetsDetailViewController: BaseViewController {
     var detail: AssetDetail?
     
     var customView: AssetDetailView {
-        return view as! AssetDetailView
+        let myView = view as! AssetDetailView
+        myView.delegate = self
+        return myView
     }
     
     
@@ -25,13 +27,10 @@ final class AssetsDetailViewController: BaseViewController {
     override func loadView() {
         view = AssetDetailView()
         view.backgroundColor = .white
-        customView.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        asset = AssetModel(brokerCode: "MGLU3", brokerName: "Magalu", purchaseDate: nil, purchasePrice: 3.90, quantityOfStocks: 100)
         
         viewModel = AssetsDetailViewModel(asset: asset)
 
@@ -70,7 +69,11 @@ final class AssetsDetailViewController: BaseViewController {
 }
 
 extension AssetsDetailViewController: AssetDetailViewDelegate {
-    func pressButtonEdit() {
+    func pressEditButton() {
         
+    }
+    
+    func pressCloseButton() {
+        navigationController?.popViewController(animated: true)
     }
 }
