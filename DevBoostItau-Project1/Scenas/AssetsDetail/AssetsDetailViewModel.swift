@@ -11,7 +11,7 @@ import Foundation
 class AssetsDetailViewModel {
     
     let repository: AssetDetailRepository!
-    var asset: Investment!
+    var asset: AssetModel!
     var detail: AssetDetail?
     
     var currencyFormatter: NumberFormatter {
@@ -27,7 +27,7 @@ class AssetsDetailViewModel {
         return formatter
     }
     
-    init(asset: Investment, _ repository: AssetDetailRepository = AssetDetailRepository()) {
+    init(asset: AssetModel, _ repository: AssetDetailRepository = AssetDetailRepository()) {
         self.asset = asset
         self.repository = repository
     }
@@ -36,12 +36,7 @@ class AssetsDetailViewModel {
     var onFail: ((String) -> Void)?
     
     func getAssetDetail() {
-        
-        // FIXME: Passar valor do codigo dinâmico, assim que finalizarmos o CRUD com o CoreData.
-//        guard let code = asset?.brokerCode else {return}
-        let code = "ITSA4"
-        
-        repository.getAsset(code: code, onSussecc: { [weak self] assetDetail in
+        repository.getAsset(code: asset.brokerCode, onSussecc: { [weak self] assetDetail in
             self?.detail = assetDetail
             self?.onSuccess?()
         }) { [weak self] error in

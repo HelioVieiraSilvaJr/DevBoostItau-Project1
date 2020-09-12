@@ -17,6 +17,8 @@
 		BD829CA7250D018500499A52 /* AssetDetailCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CA6250D018500499A52 /* AssetDetailCordinator.swift */; };
 		BD829CAA250D0BA400499A52 /* AssetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CA9250D0BA400499A52 /* AssetDetailView.swift */; };
 		BD829CAD250D0E7B00499A52 /* TitleBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CAC250D0E7B00499A52 /* TitleBodyLabel.swift */; };
+		BD829CAF250D1FD800499A52 /* AssetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CAE250D1FD800499A52 /* AssetModel.swift */; };
+		BD829CB1250D22AC00499A52 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CB0250D22AC00499A52 /* String+Extensions.swift */; };
 		BD96DC612503B6B700D569DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96DC602503B6B700D569DA /* AppDelegate.swift */; };
 		BD96DC682503B6B700D569DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD96DC662503B6B700D569DA /* Main.storyboard */; };
 		BD96DC6B2503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BD96DC692503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld */; };
@@ -59,6 +61,8 @@
 		BD829CA6250D018500499A52 /* AssetDetailCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetailCordinator.swift; sourceTree = "<group>"; };
 		BD829CA9250D0BA400499A52 /* AssetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetailView.swift; sourceTree = "<group>"; };
 		BD829CAC250D0E7B00499A52 /* TitleBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBodyLabel.swift; sourceTree = "<group>"; };
+		BD829CAE250D1FD800499A52 /* AssetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetModel.swift; sourceTree = "<group>"; };
+		BD829CB0250D22AC00499A52 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		BD96DC5D2503B6B700D569DA /* DevBoostItau-Project1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DevBoostItau-Project1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD96DC602503B6B700D569DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD96DC672503B6B700D569DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -288,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				BDB1F2A52503E9780070079B /* AssetDetail.swift */,
+				BD829CAE250D1FD800499A52 /* AssetModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -309,6 +314,7 @@
 				BDB1F2B425040AB30070079B /* UIColor+Extensions.swift */,
 				BDB1F2B825040AD60070079B /* UIView+Extensions.swift */,
 				F5DD4A122504129D00120661 /* Double+Extensions.swift */,
+				BD829CB0250D22AC00499A52 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -455,6 +461,7 @@
 				BDB1F2A82503ECAE0070079B /* Network.swift in Sources */,
 				F1F116762503E282007466DE /* CardMenu.swift in Sources */,
 				F1F1167D2503EB5B007466DE /* MenuCardCell.swift in Sources */,
+				BD829CAF250D1FD800499A52 /* AssetModel.swift in Sources */,
 				BD96DC852503B9C400D569DA /* BaseViewController.swift in Sources */,
 				F5DD4A022503F34800120661 /* AssetsViewController.swift in Sources */,
 				F5F80CE8250CF82E00EEEB16 /* BaseView.swift in Sources */,
@@ -463,6 +470,7 @@
 				BD96DC612503B6B700D569DA /* AppDelegate.swift in Sources */,
 				BDB1F2B525040AB30070079B /* UIImageView+Extensions.swift in Sources */,
 				BDB1F2A32503E0660070079B /* AssetsDetailViewModel.swift in Sources */,
+				BD829CB1250D22AC00499A52 /* String+Extensions.swift in Sources */,
 				BDB1F2932503D3E50070079B /* AssetsDetailViewController.swift in Sources */,
 				BDB1F2A62503E9780070079B /* AssetDetail.swift in Sources */,
 				BD829CAD250D0E7B00499A52 /* TitleBodyLabel.swift in Sources */,

@@ -122,8 +122,8 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
         let asset = self.investments[indexPath.row]
         guard let _ = asset.brokerCode else {return}
         
-        let viewController = AssetsDetailBuilder().builder(asset: asset)
-        present(viewController, animated: true, completion: nil)
+//        let viewController = AssetsDetailBuilder().builder(asset: asset)
+//        present(viewController, animated: true, completion: nil)
     }
 }
 

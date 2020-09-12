@@ -16,6 +16,7 @@ class AssetDetailView: BaseView {
     
     // MARK: Properties
     weak var delegate: AssetDetailViewDelegate?
+    private var assetDetail: AssetDetail?
     
     let contentView: UIView = {
         let contentView = UIView(frame: .zero)
@@ -25,7 +26,7 @@ class AssetDetailView: BaseView {
     
     let assetNameLabel: UILabel = {
         var label = UILabel()
-        label.text = "ITSA4 - TTAUSA"
+        label.text = "ASSET - NAME"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -79,10 +80,18 @@ class AssetDetailView: BaseView {
     
     // MARK: Overrides
     override func initialize() {
+        initialize(assetDetail: nil)
+    }
+    
+    func initialize(assetDetail: AssetDetail?) {
+        self.assetDetail = assetDetail
+        
         addSubview(contentView)
         contentView.addSubview(line1StackView)
         
-        contentView.addSubview(assetNameLabel)
+        let assetName = assetNameLabel
+        assetName.text = assetDetail?.getName
+        contentView.addSubview(assetName)
         
         line1StackView.addArrangedSubview(stackQuantity)
         line1StackView.addArrangedSubview(stackPricePurchase)
@@ -104,6 +113,8 @@ class AssetDetailView: BaseView {
         stackValueToday.alignment = .trailing
         
         contentView.addSubview(stackRentability)
+        
+        installConstraints()
     }
     
     override func installConstraints() {
@@ -137,3 +148,28 @@ class AssetDetailView: BaseView {
         stackRentability.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
     }
 }
+
+
+//    private func setupView() {
+//        imgIconClose.tintImage(color: .gray)
+//        viewButtonEdit.layer.cornerRadius = 25
+//        viewButtonEdit.applyGradient(style: .vertical, colors: [UIColor.itiOrange, UIColor.itiPink])
+//
+//        labelAssetName.text = detail?.getName
+//        labelQuantity.text = viewModel.asset?.quantityOfStocks.description
+//        labelPricePurchase.text = viewModel.getPricePurchase()
+//        labelDatePurchase.text = viewModel.getDatePurchase()
+//        labelTotalValue.text = viewModel.getTotalValuePurchase()
+//        labelDateToday.text = viewModel.dateFormatter.string(from: Date())
+//        labelTotalValueToday.text = viewModel.getTotalValueToday()
+//        labelRentabilityPercent.text = viewModel.getRentability()
+//
+//        var color = UIColor(red: 109/255, green: 173/255, blue: 51/255, alpha: 1)
+//        if viewModel.getRentabilityValue() < 0 {
+//            color = .red
+//        }
+//
+//        labelRentabilityPercent.textColor = color
+//        labelDateToday.textColor = color
+//        labelTotalValueToday.textColor = color
+//    }
