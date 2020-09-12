@@ -29,4 +29,11 @@ class HomeCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func showAssetsList(){
+        let childCoordinator = AssetsCoordinator(navigationController: navigationController)
+        childCoordinator.parentCoordinator = self
+        add(childCoordinator: childCoordinator)
+        childCoordinator.start()
+    }
+    
 }

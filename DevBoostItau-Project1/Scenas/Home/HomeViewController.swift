@@ -75,6 +75,7 @@ final class HomeViewController: BaseViewController {
     // MARK: Actions
     @objc func didTapFundsSegue() {
         performSegue(withIdentifier: "AssetsSegue", sender: nil)
+//        coordinator?.showAssetsList()
     }
 }
 
