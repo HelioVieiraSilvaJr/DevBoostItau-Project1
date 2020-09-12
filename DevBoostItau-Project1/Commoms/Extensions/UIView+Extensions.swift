@@ -8,9 +8,6 @@
 
 import UIKit
 
-enum GradientStyle{
-    case horizontal, vertical
-}
 extension UIView {
     func applyGradient(style: GradientStyle, colors: [UIColor]){
          let gradient: CAGradientLayer = CAGradientLayer()

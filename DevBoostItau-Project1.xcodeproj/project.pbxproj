@@ -10,6 +10,7 @@
 		4C2466122503CA23004E1323 /* AddOrEditStockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2466112503CA23004E1323 /* AddOrEditStockViewModel.swift */; };
 		4C2466152503CA37004E1323 /* AddOrEditStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2466132503CA37004E1323 /* AddOrEditStockViewController.swift */; };
 		4C2466162503CA37004E1323 /* AddOrEditStockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2466142503CA37004E1323 /* AddOrEditStockViewController.xib */; };
+		4C2B4FC3250D0943003DCEFE /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B4FC2250D0943003DCEFE /* GradientButton.swift */; };
 		BD829CA0250D005E00499A52 /* AppCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829C9F250D005E00499A52 /* AppCordinator.swift */; };
 		BD829CA2250D006900499A52 /* Cordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CA1250D006900499A52 /* Cordinator.swift */; };
 		BD829CA4250D00A900499A52 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CA3250D00A900499A52 /* HomeViewController.swift */; };
@@ -49,6 +50,7 @@
 		4C2466112503CA23004E1323 /* AddOrEditStockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditStockViewModel.swift; sourceTree = "<group>"; };
 		4C2466132503CA37004E1323 /* AddOrEditStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditStockViewController.swift; sourceTree = "<group>"; };
 		4C2466142503CA37004E1323 /* AddOrEditStockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddOrEditStockViewController.xib; sourceTree = "<group>"; };
+		4C2B4FC2250D0943003DCEFE /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		BD829C9F250D005E00499A52 /* AppCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCordinator.swift; sourceTree = "<group>"; };
 		BD829CA1250D006900499A52 /* Cordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cordinator.swift; sourceTree = "<group>"; };
 		BD829CA3250D00A900499A52 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,22 @@
 				4C2466142503CA37004E1323 /* AddOrEditStockViewController.xib */,
 			);
 			path = AddOrEditStock;
+			sourceTree = "<group>";
+		};
+		4C2B4FC0250D092E003DCEFE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4C2B4FC1250D0937003DCEFE /* GradientButton */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		4C2B4FC1250D0937003DCEFE /* GradientButton */ = {
+			isa = PBXGroup;
+			children = (
+				4C2B4FC2250D0943003DCEFE /* GradientButton.swift */,
+			);
+			path = GradientButton;
 			sourceTree = "<group>";
 		};
 		BD829C9E250D004F00499A52 /* Cordinator */ = {
@@ -284,6 +302,7 @@
 		F1F116772503E91E007466DE /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4C2B4FC0250D092E003DCEFE /* Components */,
 				F5F80CEC250CF95E00EEEB16 /* Protocol */,
 				F1F116782503E924007466DE /* Managers */,
 				F5F80CE7250CF82E00EEEB16 /* BaseView.swift */,
@@ -434,6 +453,7 @@
 				BD96DC6B2503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld in Sources */,
 				F5DD4A042503F34800120661 /* AssetTableViewCell.swift in Sources */,
 				F1F1167A2503E938007466DE /* InvestmentsManager.swift in Sources */,
+				4C2B4FC3250D0943003DCEFE /* GradientButton.swift in Sources */,
 				BD96DC812503B93F00D569DA /* HomeViewModel.swift in Sources */,
 				BDB1F2B725040AB30070079B /* UIColor+Extensions.swift in Sources */,
 				F5F80CEE250CF96D00EEEB16 /* HasCodeView.swift in Sources */,
