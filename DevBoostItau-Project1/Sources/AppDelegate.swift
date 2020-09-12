@@ -13,6 +13,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var appCoordinator: AppCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -36,19 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
     func setupRootViewController() {
-        window = UIWindow(frame: UIScreen.main.bounds)
-                
-                //DEPRECATED
-//                let viewController = UIStoryboard(name: "HomeViewController", bundle: nil)
-//                    .instantiateViewController(withIdentifier: "NavHomeViewController")
-//                window?.rootViewController = viewController
-                
-                //SUBSTITUIR POR CORDINATOR
-        //        appCoordinator = AppCoordinator()
-        //        window?.rootViewController = appCoordinator?.navigationController
-        //        appCoordinator?.start()
-                
-        window?.rootViewController = UINavigationController(rootViewController: AssetsViewController())
+        window = UIWindow(frame: UIScreen.main.bounds)                
+        appCoordinator = AppCoordinator()
+        window?.rootViewController = appCoordinator?.navigationController
         window?.makeKeyAndVisible()
+        
+        appCoordinator?.start()
     }
 }

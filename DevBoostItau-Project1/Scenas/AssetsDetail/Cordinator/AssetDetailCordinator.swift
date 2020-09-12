@@ -13,17 +13,17 @@ class AssetDetailCordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     var parentCoordinator: Coordinator?
-    var asset: AssetModel!
+    var viewModel: AssetsDetailViewModel!
 
-    init(navigationController: UINavigationController, asset: AssetModel) {
+    init(navigationController: UINavigationController, viewModel: AssetsDetailViewModel) {
         self.navigationController = navigationController
-        self.asset = asset
+        self.viewModel = viewModel
     }
     
     func start() {
         let viewController = AssetsDetailViewController()
         viewController.cordinator = self
-        viewController.asset = asset
+        viewController.viewModel = viewModel
         navigationController.pushViewController(viewController, animated: true)
 //        navigationController.present(viewController, animated: true, completion: nil)
     }

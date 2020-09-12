@@ -74,6 +74,10 @@ class AssetsViewModel: NSObject {
     func cellViewModelFor(indexPath: IndexPath) -> AssetCellViewModel{
         AssetCellViewModel(investment: getInvestment(at: indexPath))
     }
+
+    func getAssetViewModelFor(_ indexPath: IndexPath) -> AssetsDetailViewModel{
+        return AssetsDetailViewModel(asset: AssetModel(from: getInvestment(at: indexPath)))
+    }
 }
 
 extension AssetsViewModel: NSFetchedResultsControllerDelegate {

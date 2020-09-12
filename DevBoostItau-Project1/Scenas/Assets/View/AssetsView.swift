@@ -86,8 +86,8 @@ class AssetsView: BaseView{
     }
     
     override func installConstraints() {
-        myBelongslabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        myBelongslabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        myBelongslabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Margin.vertical).isActive = true
+        myBelongslabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Margin.horizontal).isActive = true
         myBelongslabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         
         balanceLabel.topAnchor.constraint(equalTo: myBelongslabel.bottomAnchor, constant: 3.5).isActive = true
@@ -97,14 +97,14 @@ class AssetsView: BaseView{
         seeBalanceButton.centerYAnchor.constraint(equalTo: balanceLabel.centerYAnchor).isActive = true
         seeBalanceButton.heightAnchor.constraint(equalToConstant: 31.5).isActive = true
         seeBalanceButton.widthAnchor.constraint(equalToConstant: 26).isActive = true
-        seeBalanceButton.leadingAnchor.constraint(equalTo: balanceLabel.trailingAnchor, constant: 5).isActive = true
+        seeBalanceButton.leadingAnchor.constraint(equalTo: balanceLabel.trailingAnchor, constant: Margin.horizontalxxSmall).isActive = true
 
         
-        tableView.topAnchor.constraint(equalTo: balanceLabel.bottomAnchor, constant: 20).isActive = true
+        tableView.topAnchor.constraint(equalTo: balanceLabel.bottomAnchor, constant: Margin.vertical).isActive = true
         tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         
-        whiteView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -10).isActive = true
+        whiteView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -Margin.verticalSmall).isActive = true
         whiteView.heightAnchor.constraint(equalToConstant: 101).isActive = true
         whiteView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         whiteView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
@@ -112,8 +112,8 @@ class AssetsView: BaseView{
         
         newInvestmentButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         newInvestmentButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        newInvestmentButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        newInvestmentButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        newInvestmentButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Margin.horizontal).isActive = true
+        newInvestmentButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -Margin.horizontal).isActive = true
     }
     
     override func setupExtraConfigurations() {
