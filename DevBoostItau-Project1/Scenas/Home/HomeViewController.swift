@@ -44,9 +44,15 @@ final class HomeViewController: BaseViewController {
     }
     
     func setupMenuCards() {
-        let investCard = CardMenu(title: "investir", subtitle: "seu dinheiro", image: UIImage(named: "money"))
-        let signupCard = CardMenu(title: "cadastrar", subtitle: "cartão", image: UIImage(named: "card"))
-        let helpCard = CardMenu(title: "pedir ajuda", subtitle: "fale com um assistente", image: UIImage(named: "question"))
+        let investCard = CardMenu(title: Localization.invest,
+                                  subtitle: Localization.yourMoney,
+                                  image: UIImage(named: "money"))
+        let signupCard = CardMenu(title: Localization.signUp,
+                                  subtitle: Localization.card,
+                                  image: UIImage(named: "card"))
+        let helpCard = CardMenu(title: Localization.askForHelp,
+                                subtitle: Localization.speakWithAnAssistant,
+                                image: UIImage(named: "question"))
         menuCards = [investCard, signupCard, helpCard]
     }
     
@@ -64,7 +70,7 @@ final class HomeViewController: BaseViewController {
         do {
             let investments = try context.fetch(fetchRequest)
             let total = InvestmentsManager.getTotalInvestmentsValue(investments: investments)
-            totalInvestmentsLabel.text = "R$ \(total)"
+            totalInvestmentsLabel.text = "\(total.formatMoney())"
         } catch {
            print("error")
         }
