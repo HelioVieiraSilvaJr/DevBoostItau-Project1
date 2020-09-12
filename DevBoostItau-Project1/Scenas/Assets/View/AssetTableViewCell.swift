@@ -19,9 +19,11 @@ class AssetTableViewCell: UITableViewCell {
         
     }
 
-    func configure(with investment: Investment){
+    func configure(with investment: Investment, percent: Double) {
         nameLabel.text = investment.brokerName
-        currentBalanceLabel.text = investment.purchasePrice.formatMoney()
+        let total = InvestmentsManager.getInvestmentValue(investment: investment)
+        currentBalanceLabel.text = total.formatMoney()
+        percentBalanceLabel.text = "\(String(format: "%.2f", percent))%"
     }
 }
 

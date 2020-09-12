@@ -7,18 +7,43 @@
 //
 
 import Foundation
+import CoreData
 
-struct Stock: Codable {
-    var name: String?
-    var quantity: String?
-    var price: String?
-    var startDate: String?
-}
-
-final class AddOrEditStockViewModel: BaseViewController {
-    var stock: Stock?
+final class AddOrEditStockViewModel {
     
-    func saveInfo() {
-        print("INFORMACOES SALVAS")
+    var context: NSManagedObjectContext?
+    var investment: Investment?
+    
+    func saveInfo(brokerName: String,
+                  brokerCode: String,
+                  qtyOfStocks: String,
+                  purchasePrice: String,
+                  purchaseDate: String) -> Bool {
+        
+        guard let context = context else { return false }
+        
+        if (investment == nil) {
+            investment = Investment(context: context)
+        }
+        
+        investment?.brokerName = brokerName
+        investment?.brokerCode = brokerCode
+        if let qtyOfStocksInt = Int32(qtyOfStocks) {
+            investment?.quantityOfStocks = qtyOfStocksInt
+        }
+        if let purchasePriceDouble = Double(purchasePrice) {
+            investment?.purchasePrice = purchasePriceDouble
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        investment?.purchaseDate = dateFormatter.date(from: purchaseDate)
+        
+        do {
+            try context.save()
+            return true
+        } catch {
+            print("Could not create/update Investment model")
+        }
+        return false
     }
 }

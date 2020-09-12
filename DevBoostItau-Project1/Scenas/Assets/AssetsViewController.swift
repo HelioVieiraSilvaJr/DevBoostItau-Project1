@@ -12,7 +12,8 @@ import CoreData
 class AssetsViewController: BaseViewController {
 
     // MARK: Properties
-    private var balanceHidded = false
+    private var balanceHidden = false
+    private var totalFunds: Double = 0.0
     var investments: [Investment] = []
     lazy var investmentManager: InvestmentsManager = {[weak self] in
         let investmentManager = InvestmentsManager(context: context)
@@ -34,13 +35,12 @@ class AssetsViewController: BaseViewController {
         
         setupView()
         loadInvestments()
-        setupMockData() //TODO: remove me
     }
 
     // MARK: Actions
     @IBAction func showBalance(_ sender: Any) {
-        balanceHidded.toggle()
-        balanceLabel.text = balanceHidded ? "--" : "R$ 3150,00"
+        balanceHidden.toggle()
+        balanceLabel.text = balanceHidden ? "--" : "R$ \(totalFunds)"
     }
     
     @IBAction func goToNewInvestment(_ sender: Any) {
@@ -59,31 +59,17 @@ class AssetsViewController: BaseViewController {
         tableView.layer.cornerRadius = 8
     }
     
-    func setupMockData() {
-        let investment1 = Investment(context: context)
-        investment1.brokerCode = "inv1"
-        investment1.brokerName = "Clear Corretora"
-        investment1.quantityOfStocks = 100
-        investment1.purchaseDate = Date()
-        investment1.purchasePrice = 5.56
-        
-        do {
-            try context.save()
-        } catch {
-            print("Deu ruim")
-        }
-    }
-    
     func loadInvestments() {
         let fetchRequest: NSFetchRequest<Investment> = Investment.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "purchaseDate", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-       do{
-           investments = try context.fetch(fetchRequest)
-           tableView.reloadData()
-       }catch{
-           print("error")
-       }
+        do {
+            investments = try context.fetch(fetchRequest)
+            tableView.reloadData()
+            updateTotalFunds()
+        } catch {
+            print("error")
+        }
         investmentManager.performFetch()
     }
 }
@@ -100,19 +86,29 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
         let investment = investments[indexPath.row]
-        cell.configure(with: investment)
+        let allTotal = InvestmentsManager.getTotalInvestmentsValue(investments: investments)
+        let currentTotal = InvestmentsManager.getInvestmentValue(investment: investment)
+        let percent = 100 * currentTotal / allTotal
+        cell.configure(with: investment, percent: percent)
 
         return cell
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .default, title: "editar", handler: { (action, indexPath) in
-            
+            let investment = self.investments[indexPath.row]
+            self.navigationController?.present(AddOrEditStockViewController(investment: investment), animated: true, completion: nil)
         })
         editAction.backgroundColor = UIColor.lightGray
         
         let deleteAction = UITableViewRowAction(style: .default, title: "excluir", handler: { (action, indexPath) in
-            
+            let investment = self.investments[indexPath.row]
+            self.context.delete(investment)
+            do {
+                try self.context.save()
+            } catch {
+                print("Unable to delete Investment model")
+            }
         })
         
         return [editAction, deleteAction]
@@ -125,6 +121,13 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
         let viewController = AssetsDetailBuilder().builder(asset: asset)
         present(viewController, animated: true, completion: nil)
     }
+    
+    func updateTotalFunds() {
+        totalFunds = InvestmentsManager.getTotalInvestmentsValue(investments: investments)
+        if !balanceHidden {
+            balanceLabel.text = "R$ \(totalFunds)"
+        }
+    }
 }
 
 extension AssetsViewController: NSFetchedResultsControllerDelegate {
@@ -133,7 +136,10 @@ extension AssetsViewController: NSFetchedResultsControllerDelegate {
         if let investment = anObject as? Investment {
             switch type {
             case .delete:
-                print("Código para excluir o invesment da tabela")
+                let index = investments.firstIndex(where: { $0 == investment })
+                if let index = index {
+                    investments.remove(at: index)
+                }
             case .move:
                 print("Código para atualizar a posição o invesment da tabela")
             case .update:
@@ -148,5 +154,6 @@ extension AssetsViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.reloadData()
+        updateTotalFunds()
     }
 }

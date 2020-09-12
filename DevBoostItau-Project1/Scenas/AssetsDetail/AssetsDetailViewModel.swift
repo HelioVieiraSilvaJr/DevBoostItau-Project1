@@ -41,7 +41,7 @@ class AssetsDetailViewModel {
 //        guard let code = asset?.brokerCode else {return}
         let code = "ITSA4"
         
-        repository.getAsset(code: code, onSussecc: { [weak self] assetDetail in
+        repository.getAsset(code: code, onSuccess: { [weak self] assetDetail in
             self?.detail = assetDetail
             self?.onSuccess?()
         }) { [weak self] error in

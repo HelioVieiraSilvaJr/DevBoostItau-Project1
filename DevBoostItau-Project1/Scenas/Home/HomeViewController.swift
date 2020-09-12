@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 final class HomeViewController: BaseViewController {
     
     // MARK: Properties
     let viewModel = HomeViewModel()
     var menuCards: [CardMenu]?
-    var backImages = [UIImage(named: "money"), UIImage(named: "card"), UIImage(named: "question")]
     
     // MARK: Outlets
     @IBOutlet weak var userNameLabel: UILabel!
@@ -30,6 +30,11 @@ final class HomeViewController: BaseViewController {
         setupDelegates()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupTotalFunds()
+    }
+    
     // MARK: Mathods
     func setupNavigationBar(){
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -39,20 +44,30 @@ final class HomeViewController: BaseViewController {
     }
     
     func setupMenuCards() {
-        let investCard = CardMenu(title: "investir", subtitle: "seu dinheiro")
-        let signupCard = CardMenu(title: "cadastrar", subtitle: "cartão")
-        let helpCard = CardMenu(title: "pedir ajuda", subtitle: "fale com um assistente")
+        let investCard = CardMenu(title: "investir", subtitle: "seu dinheiro", image: UIImage(named: "money"))
+        let signupCard = CardMenu(title: "cadastrar", subtitle: "cartão", image: UIImage(named: "card"))
+        let helpCard = CardMenu(title: "pedir ajuda", subtitle: "fale com um assistente", image: UIImage(named: "question"))
         menuCards = [investCard, signupCard, helpCard]
     }
     
     func setupView() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapFundsSegue))
         fundsContainerView.addGestureRecognizer(tapGesture)
-
     }
     
     func setupDelegates() {
         menuCollectionView.dataSource = self
+    }
+    
+    func setupTotalFunds() {
+        let fetchRequest: NSFetchRequest<Investment> = Investment.fetchRequest()
+        do {
+            let investments = try context.fetch(fetchRequest)
+            let total = InvestmentsManager.getTotalInvestmentsValue(investments: investments)
+            totalInvestmentsLabel.text = "R$ \(total)"
+        } catch {
+           print("error")
+        }
     }
     
     // MARK: Actions
@@ -74,7 +89,7 @@ extension HomeViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCardCell.identifier, for: indexPath) as! MenuCardCell
         if let cards = menuCards {
             let cardMenu = cards[indexPath.row]
-            cell.setupView(cardMenu: cardMenu, backImage: backImages[indexPath.row])
+            cell.setupView(cardMenu: cardMenu)
         }
         
         return cell

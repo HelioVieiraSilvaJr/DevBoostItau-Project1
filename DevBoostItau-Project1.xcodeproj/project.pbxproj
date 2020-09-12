@@ -397,7 +397,6 @@
 				BDB1F2AB2503F0390070079B /* AssetsDetailRepository.swift in Sources */,
 				F5DD4A132504129D00120661 /* Double+Extensions.swift in Sources */,
 				BD96DC6B2503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld in Sources */,
-				BD96DC7D2503B92800D569DA /* HomeViewController.swift in Sources */,
 				BDB1F2AE2503F1C20070079B /* AssetDetailService.swift in Sources */,
 				BDB1F2B925040AD70070079B /* UIView+Extensions.swift in Sources */,
 				BD96DC6B2503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld in Sources */,
