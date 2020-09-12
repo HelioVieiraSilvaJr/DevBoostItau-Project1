@@ -110,8 +110,8 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
         let asset = viewModel.getInvestment(at: indexPath)
         guard let _ = asset.brokerCode else {return}
         
-        let viewController = AssetsDetailBuilder().builder(asset: asset)
-        present(viewController, animated: true, completion: nil)
+//        let viewController = AssetsDetailBuilder().builder(asset: asset)
+//        present(viewController, animated: true, completion: nil)
     }
     
     func updateTotalFunds() {
