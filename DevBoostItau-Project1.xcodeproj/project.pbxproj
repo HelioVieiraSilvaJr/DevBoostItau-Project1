@@ -11,8 +11,9 @@
 		32EF95E5250D1CEF002D9AF2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EF95E4250D1CEF002D9AF2 /* HomeView.swift */; };
 		4C2466122503CA23004E1323 /* AddOrEditStockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2466112503CA23004E1323 /* AddOrEditStockViewModel.swift */; };
 		4C2466152503CA37004E1323 /* AddOrEditStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2466132503CA37004E1323 /* AddOrEditStockViewController.swift */; };
-		4C2466162503CA37004E1323 /* AddOrEditStockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2466142503CA37004E1323 /* AddOrEditStockViewController.xib */; };
 		4C2B4FC3250D0943003DCEFE /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B4FC2250D0943003DCEFE /* GradientButton.swift */; };
+		4C2B4FC5250D0BC8003DCEFE /* AddOrEditStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B4FC4250D0BC8003DCEFE /* AddOrEditStockView.swift */; };
+		4C2B4FC7250D3CD5003DCEFE /* AddOrEditStockCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B4FC6250D3CD5003DCEFE /* AddOrEditStockCoordinator.swift */; };
 		BD829CA0250D005E00499A52 /* AppCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829C9F250D005E00499A52 /* AppCordinator.swift */; };
 		BD829CA2250D006900499A52 /* Cordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CA1250D006900499A52 /* Cordinator.swift */; };
 		BD829CA4250D00A900499A52 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CA3250D00A900499A52 /* HomeViewController.swift */; };
@@ -62,8 +63,9 @@
 		32EF95E4250D1CEF002D9AF2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4C2466112503CA23004E1323 /* AddOrEditStockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditStockViewModel.swift; sourceTree = "<group>"; };
 		4C2466132503CA37004E1323 /* AddOrEditStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditStockViewController.swift; sourceTree = "<group>"; };
-		4C2466142503CA37004E1323 /* AddOrEditStockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddOrEditStockViewController.xib; sourceTree = "<group>"; };
 		4C2B4FC2250D0943003DCEFE /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		4C2B4FC4250D0BC8003DCEFE /* AddOrEditStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditStockView.swift; sourceTree = "<group>"; };
+		4C2B4FC6250D3CD5003DCEFE /* AddOrEditStockCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditStockCoordinator.swift; sourceTree = "<group>"; };
 		BD829C9F250D005E00499A52 /* AppCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCordinator.swift; sourceTree = "<group>"; };
 		BD829CA1250D006900499A52 /* Cordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cordinator.swift; sourceTree = "<group>"; };
 		BD829CA3250D00A900499A52 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -132,9 +134,14 @@
 		4C2466102503C9F7004E1323 /* AddOrEditStock */ = {
 			isa = PBXGroup;
 			children = (
+				4C2B4FCB250D3D5D003DCEFE /* View */,
+				4C2B4FCA250D3D58003DCEFE /* ViewModel */,
+				4C2B4FC9250D3D4A003DCEFE /* ViewController */,
+				4C2B4FC8250D3D42003DCEFE /* Coordinator */,
 				4C2466112503CA23004E1323 /* AddOrEditStockViewModel.swift */,
 				4C2466132503CA37004E1323 /* AddOrEditStockViewController.swift */,
-				4C2466142503CA37004E1323 /* AddOrEditStockViewController.xib */,
+				4C2B4FC4250D0BC8003DCEFE /* AddOrEditStockView.swift */,
+				4C2B4FC6250D3CD5003DCEFE /* AddOrEditStockCoordinator.swift */,
 			);
 			path = AddOrEditStock;
 			sourceTree = "<group>";
@@ -153,6 +160,34 @@
 				4C2B4FC2250D0943003DCEFE /* GradientButton.swift */,
 			);
 			path = GradientButton;
+			sourceTree = "<group>";
+		};
+		4C2B4FC8250D3D42003DCEFE /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		4C2B4FC9250D3D4A003DCEFE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4C2B4FCA250D3D58003DCEFE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4C2B4FCB250D3D5D003DCEFE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		BD829C9E250D004F00499A52 /* Cordinator */ = {
@@ -487,7 +522,8 @@
 				BDB1F29D2503D4C60070079B /* LoadingCustom.xib in Resources */,
 				BD96DC702503B6B800D569DA /* LaunchScreen.storyboard in Resources */,
 				BD96DC6D2503B6B800D569DA /* Assets.xcassets in Resources */,
-				4C2466162503CA37004E1323 /* AddOrEditStockViewController.xib in Resources */,
+
+				BDB1F2952503D4040070079B /* AssetsDetailViewController.storyboard in Resources */,
 				BD96DC682503B6B700D569DA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,12 +564,14 @@
 				F5DD4A132504129D00120661 /* Double+Extensions.swift in Sources */,
 				F5F80CFA250D37CF00EEEB16 /* Margin.swift in Sources */,
 				F5F80CF0250CFA1500EEEB16 /* AssetsView.swift in Sources */,
+				4C2B4FC7250D3CD5003DCEFE /* AddOrEditStockCoordinator.swift in Sources */,
 				BD96DC6B2503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld in Sources */,
 				BD829CA4250D00A900499A52 /* HomeViewController.swift in Sources */,
 				BDB1F2AE2503F1C20070079B /* AssetDetailService.swift in Sources */,
 				BDB1F2B925040AD70070079B /* UIView+Extensions.swift in Sources */,
 				BD96DC6B2503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld in Sources */,
 				F5DD4A042503F34800120661 /* AssetTableViewCell.swift in Sources */,
+				4C2B4FC5250D0BC8003DCEFE /* AddOrEditStockView.swift in Sources */,
 				F1F1167A2503E938007466DE /* InvestmentsManager.swift in Sources */,
 				F5F80CF5250D21DE00EEEB16 /* AssetCellViewModel.swift in Sources */,
 				4C2B4FC3250D0943003DCEFE /* GradientButton.swift in Sources */,
