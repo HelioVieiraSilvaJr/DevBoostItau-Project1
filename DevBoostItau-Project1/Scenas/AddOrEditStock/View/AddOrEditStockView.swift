@@ -56,7 +56,7 @@ final class AddOrEditStockView: BaseView {
     }()
     let stockLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Ativo"
+        label.text = Localization.active
         label.numberOfLines = 1
         label.textAlignment = .left
         label.textColor = UIColor.darkGray

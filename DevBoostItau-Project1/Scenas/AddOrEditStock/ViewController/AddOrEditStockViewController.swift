@@ -55,8 +55,8 @@ final class AddOrEditStockViewController: UIViewController, HasCodeView {
         
         customView.startDateTextField.text = dateFormatter.string(from: viewModel.investment?.purchaseDate ?? Date())
         customView.stockTextField.text = viewModel.investment?.brokerName
-        customView.quantityTextField.text = "\(viewModel.investment?.quantityOfStocks)"
-        customView.priceTextField.text = "\(viewModel.investment?.purchasePrice)"
+        customView.quantityTextField.text = "\(viewModel.investment!.quantityOfStocks)"
+        customView.priceTextField.text = "\(viewModel.investment!.purchasePrice)"
         customView.setSaveButton()
     }
     // MARK: - Taps
@@ -68,7 +68,7 @@ final class AddOrEditStockViewController: UIViewController, HasCodeView {
     
     // MARK: - Functions
     private func callSaveInfo() {
-        viewModel.saveInfo(brokerName: customView.stockTextField.text!, brokerCode: "0", qtyOfStocks: customView.quantityTextField.text!, purchasePrice: customView.priceTextField.text!, purchaseDate: customView.startDateTextField.text!)
+        let _ = viewModel.saveInfo(brokerName: customView.stockTextField.text!, brokerCode: "0", qtyOfStocks: customView.quantityTextField.text!, purchasePrice: customView.priceTextField.text!, purchaseDate: customView.startDateTextField.text!)
     }
 }
 // MARK: - AddOrEditStockViewDelegate

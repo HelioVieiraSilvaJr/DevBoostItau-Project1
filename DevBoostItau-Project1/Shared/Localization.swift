@@ -35,6 +35,9 @@ enum Localization {
     static let percentWallet = "PERCENT_WALLET".localized
     static let fillOutInvestmentTitle = "FILL_OUT_INVESTMENT_TITLE".localized
     static let totalValue = "TOTAL_VALUE".localized
+    static let active = "ACTIVE".localized
+    static let itiFunds = "ITI_FUNDS".localized
+    static let userName = "USERNAME".localized
 }
 
 extension String {

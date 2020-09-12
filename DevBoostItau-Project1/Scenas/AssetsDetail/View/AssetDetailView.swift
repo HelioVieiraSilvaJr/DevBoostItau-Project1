@@ -81,7 +81,7 @@ class AssetDetailView: UIView {
         return view
     }()
     
-    let editButton: CustomButton = CustomButton(title: "Editar informações")
+    let editButton: CustomButton = CustomButton(title: Localization.editInformation)
     
     
     // MARK: Inits

@@ -64,7 +64,7 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .default, title: Localization.edit, handler: { (action, indexPath) in
-            self.navigationController?.present(AddOrEditStockViewController(investment: self.viewModel.getInvestment(at: indexPath)), animated: true, completion: nil)
+            self.navigationController?.present(AddOrEditStockViewController(stock: self.viewModel.getInvestment(at: indexPath)), animated: true, completion: nil)
         })
         editAction.backgroundColor = UIColor.lightGray
         
