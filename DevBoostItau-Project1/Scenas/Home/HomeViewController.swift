@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-final class HomeViewController: BaseViewController, HasCodeView, HomeViewDelegate {
+final class HomeViewController: BaseViewController, HasCodeView {
     
     typealias CustomView = HomeView
     
@@ -82,6 +82,16 @@ final class HomeViewController: BaseViewController, HasCodeView, HomeViewDelegat
     @objc func didTapFundsSegue() {
         performSegue(withIdentifier: "AssetsSegue", sender: nil)
 //        coordinator?.showAssetsList()
+    }
+}
+
+extension HomeViewController: HomeViewDelegate {
+    func showBalance() {
+        
+    }
+    
+    func fundsContainer() {
+        
     }
 }
 
