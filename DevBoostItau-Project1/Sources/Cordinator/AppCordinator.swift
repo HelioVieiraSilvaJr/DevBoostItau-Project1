@@ -16,14 +16,20 @@ class AppCoordinator: Coordinator {
 
     init() {
         navigationController = UINavigationController()
-        navigationController.navigationBar.prefersLargeTitles = true
-        navigationController.navigationBar.tintColor = UIColor(named: "main")
+        setupNavigationBar()
+    }
+    
+    func setupNavigationBar(){
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.isTranslucent = true
+        navigationController.view.backgroundColor = .clear
     }
     
     func start() {
-//        let childCoordinator = ##Instanciar o Cordinator da Home
-//        childCoordinator.parentCoordinator = self
-//        add(childCoordinator: childCoordinator)
-//        childCoordinator.start()
+        let childCoordinator = HomeCoordinator(navigationController: navigationController)
+        childCoordinator.parentCoordinator = self
+        add(childCoordinator: childCoordinator)
+        childCoordinator.start()
     }
 }
