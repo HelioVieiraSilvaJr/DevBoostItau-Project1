@@ -24,7 +24,6 @@ class AssetDetailCordinator: Coordinator {
         let viewController = AssetsDetailViewController()
         viewController.cordinator = self
         viewController.viewModel = viewModel
-        navigationController.pushViewController(viewController, animated: true)
-//        navigationController.present(viewController, animated: true, completion: nil)
+        navigationController.present(viewController, animated: true, completion: nil)
     }
 }

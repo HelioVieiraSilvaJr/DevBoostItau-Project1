@@ -83,6 +83,23 @@ class AssetDetailView: UIView {
     
     let editButton: CustomButton = CustomButton(title: Localization.editInformation)
     
+    var imageNotFound: UIImageView = {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "imgNotFound"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    let labelNotFound: UILabel = {
+        var label = UILabel()
+        label.text = "Seu investimento não foi encontrado!"
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     
     // MARK: Inits
     init() {
@@ -176,6 +193,34 @@ class AssetDetailView: UIView {
         editButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
         editButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         editButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        editButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        setupExtraConfigurations()
+    }
+    
+    func showNotFound() {
+        addSubview(contentView)
+        
+        contentView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+        
+        contentView.addSubview(closeButton)
+        closeButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
+        closeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        closeButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        contentView.addSubview(imageNotFound)
+        imageNotFound.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        imageNotFound.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        imageNotFound.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        imageNotFound.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        contentView.addSubview(labelNotFound)
+        labelNotFound.topAnchor.constraint(equalTo: imageNotFound.bottomAnchor, constant: 20).isActive = true
+        labelNotFound.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         
         setupExtraConfigurations()
     }

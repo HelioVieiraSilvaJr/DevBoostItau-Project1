@@ -12,9 +12,11 @@ class AddOrEditStockCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     var parentCoordinator: Coordinator?
+    var viewModel: AddOrEditStockViewModel?
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, viewModel: AddOrEditStockViewModel?) {
         self.navigationController = navigationController
+        self.viewModel = viewModel
     }
     
     func childDidFinish(_ child: Coordinator?) {
@@ -25,7 +27,8 @@ class AddOrEditStockCoordinator: Coordinator {
     func start() {
         let viewController = AddOrEditStockViewController()
         viewController.coordinator = self
-        navigationController.present(viewController, animated: true, completion: nil)//pre(viewController, animated: true)
+        viewController.viewModel = viewModel
+        navigationController.present(viewController, animated: true, completion: nil)
     }
     
     func dismissDisplay(){
