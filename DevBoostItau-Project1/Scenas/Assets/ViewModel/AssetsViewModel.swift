@@ -9,13 +9,9 @@
 import Foundation
 import CoreData
 
-protocol AssetsViewModelDelegate {
-    func fetchInvestment()
-    func updateList()
-}
-class AssetsViewModel {
+class AssetsViewModel: NSObject {
     private var investments: [Investment] = [] {
-       didSet{
+       didSet {
            investmentsDidUpdate?()
        }
    }
@@ -24,7 +20,12 @@ class AssetsViewModel {
     
     private var context: NSManagedObjectContext
     
-    var delegate: AssetsViewModelDelegate?
+    lazy var investmentManager: InvestmentsManager = {[weak self] in
+        let investmentManager = InvestmentsManager(context: context)
+        investmentManager.delegate = self
+        return investmentManager
+    }()
+    
     init(context: NSManagedObjectContext) {
         self.context = context
     }
@@ -35,18 +36,14 @@ class AssetsViewModel {
     
     func loadInvestments() {
         let fetchRequest: NSFetchRequest<Investment> = Investment.fetchRequest()
-                let sortDescriptor = NSSortDescriptor(key: "purchaseDate", ascending: true)
-                fetchRequest.sortDescriptors = [sortDescriptor]
-                do {
-                    investments = try context.fetch(fetchRequest)
-                    delegate?.updateList()
-//                    customView.tableView.reloadData()
-//                    updateTotalFunds()
-                } catch {
-                    print("error")
-                }
-//                investmentManager.performFetch()
-        delegate?.fetchInvestment()
+        let sortDescriptor = NSSortDescriptor(key: "purchaseDate", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        do {
+            investments = try context.fetch(fetchRequest)
+        } catch {
+            print("error")
+        }
+        investmentManager.performFetch()
     }
     
     func deleteInvestment(at indexPath: IndexPath) -> Void {
@@ -54,11 +51,9 @@ class AssetsViewModel {
         self.context.delete(investment)
         do {
             try self.context.save()
-            investments.remove(at: indexPath.row)
         } catch {
             print("Unable to delete Investment model")
         }
-        
     }
     
     func getInvestment(at indexPath: IndexPath) -> Investment {
@@ -79,6 +74,33 @@ class AssetsViewModel {
     func cellViewModelFor(indexPath: IndexPath) -> AssetCellViewModel{
         AssetCellViewModel(investment: getInvestment(at: indexPath))
     }
+}
 
+extension AssetsViewModel: NSFetchedResultsControllerDelegate {
     
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+            if let investment = anObject as? Investment {
+                switch type {
+                case .delete:
+                    print("Código para atualizar a posição o invesment da tabela")
+                    let index = investments.firstIndex(where: { $0 == investment })
+                    if let index = index {
+                        investments.remove(at: index)
+                    }
+                case .move:
+                    print("Código para atualizar a posição o invesment da tabela")
+                case .update:
+                    print("Código para atualizar o invesment da tabela")
+                case .insert:
+                    print("Código para atualizar o invesment da tabela")
+                    investments.append(investment)
+                @unknown default:
+                    print("Cenário desconhecido")
+                }
+            }
+        }
+        
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        investmentsDidUpdate?()
+    }
 }

@@ -15,14 +15,8 @@ class AssetsViewController: BaseViewController, HasCodeView {
 
     // MARK: Properties
     private var totalFunds: Double = 0.0
-    private var balanceHidded = false
+    private var balanceHidden = false
     lazy var viewModel = AssetsViewModel(context: context)
-    
-    lazy var investmentManager: InvestmentsManager = {[weak self] in
-        let investmentManager = InvestmentsManager(context: context)
-        investmentManager.delegate = self
-        return investmentManager
-    }()
     
     // MARK: Overrides
     
@@ -32,16 +26,11 @@ class AssetsViewController: BaseViewController, HasCodeView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.delegate = self
         viewModel.investmentsDidUpdate = investmentsDidUpdate
         self.customView.applyGradient(style: .vertical, colors: [UIColor.itiOrange, UIColor.itiPink])
-        
         customView.tableView.delegate = self
         customView.tableView.dataSource = self
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         viewModel.loadInvestments()
     }
     
@@ -50,28 +39,7 @@ class AssetsViewController: BaseViewController, HasCodeView {
     func investmentsDidUpdate(){
         DispatchQueue.main.async {
             self.customView.tableView.reloadData()
-        }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.customView.applyGradient(style: .vertical, colors: [UIColor.itiOrange, UIColor.itiPink])
-    }
-    
-    // MARK: Mathods
-    
-    func setupMockData() {
-        let investment1 = Investment(context: context)
-        investment1.brokerCode = "inv1"
-        investment1.brokerName = "Clear Corretora"
-        investment1.quantityOfStocks = 100
-        investment1.purchaseDate = Date()
-        investment1.purchasePrice = 5.56
-        
-        do {
-            try context.save()
-        } catch {
-            print("Deu ruim")
+            self.updateTotalFunds()
         }
     }
 }
@@ -116,7 +84,7 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func updateTotalFunds() {
         totalFunds = viewModel.getTotalBalance()
-        if !balanceHidded {
+        if !balanceHidden {
             customView.balanceLabel.text = "R$ \(totalFunds)"
         }
     }
@@ -124,52 +92,11 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension AssetsViewController: AssetsViewDelegate {
     func showBalance() {
-        balanceHidded.toggle()
-        customView.balanceLabel.text = balanceHidded ? "--" : "R$ \(totalFunds)"
+        balanceHidden.toggle()
+        customView.balanceLabel.text = balanceHidden ? "--" : "R$ \(totalFunds)"
     }
 
     func goToNewInvestment() {
         navigationController?.present(AddOrEditStockViewController(), animated: true, completion: nil)
-    }
-}
-
-extension AssetsViewController: NSFetchedResultsControllerDelegate, AssetsViewModelDelegate {
-    func updateList() {
-        customView.tableView.reloadData()
-        updateTotalFunds()
-    }
-    
-    func fetchInvestment() {
-        investmentManager.performFetch()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        if let investment = anObject as? Investment {
-            switch type {
-            case .delete:
-                print("Código para atualizar a posição o invesment da tabela")
-//                if let indexPath = indexPath{
-//                    viewModel.deleteInvestment(at: indexPath)
-//                }
-//                let index = investments.firstIndex(where: { $0 == investment })
-//                if let index = index {
-//                    investments.remove(at: index)
-//                }
-            case .move:
-                print("Código para atualizar a posição o invesment da tabela")
-            case .update:
-                print("Código para atualizar o invesment da tabela")
-            case .insert:
-                print("Código para atualizar o invesment da tabela")
-//                investments.append(investment)
-            @unknown default:
-                print("Cenário desconhecido")
-            }
-        }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        customView.tableView.reloadData()
-        updateTotalFunds()
     }
 }

@@ -24,7 +24,7 @@ class AssetsView: BaseView{
     
     private let myBelongslabel: UILabel = {
        let label = UILabel()
-        label.text = "meu patrimôno"
+        label.text = "meu patrimônio"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = .white
         label.alpha = 0.5
