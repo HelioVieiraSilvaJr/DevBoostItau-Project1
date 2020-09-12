@@ -134,14 +134,10 @@
 		4C2466102503C9F7004E1323 /* AddOrEditStock */ = {
 			isa = PBXGroup;
 			children = (
-				4C2B4FCB250D3D5D003DCEFE /* View */,
+				4C2B4FC8250D3D42003DCEFE /* Coordinator */,
 				4C2B4FCA250D3D58003DCEFE /* ViewModel */,
 				4C2B4FC9250D3D4A003DCEFE /* ViewController */,
-				4C2B4FC8250D3D42003DCEFE /* Coordinator */,
-				4C2466112503CA23004E1323 /* AddOrEditStockViewModel.swift */,
-				4C2466132503CA37004E1323 /* AddOrEditStockViewController.swift */,
-				4C2B4FC4250D0BC8003DCEFE /* AddOrEditStockView.swift */,
-				4C2B4FC6250D3CD5003DCEFE /* AddOrEditStockCoordinator.swift */,
+				4C2B4FCB250D3D5D003DCEFE /* View */,
 			);
 			path = AddOrEditStock;
 			sourceTree = "<group>";
@@ -165,6 +161,7 @@
 		4C2B4FC8250D3D42003DCEFE /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				4C2B4FC6250D3CD5003DCEFE /* AddOrEditStockCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -172,6 +169,7 @@
 		4C2B4FC9250D3D4A003DCEFE /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4C2466132503CA37004E1323 /* AddOrEditStockViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -179,6 +177,7 @@
 		4C2B4FCA250D3D58003DCEFE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4C2466112503CA23004E1323 /* AddOrEditStockViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -186,6 +185,7 @@
 		4C2B4FCB250D3D5D003DCEFE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4C2B4FC4250D0BC8003DCEFE /* AddOrEditStockView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -522,8 +522,6 @@
 				BDB1F29D2503D4C60070079B /* LoadingCustom.xib in Resources */,
 				BD96DC702503B6B800D569DA /* LaunchScreen.storyboard in Resources */,
 				BD96DC6D2503B6B800D569DA /* Assets.xcassets in Resources */,
-
-				BDB1F2952503D4040070079B /* AssetsDetailViewController.storyboard in Resources */,
 				BD96DC682503B6B700D569DA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
