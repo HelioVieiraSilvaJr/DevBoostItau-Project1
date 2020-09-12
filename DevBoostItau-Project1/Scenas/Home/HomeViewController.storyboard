@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yAJ-iN-sv0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yAJ-iN-sv0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -236,11 +236,10 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="fundsContainerView" destination="d0Z-GL-awM" id="pfS-mJ-m6N"/>
-                        <outlet property="menuCollectionView" destination="HXe-Vj-q8e" id="UUi-Cz-NVL"/>
-                        <outlet property="totalInvestmentsLabel" destination="SBx-xa-JzC" id="Ku6-oV-2Wp"/>
-                        <outlet property="userNameLabel" destination="C8s-YQ-8Jt" id="oNU-cm-gdD"/>
-                        <segue destination="vCj-6R-OcF" kind="show" identifier="AssetsSegue" id="214-JB-Fye"/>
+                        <outlet property="fundsContainerView" destination="d0Z-GL-awM" id="WkT-LT-kqA"/>
+                        <outlet property="menuCollectionView" destination="HXe-Vj-q8e" id="T1x-cD-Zm9"/>
+                        <outlet property="totalInvestmentsLabel" destination="SBx-xa-JzC" id="1L1-IR-OsW"/>
+                        <outlet property="userNameLabel" destination="C8s-YQ-8Jt" id="p0d-WQ-1fz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpl-1S-sF5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -273,16 +272,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="atb-HK-IX8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-194" y="136"/>
-        </scene>
-        <!--Assets-->
-        <scene sceneID="Ehm-qe-xUs">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Assets" id="vCj-6R-OcF" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="g9O-WD-om5"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1NN-YM-WY1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1328" y="80"/>
         </scene>
     </scenes>
     <resources>
