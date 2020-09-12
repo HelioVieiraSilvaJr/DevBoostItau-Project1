@@ -13,7 +13,7 @@ protocol AssetDetailViewDelegate: AnyObject {
     func pressCloseButton()
 }
 
-class AssetDetailView: BaseView {
+class AssetDetailView: UIView {
     
     // MARK: Properties
     weak var delegate: AssetDetailViewDelegate?
@@ -81,24 +81,30 @@ class AssetDetailView: BaseView {
         return view
     }()
     
-    let editButton: CustomButton = CustomButton(title: Localization.editInformation)
+    let editButton: CustomButton = CustomButton(title: "Editar informações")
     
-    let stackQuantity = TitleBodyLabel(title: Localization.quantity, body: "R$ 4.987,09", style: .simple)
-    let stackPricePurchase = TitleBodyLabel(title: Localization.purchasePrice, body: "R$ 34,00", style: .simple)
-    let stackDatePurchase = TitleBodyLabel(title: Localization.purchaseDate, body: "10/01/1988", style: .simple)
-    let stackValuePurchase = TitleBodyLabel(title: Localization.quotationPriceToday, body: "R$ 12.980,00", style: .simple)
-    let stackDateToday = TitleBodyLabel(title: Localization.quotationPriceToday, body: "12/09/2020", style: .colorGreen)
-    let stackValueToday = TitleBodyLabel(title: Localization.valueToday, body: "R$ 14.923,30", style: .colorRed)
-    let stackRentability = TitleBodyLabel(title: Localization.rentabilityObtainedUpToToday, body: "25%", style: .gigantColorGreen)
     
-    // MARK: Overrides
-    override func initialize() {
-        initialize(assetDetail: nil, asset: nil)
+    // MARK: Inits
+    init() {
+        super.init(frame: .zero)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     func initialize(assetDetail: AssetDetail?, asset: AssetModel?) {
         self.assetDetail = assetDetail
         self.asset = asset
+        
+        let stackQuantity = TitleBodyLabel(title: "Quantidade", body: "\(asset?.quantityOfStocks ?? 0)", style: .simple)
+        let stackPricePurchase = TitleBodyLabel(title: "Preço compra", body: asset?.getPricePurchase() ?? "R$ 0,00", style: .simple)
+        let stackDatePurchase = TitleBodyLabel(title: "Data da compra", body: asset?.getDatePurchase() ?? "-", style: .simple)
+        let stackValuePurchase = TitleBodyLabel(title: "Valor total", body: asset?.getTotalValuePurchase() ?? "-", style: .simple)
+        let stackDateToday = TitleBodyLabel(title: "Cotação de Hoje", body: asset?.dateFormatter.string(from: Date()) ?? "-", style: getRentabilityValue() >= 0 ? .colorGreen : .colorRed)
+        let stackValueToday = TitleBodyLabel(title: "Valor total", body: getTotalValueToday(), style: getRentabilityValue() >= 0 ? .colorGreen : .colorRed)
+        let stackRentability = TitleBodyLabel(title: "Rentabilidade obtida até hoje", body: getRentability(), style: getRentabilityValue() >= 0 ? .gigantColorGreen : .gigantColorRed)
+        
         
         addSubview(contentView)
         contentView.addSubview(line1StackView)
@@ -109,7 +115,6 @@ class AssetDetailView: BaseView {
         assetName.text = assetDetail?.getName
         contentView.addSubview(assetName)
         
-        stackQuantity.body = asset?.quantityOfStocks.description ?? "0"
         line1StackView.addArrangedSubview(stackQuantity)
         stackPricePurchase.body = asset?.getPricePurchase() ?? "R$ 0,00"
         line1StackView.addArrangedSubview(stackPricePurchase)
@@ -134,11 +139,6 @@ class AssetDetailView: BaseView {
         
         contentView.addSubview(editButton)
         
-        installConstraints()
-        setupExtraConfigurations()
-    }
-    
-    override func installConstraints() {
         contentView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
         contentView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
         contentView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
@@ -176,9 +176,12 @@ class AssetDetailView: BaseView {
         editButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
         editButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         editButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        
+        setupExtraConfigurations()
     }
     
-    override func setupExtraConfigurations() {
+    // MARK: Helpers
+    func setupExtraConfigurations() {
         closeButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         editButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
@@ -194,29 +197,32 @@ class AssetDetailView: BaseView {
             break
         }
     }
+    
+    func getTotalValueToday() -> String {
+        let quantity = Double(asset?.quantityOfStocks ?? 0)
+        let priceToday = assetDetail?.getPriceNumber ?? 0.0
+
+        let totalValue = quantity * priceToday
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale(identifier: "pt_BR")
+        return formatter.string(from: NSNumber(value: totalValue)) ?? "R$ 0,00"
+    }
+    
+    func getRentabilityValue() -> Double {
+        let quantity = Double(asset?.quantityOfStocks ?? 0)
+        let pricePurchase = asset?.purchasePrice ?? 0
+        let priceToday = assetDetail?.getPriceNumber ?? 0.0
+        
+        let totalPurchase = quantity * pricePurchase
+        let totalToday = quantity * priceToday
+        
+        let rentability = ((totalToday * 100) / totalPurchase) - 100
+        return rentability
+    }
+    
+    func getRentability() -> String {
+        let rentability = getRentabilityValue()
+        return "\(Int(rentability))%"
+    }
 }
-
-
-//    private func setupView() {
-//        imgIconClose.tintImage(color: .gray)
-//        viewButtonEdit.layer.cornerRadius = 25
-//        viewButtonEdit.applyGradient(style: .vertical, colors: [UIColor.itiOrange, UIColor.itiPink])
-//
-//        labelAssetName.text = detail?.getName
-//        labelQuantity.text = viewModel.asset?.quantityOfStocks.description
-//        labelPricePurchase.text = viewModel.getPricePurchase()
-//        labelDatePurchase.text = viewModel.getDatePurchase()
-//        labelTotalValue.text = viewModel.getTotalValuePurchase()
-//        labelDateToday.text = viewModel.dateFormatter.string(from: Date())
-//        labelTotalValueToday.text = viewModel.getTotalValueToday()
-//        labelRentabilityPercent.text = viewModel.getRentability()
-//
-//        var color = UIColor(red: 109/255, green: 173/255, blue: 51/255, alpha: 1)
-//        if viewModel.getRentabilityValue() < 0 {
-//            color = .red
-//        }
-//
-//        labelRentabilityPercent.textColor = color
-//        labelDateToday.textColor = color
-//        labelTotalValueToday.textColor = color
-//    }

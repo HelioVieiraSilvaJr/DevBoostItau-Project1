@@ -39,6 +39,11 @@ class TitleBodyLabel: UIStackView {
         super.init(frame: frame)
     }
     
+    convenience init() {
+        self.init(frame: .zero)
+        commonInit()
+    }
+    
     convenience init(title: String, body: String, style: Style) {
         self.init(frame: .zero)
         self.title = title

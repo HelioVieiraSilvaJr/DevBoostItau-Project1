@@ -14,6 +14,8 @@ final class HomeViewController: BaseViewController {
     // MARK: Properties
     let viewModel = HomeViewModel()
     var menuCards: [CardMenu]?
+    var backImages = [UIImage(named: "money"), UIImage(named: "card"), UIImage(named: "question")]
+    weak var coordinator: HomeCoordinator?
     
     // MARK: Outlets
     @IBOutlet weak var userNameLabel: UILabel!
@@ -79,6 +81,7 @@ final class HomeViewController: BaseViewController {
     // MARK: Actions
     @objc func didTapFundsSegue() {
         performSegue(withIdentifier: "AssetsSegue", sender: nil)
+//        coordinator?.showAssetsList()
     }
 }
 
