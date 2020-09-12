@@ -67,7 +67,8 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .default, title: "editar", handler: { (action, indexPath) in
-            self.navigationController?.present(AddOrEditStockViewController(investment: self.viewModel.getInvestment(at: indexPath)), animated: true, completion: nil)
+            self.coordinator?.editInvestment()
+//            self.navigationController?.present(AddOrEditStockViewController(investment: self.viewModel.getInvestment(at: indexPath)), animated: true, completion: nil)
         })
         editAction.backgroundColor = UIColor.lightGray
         
@@ -101,7 +102,7 @@ extension AssetsViewController: AssetsViewDelegate {
     }
 
     func goToNewInvestment() {
-//        coordinator.editInvestment()
-        navigationController?.present(AddOrEditStockViewController(), animated: true, completion: nil)
+        self.coordinator?.editInvestment()
+//        navigationController?.present(AddOrEditStockViewController(), animated: true, completion: nil)
     }
 }

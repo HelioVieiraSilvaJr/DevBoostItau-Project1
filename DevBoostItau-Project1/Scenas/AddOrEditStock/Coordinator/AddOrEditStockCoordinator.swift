@@ -25,7 +25,7 @@ class AddOrEditStockCoordinator: Coordinator {
     func start() {
         let viewController = AddOrEditStockViewController()
         viewController.coordinator = self
-        navigationController.pushViewController(viewController, animated: true)
+        navigationController.present(viewController, animated: true, completion: nil)//pre(viewController, animated: true)
     }
     
     func dismissDisplay(){
