@@ -10,6 +10,7 @@ import UIKit
 
 protocol HomeViewDelegate: AnyObject {
     func showBalance()
+    func fundsContainer()
 }
 
 class HomeView: BaseView {
@@ -114,7 +115,7 @@ class HomeView: BaseView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(MenuCardCell.self, forCellWithReuseIdentifier: MenuCardCell.identifier)
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = UIColor.itiGrey
         return collectionView
     }()
     
@@ -136,7 +137,7 @@ class HomeView: BaseView {
     }()
     
     override func initialize() {
-        addSubview(contentView)
+//        addSubview(contentView)
         addSubview(emptyProfileImage)
         addSubview(userNameLabel)
         addSubview(profileLabel)
@@ -161,15 +162,52 @@ class HomeView: BaseView {
         userNameLabel.centerYAnchor.constraint(equalTo: emptyProfileImage.centerYAnchor, constant: -13).isActive = true
         
         profileLabel.leadingAnchor.constraint(equalTo: userNameLabel.leadingAnchor, constant: 0).isActive = true
-        profileLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 13)
+        profileLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 13).isActive = true
+        
+        divisionLine.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
+        safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: divisionLine.trailingAnchor, constant: 12).isActive = true
+        divisionLine.topAnchor.constraint(equalTo: emptyProfileImage.bottomAnchor, constant: 8).isActive = true
+        
+        itiBalanceLabel.leadingAnchor.constraint(equalTo: divisionLine.leadingAnchor, constant: 0).isActive = true
+        itiBalanceLabel.topAnchor.constraint(equalTo: divisionLine.bottomAnchor, constant: 18).isActive = true
+        
+        rightArrowImage.centerYAnchor.constraint(equalTo: profileLabel.centerYAnchor, constant: 1).isActive = true
+        rightArrowImage.leadingAnchor.constraint(equalTo: profileLabel.trailingAnchor, constant: 3).isActive = true
+        rightArrowImage.widthAnchor.constraint(equalToConstant: 21).isActive = true
+        rightArrowImage.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        
+        fundsContainerView.topAnchor.constraint(equalTo: itiBalanceLabel.bottomAnchor, constant: 15).isActive = true
+        fundsContainerView.leadingAnchor.constraint(equalTo: divisionLine.leadingAnchor, constant: 0).isActive = true
+        fundsContainerView.trailingAnchor.constraint(equalTo: divisionLine.trailingAnchor, constant: 0).isActive = true
+        fundsContainerView.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        
+        showBalanceButton.widthAnchor.constraint(equalToConstant: 37).isActive = true
+        showBalanceButton.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        
+        menuCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
+        menuCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
+        menuCollectionView.topAnchor.constraint(equalTo: fundsContainerView.bottomAnchor, constant: 20).isActive = true
+        
+        aboutItiButton.centerXAnchor.constraint(equalTo: aboutItiLabel.centerXAnchor, constant: 0).isActive = true
+        aboutItiButton.topAnchor.constraint(equalTo: menuCollectionView.bottomAnchor, constant: 20).isActive = true
+        
+        aboutItiLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: 0).isActive = true
+        aboutItiLabel.topAnchor.constraint(equalTo: aboutItiButton.bottomAnchor, constant: 2).isActive = true
     }
     
     override func setupExtraConfigurations() {
         showBalanceButton.addTarget(self, action: #selector(showBalanceTapped), for: .touchUpInside)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(fundsContainerTapped))
+        fundsContainerView.addGestureRecognizer(tapGesture)
     }
     
     @objc func showBalanceTapped() {
         delegate?.showBalance()
+    }
+    
+    @objc func fundsContainerTapped() {
+        delegate?.fundsContainer()
     }
 
 }
