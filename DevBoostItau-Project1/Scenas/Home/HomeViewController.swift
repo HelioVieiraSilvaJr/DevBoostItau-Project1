@@ -19,12 +19,6 @@ final class HomeViewController: BaseViewController, HasCodeView {
     var backImages = [UIImage(named: "money"), UIImage(named: "card"), UIImage(named: "question")]
     weak var coordinator: HomeCoordinator?
     
-    // MARK: Outlets
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var totalInvestmentsLabel: UILabel!
-    @IBOutlet weak var menuCollectionView: UICollectionView!
-    @IBOutlet weak var fundsContainerView: UIView!
-    
     override func loadView() {
         view = HomeView(delegate: self)
     }
@@ -34,13 +28,7 @@ final class HomeViewController: BaseViewController, HasCodeView {
         super.viewDidLoad()
         setupNavigationBar()
         setupMenuCards()
-        setupView()
         setupDelegates()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupTotalFunds()
     }
     
     // MARK: Mathods
@@ -58,40 +46,26 @@ final class HomeViewController: BaseViewController, HasCodeView {
         menuCards = [investCard, signupCard, helpCard]
     }
     
-    func setupView() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapFundsSegue))
-//        fundsContainerView.addGestureRecognizer(tapGesture)
-    }
-    
     func setupDelegates() {
-        menuCollectionView.dataSource = self
+        customView.menuCollectionView.dataSource = self
     }
     
-    func setupTotalFunds() {
+}
+
+extension HomeViewController: HomeViewDelegate {
+    func showBalance() {
         let fetchRequest: NSFetchRequest<Investment> = Investment.fetchRequest()
         do {
             let investments = try context.fetch(fetchRequest)
             let total = InvestmentsManager.getTotalInvestmentsValue(investments: investments)
-            totalInvestmentsLabel.text = "R$ \(total)"
+            customView.balanceLabel.text = "R$ \(total)"
         } catch {
            print("error")
         }
     }
     
-    // MARK: Actions
-    @objc func didTapFundsSegue() {
-        performSegue(withIdentifier: "AssetsSegue", sender: nil)
-//        coordinator?.showAssetsList()
-    }
-}
-
-extension HomeViewController: HomeViewDelegate {
-    func showBalance() {
-        
-    }
-    
     func fundsContainer() {
-        
+        coordinator?.showAssetsList()
     }
 }
 
