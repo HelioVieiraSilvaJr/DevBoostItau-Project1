@@ -14,8 +14,6 @@ class AssetsViewController: BaseViewController, HasCodeView {
     typealias CustomView = AssetsView
 
     // MARK: Properties
-    private var totalFunds: Double = 0.0
-    private var balanceHidden = false
     lazy var viewModel = AssetsViewModel(context: context)
     weak var coordinator: AssetsCoordinator?
     
@@ -28,11 +26,15 @@ class AssetsViewController: BaseViewController, HasCodeView {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.investmentsDidUpdate = investmentsDidUpdate
-        self.customView.applyGradient(style: .vertical, colors: [UIColor.itiOrange, UIColor.itiPink])
         customView.tableView.delegate = self
         customView.tableView.dataSource = self
         
         viewModel.loadInvestments()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.customView.applyGradient(style: .vertical, colors: [UIColor.itiOrange, UIColor.itiPink])
     }
     
     // MARK: Methods
@@ -40,7 +42,7 @@ class AssetsViewController: BaseViewController, HasCodeView {
     func investmentsDidUpdate(){
         DispatchQueue.main.async {
             self.customView.tableView.reloadData()
-            self.updateTotalFunds()
+            self.customView.showTotalBalanceWith(value: self.viewModel.getTotalBalance())
         }
     }
 }
@@ -76,25 +78,14 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let asset = viewModel.getInvestment(at: indexPath)
-//        guard let _ = asset.brokerCode else {return}
-        
         let assetDetailViewModel = viewModel.getAssetViewModelFor(indexPath)
         coordinator?.showInvestment(viewModel: assetDetailViewModel)
-    }
-    
-    func updateTotalFunds() {
-        totalFunds = viewModel.getTotalBalance()
-        if !balanceHidden {
-            customView.balanceLabel.text = "R$ \(totalFunds)"
-        }
     }
 }
 
 extension AssetsViewController: AssetsViewDelegate {
     func showBalance() {
-        balanceHidden.toggle()
-        customView.balanceLabel.text = balanceHidden ? "--" : "R$ \(totalFunds)"
+        self.customView.showTotalBalanceWith(value: viewModel.getTotalBalance())
     }
 
     func goToNewInvestment() {
