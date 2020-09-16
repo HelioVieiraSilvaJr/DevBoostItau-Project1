@@ -198,6 +198,7 @@ class HomeView: BaseView {
     }
     
     override func setupExtraConfigurations() {
+        self.backgroundColor = .itiDarkGrey
         showBalanceButton.addTarget(self, action: #selector(showBalanceTapped), for: .touchUpInside)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(fundsContainerTapped))
