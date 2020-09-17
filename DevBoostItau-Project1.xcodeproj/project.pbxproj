@@ -28,7 +28,6 @@
 		BD96DC6B2503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BD96DC692503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld */; };
 		BD96DC6D2503B6B800D569DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD96DC6C2503B6B800D569DA /* Assets.xcassets */; };
 		BD96DC702503B6B800D569DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD96DC6E2503B6B800D569DA /* LaunchScreen.storyboard */; };
-		BD96DC7F2503B93100D569DA /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD96DC7E2503B93100D569DA /* HomeViewController.storyboard */; };
 		BD96DC812503B93F00D569DA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96DC802503B93F00D569DA /* HomeViewModel.swift */; };
 		BD96DC852503B9C400D569DA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96DC842503B9C400D569DA /* BaseViewController.swift */; };
 		BDB1F2932503D3E50070079B /* AssetsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F2922503D3E50070079B /* AssetsDetailViewController.swift */; };
@@ -84,7 +83,6 @@
 		BD96DC6C2503B6B800D569DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD96DC6F2503B6B800D569DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD96DC712503B6B800D569DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BD96DC7E2503B93100D569DA /* HomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
 		BD96DC802503B93F00D569DA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		BD96DC842503B9C400D569DA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BDB1F2922503D3E50070079B /* AssetsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsDetailViewController.swift; sourceTree = "<group>"; };
@@ -292,7 +290,6 @@
 				F1F116742503E271007466DE /* Model */,
 				BD96DC802503B93F00D569DA /* HomeViewModel.swift */,
 				BD829CA3250D00A900499A52 /* HomeViewController.swift */,
-				BD96DC7E2503B93100D569DA /* HomeViewController.storyboard */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -532,7 +529,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD96DC7F2503B93100D569DA /* HomeViewController.storyboard in Resources */,
 				BDB1F29D2503D4C60070079B /* LoadingCustom.xib in Resources */,
 				BD96DC702503B6B800D569DA /* LaunchScreen.storyboard in Resources */,
 				BD96DC6D2503B6B800D569DA /* Assets.xcassets in Resources */,
