@@ -20,23 +20,21 @@ class AssetsViewController: BaseViewController, HasCodeView {
     weak var coordinator: AssetsCoordinator?
     
     // MARK: Overrides
-    
     override func loadView() {
         view = AssetsView(delegate: self)
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.investmentsDidUpdate = investmentsDidUpdate
-        self.customView.applyGradient(style: .vertical, colors: [UIColor.itiOrange, UIColor.itiPink])
         customView.tableView.delegate = self
         customView.tableView.dataSource = self
-        
-        viewModel.loadInvestments()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.customView.applyGradient(style: .vertical, colors: [UIColor.itiOrange, UIColor.itiPink])
+         viewModel.loadInvestments()
+    }
     // MARK: Methods
-    
     func investmentsDidUpdate(){
         DispatchQueue.main.async {
             self.customView.tableView.reloadData()

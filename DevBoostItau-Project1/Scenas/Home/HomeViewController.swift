@@ -38,6 +38,7 @@ final class HomeViewController: BaseViewController, HasCodeView {
         self.navigationController?.view.backgroundColor = .clear
         self.navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.systemFont(ofSize: 30),
                                                                         .foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = .white
         
         self.navigationController?.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "qrcode"), style: .plain, target: self, action: nil)]
         self.navigationController?.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(named: "xmark.seal"), style: .plain, target: self, action: nil)]

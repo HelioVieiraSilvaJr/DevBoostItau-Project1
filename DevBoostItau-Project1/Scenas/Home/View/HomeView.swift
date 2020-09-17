@@ -209,7 +209,6 @@ class HomeView: BaseView {
         menuCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
         menuCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
         menuCollectionView.topAnchor.constraint(equalTo: fundsContainerView.bottomAnchor, constant: 20).isActive = true
-        menuCollectionView.heightAnchor.constraint(equalToConstant: 190).isActive = true
         
         aboutItiButton.centerXAnchor.constraint(equalTo: aboutItiLabel.centerXAnchor, constant: 0).isActive = true
         aboutItiButton.topAnchor.constraint(equalTo: menuCollectionView.bottomAnchor, constant: 20).isActive = true
