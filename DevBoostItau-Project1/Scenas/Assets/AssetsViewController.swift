@@ -76,9 +76,6 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let asset = viewModel.getInvestment(at: indexPath)
-//        guard let _ = asset.brokerCode else {return}
-        
         let assetDetailViewModel = viewModel.getAssetViewModelFor(indexPath)
         coordinator?.showInvestment(viewModel: assetDetailViewModel)
     }

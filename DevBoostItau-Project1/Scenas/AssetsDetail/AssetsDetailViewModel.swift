@@ -23,9 +23,9 @@ class AssetsDetailViewModel {
     var onFail: ((String) -> Void)?
     
     func getStockPrice() {
-        guard let code = asset?.brokerCode else {return}
-        repository.getAsset(code: code, onSuccess: { [weak self] assetDetail in
-            self?.stockPrice = assetDetail
+        guard let code = asset?.brokerName else {return}
+        repository.getStockPrice(code: code, onSuccess: { [weak self] stockPrice in
+            self?.stockPrice = stockPrice
             self?.onSuccess?()
         }) { [weak self] error in
             self?.onFail?(error)

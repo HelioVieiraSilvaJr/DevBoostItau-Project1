@@ -11,7 +11,7 @@ import Foundation
 class AssetDetailService {
     
     
-    func getAsset(url: URL, success: @escaping (StockPrice) -> (), failure: @escaping (String) -> ()) {
+    func getStockPrice(url: URL, success: @escaping (StockPrice) -> (), failure: @escaping (String) -> ()) {
         Network.get(url: url) { (data, error) in
             if let error = error {
                 failure(error)

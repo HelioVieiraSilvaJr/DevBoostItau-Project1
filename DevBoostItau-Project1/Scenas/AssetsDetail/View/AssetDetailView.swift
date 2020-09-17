@@ -175,22 +175,9 @@ class AssetDetailView: BaseView {
     }
     
     func showNotFound() {
-        addSubview(contentView)
-        
-        contentView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
-        contentView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
-        
-        contentView.addSubview(closeButton)
-        closeButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
-        closeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
-        closeButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        closeButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        
         contentView.addSubview(imageNotFound)
         imageNotFound.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        imageNotFound.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        imageNotFound.bottomAnchor.constraint(equalTo: editButton.topAnchor, constant: -100).isActive = true
         imageNotFound.heightAnchor.constraint(equalToConstant: 100).isActive = true
         imageNotFound.widthAnchor.constraint(equalToConstant: 100).isActive = true
         

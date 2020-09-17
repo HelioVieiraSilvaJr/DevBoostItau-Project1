@@ -16,14 +16,14 @@ class AssetDetailRepository {
         self.service = service
     }
     
-    func getAsset(code: String, onSuccess: @escaping (AssetDetail) -> Void, onFail: @escaping (String) -> Void) {
+    func getStockPrice(code: String, onSuccess: @escaping (StockPrice) -> Void, onFail: @escaping (String) -> Void) {
         
         guard let url = URL(string: String(format: "https://api.hgbrasil.com/finance/stock_price?key=a6f97fc3&symbol=%@", code)) else {
             onFail("URL inválida!")
             return
         }
         
-        service.getAsset(url: url, success: { assetDetail in
+        service.getStockPrice(url: url, success: { assetDetail in
             onSuccess(assetDetail)
         }) { error in
             onFail(error)
