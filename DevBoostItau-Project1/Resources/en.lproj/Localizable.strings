@@ -16,7 +16,7 @@
 "MY_WEALTH" = "my wealth";
 "NEW_INVESTMENT" = "new investment";
 "EDIT_INFORMATION" = "edit information";
-"QUANTITY" = "quantity";
+"QUANTITY" = "Quantity";
 "PURCHASE_DATE" = "purchase date";
 "PURCHASE_PRICE" = "purchase price";
 "QUOTATION_PRICE_TODAY" = "today's quote";
@@ -31,7 +31,7 @@
 "PERCENT_WALLET" = "% on the wallet";
 "FILL_OUT_INVESTMENT_TITLE" = "Fill in the information about your new stock purchase";
 "TOTAL_VALUE" = "total value";
-"ACTIVE" = "active";
+"ACTIVE" = "Active";
 "ITI_FUNDS" = "iti funds";
 "USERNAME" = "Username";
 "START_DATE" = "Starting date";

@@ -1,5 +1,5 @@
 //
-//  Cordinator.swift
+//  Coordinator.swift
 //  DevBoostItau-Project1
 //
 //  Created by Helio Junior on 12/09/20.

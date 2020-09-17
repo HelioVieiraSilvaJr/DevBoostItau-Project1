@@ -28,7 +28,7 @@ class AddOrEditStockViewController: UIViewController, HasCodeView {
         super.viewDidLoad()
         customView.priceTextField.delegate = self
         setupTypeInvestment()
-        addKeyboardController(for: [customView.startDateTextField, customView.stockTextField, customView.quantityTextField, customView.priceTextField])
+        addKeyboardController(for: [customView.stockTextField, customView.quantityTextField, customView.priceTextField, customView.startDateTextField])
     }
     // MARK: - Override
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -51,7 +51,13 @@ class AddOrEditStockViewController: UIViewController, HasCodeView {
         customView.startDateTextField.text = dateFormatter.string(from: viewModel?.investment?.purchaseDate ?? Date())
         customView.stockTextField.text = viewModel?.investment?.brokerName
         customView.quantityTextField.text = "\(viewModel!.investment!.quantityOfStocks)"
-        customView.priceTextField.text = "\(viewModel!.investment!.purchasePrice)"
+        let formatter = NumberFormatter()
+        formatter.numberStyle = NumberFormatter.Style.currency
+        formatter.locale = NSLocale(localeIdentifier: "pt_BR") as Locale
+        customView.priceTextField.text = formatter.string(from: NSNumber(value: viewModel!.investment!.purchasePrice))
+        let priceString = String(format: "%.2f", viewModel!.investment!.purchasePrice)
+        currentString = String(priceString).replacingOccurrences(of: ",", with: "")
+                                           .replacingOccurrences(of: ".", with: "")
         customView.setSaveButton()
     }    
     // MARK: - Functions

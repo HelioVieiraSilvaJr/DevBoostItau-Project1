@@ -30,7 +30,9 @@ final class AddOrEditStockViewModel {
         if let qtyOfStocksInt = Int32(qtyOfStocks) {
             investment?.quantityOfStocks = qtyOfStocksInt
         }
-        if let purchasePriceDouble = Double(purchasePrice) {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        if let purchasePriceDouble = formatter.number(from: purchasePrice)?.doubleValue {
             investment?.purchasePrice = purchasePriceDouble
         }
         let dateFormatter = DateFormatter()

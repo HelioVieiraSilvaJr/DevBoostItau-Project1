@@ -16,7 +16,7 @@
 "MY_WEALTH" = "mi riqueza";
 "NEW_INVESTMENT" = "nueva inversión";
 "EDIT_INFORMATION" = "editar informacion";
-"QUANTITY" = "cantidad";
+"QUANTITY" = "Cantidad";
 "PURCHASE_DATE" = "fecha de compra";
 "PURCHASE_PRICE" = "precio de compra";
 "QUOTATION_PRICE_TODAY" = "cita de hoy";
@@ -31,7 +31,7 @@
 "PERCENT_WALLET" = "% en la billetera";
 "FILL_OUT_INVESTMENT_TITLE" = "Complete la información sobre su nueva compra de acciones";
 "TOTAL_VALUE" = "valor total";
-"ACTIVE" = "activo";
+"ACTIVE" = "Activo";
 "ITI_FUNDS" = "iti saldo";
 "USERNAME" = "Usuario";
 "START_DATE" = "Fecha de inicio";

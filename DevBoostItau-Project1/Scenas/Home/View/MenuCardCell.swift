@@ -15,7 +15,7 @@ class MenuCardCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         var label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "System.Semibold", size: 17)
+        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         label.textColor = .white
         return label
     }()
@@ -23,7 +23,7 @@ class MenuCardCell: UICollectionViewCell {
     let subtitleLabel: UILabel = {
         var label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "System.Medium", size: 13)
+        label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         label.textColor = .white
         return label
     }()

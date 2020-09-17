@@ -1,5 +1,5 @@
 //
-//  AssetDetailCordinator.swift
+//  AssetDetailCoordinator.swift
 //  DevBoostItau-Project1
 //
 //  Created by Helio Junior on 12/09/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AssetDetailCordinator: Coordinator {
+class AssetDetailCoordinator: Coordinator {
     
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
@@ -22,7 +22,7 @@ class AssetDetailCordinator: Coordinator {
     
     func start() {
         let viewController = AssetsDetailViewController()
-        viewController.cordinator = self
+        viewController.coordinator = self
         viewController.viewModel = viewModel
         navigationController.present(viewController, animated: true, completion: nil)
     }

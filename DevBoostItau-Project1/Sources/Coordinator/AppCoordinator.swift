@@ -1,5 +1,5 @@
 //
-//  AppCordinator.swift
+//  AppCoordinator.swift
 //  DevBoostItau-Project1
 //
 //  Created by Helio Junior on 12/09/20.
@@ -23,6 +23,7 @@ class AppCoordinator: Coordinator {
         navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController.navigationBar.shadowImage = UIImage()
         navigationController.navigationBar.isTranslucent = true
+        navigationController.navigationBar.tintColor = .white
         navigationController.view.backgroundColor = .clear
     }
     

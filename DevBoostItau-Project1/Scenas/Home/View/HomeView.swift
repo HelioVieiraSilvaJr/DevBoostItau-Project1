@@ -9,8 +9,8 @@
 import UIKit
 
 protocol HomeViewDelegate: AnyObject {
-    func showBalance()
-    func fundsContainer()
+    func balanceVisibilityTapped()
+    func fundsContainerTapped()
 }
 
 class HomeView: BaseView {
@@ -114,9 +114,9 @@ class HomeView: BaseView {
     
     lazy var menuCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 36)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
         layout.itemSize = CGSize(width: 414, height: 338)
-        layout.minimumLineSpacing = 16
+        layout.minimumLineSpacing = 18
         layout.minimumInteritemSpacing = 10
         layout.scrollDirection = .horizontal
 
@@ -216,26 +216,25 @@ class HomeView: BaseView {
         aboutItiButton.widthAnchor.constraint(equalToConstant: 35).isActive = true
         
         aboutItiLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: 0).isActive = true
-        aboutItiLabel.topAnchor.constraint(equalTo: aboutItiButton.bottomAnchor, constant: 2).isActive = true
+        aboutItiLabel.topAnchor.constraint(equalTo: aboutItiButton.bottomAnchor, constant: 4).isActive = true
         aboutItiLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 2).isActive = true
     }
     
     override func setupExtraConfigurations() {
         self.backgroundColor = .itiDarkGrey
-        showBalanceButton.addTarget(self, action: #selector(showBalanceTapped), for: .touchUpInside)
+        showBalanceButton.addTarget(self, action: #selector(balanceVisibilityTapped), for: .touchUpInside)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(fundsContainerTapped))
         fundsContainerView.addGestureRecognizer(tapGesture)
     }
     
-    @objc func showBalanceTapped() {
-        delegate?.showBalance()
+    @objc func balanceVisibilityTapped() {
+        delegate?.balanceVisibilityTapped()
     }
     
     @objc func fundsContainerTapped() {
-        delegate?.fundsContainer()
+        delegate?.fundsContainerTapped()
     }
-
 }
 
 extension HomeView: UICollectionViewDelegateFlowLayout {

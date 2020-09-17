@@ -12,7 +12,7 @@ final class AssetsDetailViewController: BaseViewController {
     
     // MARK: Properties
     var viewModel: AssetsDetailViewModel!
-    var cordinator: AssetDetailCordinator?
+    var coordinator: AssetDetailCoordinator?
     var detail: StockPrice?
     
     var customView: AssetDetailView {
@@ -62,7 +62,7 @@ extension AssetsDetailViewController: AssetDetailViewDelegate {
     func pressEditButton() {
         guard let investment = viewModel.getAssetDetail()?.investment else {return}
         dismiss(animated: true) {
-            self.cordinator?.editInvestment(investment: investment)
+            self.coordinator?.editInvestment(investment: investment)
         }
     }
     
