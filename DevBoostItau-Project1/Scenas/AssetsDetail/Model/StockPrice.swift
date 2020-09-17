@@ -38,7 +38,8 @@ struct StockPrice: AssetDetailResponse {
     }
     
     var getName: String {
-        getResult()?.name ?? "Asset Name"
+        guard let symbol = getResult()?.symbol, let name = getResult()?.name else {return "Asset Name"}
+        return "\(symbol) - \(name)"
     }
     
     var getPrice: String {

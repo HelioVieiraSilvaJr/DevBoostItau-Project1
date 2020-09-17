@@ -18,7 +18,7 @@ class AssetDetailRepository {
     
     func getStockPrice(code: String, onSuccess: @escaping (StockPrice) -> Void, onFail: @escaping (String) -> Void) {
         
-        guard let url = URL(string: String(format: "https://api.hgbrasil.com/finance/stock_price?key=a6f97fc3&symbol=%@", code)) else {
+        guard let url = URL(string: String(format: "https://demo9346999.mockable.io/cea/payload", code)) else {
             onFail("URL inválida!")
             return
         }
