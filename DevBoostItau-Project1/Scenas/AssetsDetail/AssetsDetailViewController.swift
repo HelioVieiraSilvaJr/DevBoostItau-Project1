@@ -13,7 +13,7 @@ final class AssetsDetailViewController: BaseViewController {
     // MARK: Properties
     var viewModel: AssetsDetailViewModel!
     var cordinator: AssetDetailCordinator?
-    var detail: AssetDetail?
+    var detail: StockPrice?
     
     var customView: AssetDetailView {
         let myView = view as! AssetDetailView
@@ -34,7 +34,7 @@ final class AssetsDetailViewController: BaseViewController {
         
         bindEvents()
         showLoading()
-        viewModel.getAssetDetail()
+        viewModel.getStockPrice()
     }
     
     
@@ -43,9 +43,8 @@ final class AssetsDetailViewController: BaseViewController {
         viewModel.onSuccess = { [weak self] in
             DispatchQueue.main.async {
                 guard let self = self else {return}
-                guard let assetDetail = self.viewModel.detail,
-                    let asset = self.viewModel.asset else {return}
-                self.customView.initialize(assetDetail: assetDetail, asset: asset)
+                guard let assetDetail = self.viewModel.getAssetDetail() else {return}
+                self.customView.updateUI(assetDetail: assetDetail)
                 self.closeLoading()
             }
         }
@@ -61,7 +60,7 @@ final class AssetsDetailViewController: BaseViewController {
 
 extension AssetsDetailViewController: AssetDetailViewDelegate {
     func pressEditButton() {
-        guard let investment = viewModel.asset?.investment else {return}
+        guard let investment = viewModel.getAssetDetail()?.investment else {return}
         dismiss(animated: true) {
             let addOrEditStockViewModel = AddOrEditStockViewModel(investment: investment)
             self.cordinator?.editInvestment(viewModel: addOrEditStockViewModel)
