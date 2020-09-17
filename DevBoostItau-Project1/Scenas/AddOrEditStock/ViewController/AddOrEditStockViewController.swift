@@ -12,6 +12,7 @@ class AddOrEditStockViewController: UIViewController, HasCodeView {
     // MARK: - Properts
     typealias CustomView = AddOrEditStockView
     weak var coordinator: AddOrEditStockCoordinator?
+    var newInvestment: Bool = true
     
     // MARK: - Lifecycle
     override func loadView() {
@@ -22,18 +23,11 @@ class AddOrEditStockViewController: UIViewController, HasCodeView {
     private var datePicker: UIDatePicker?
     var viewModel: AddOrEditStockViewModel?
     
-    // MARK: - Init
-//    convenience init(stock: Investment) {
-//        self.init(stock: stock)
-//        self.viewModel.investment = stock
-//    }
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDatePicker()
-        if viewModel?.investment != nil {
-            setupDateAndViews()
-        }
+        setupTypeInvestment()
         addKeyboardController(for: [customView.startDateTextField, customView.stockTextField, customView.quantityTextField, customView.priceTextField])
     }
     // MARK: - Override
@@ -46,8 +40,19 @@ class AddOrEditStockViewController: UIViewController, HasCodeView {
         datePicker = UIDatePicker()
         datePicker?.datePickerMode = .date
         datePicker?.locale = Locale.init(identifier: "pt-br")
+        let yesterdayDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())
+        datePicker?.maximumDate = yesterdayDate
         datePicker?.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
         customView.startDateTextField.inputView = datePicker
+    }
+    private func setupDelegate() {
+        customView.quantityTextField.delegate = self
+    }
+    private func setupTypeInvestment() {
+        if viewModel?.investment != nil {
+            setupDateAndViews()
+            newInvestment = false
+        }
     }
     private func setupDateAndViews() {
         let dateFormatter = DateFormatter()
@@ -67,11 +72,25 @@ class AddOrEditStockViewController: UIViewController, HasCodeView {
     
     // MARK: - Functions
     private func callSaveInfo() {
-        let _ = viewModel!.saveInfo(brokerName: customView.stockTextField.text!,
-                                    brokerCode: "0",
-                                    qtyOfStocks: customView.quantityTextField.text!,
-                                    purchasePrice: customView.priceTextField.text!,
-                                    purchaseDate: customView.startDateTextField.text!)
+        
+        let resultSave = viewModel!.saveInfo(brokerName: customView.stockTextField.text!,
+                                             brokerCode: "0",
+                                             qtyOfStocks: customView.quantityTextField.text!,
+                                             purchasePrice: customView.priceTextField.text!,
+                                             purchaseDate: customView.startDateTextField.text!)
+        if resultSave {
+            let messageSuccess = newInvestment ? "Seu investimento foi adicionado com sucesso!" : "Seu investimento foi atualizado com sucesso!"
+            let alert = UIAlertController(title: "Sucesso!", message: messageSuccess, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                self.coordinator?.dismissDisplay()
+            }))
+            self.present(alert, animated: true)
+        } else {
+            let messageError = newInvestment ? "Falha ao adicionar o investimento! :(" : "Falha ao atualizar o investimento! :("
+            let alert = UIAlertController(title: "Erro!", message: messageError, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
     }
 }
 // MARK: - AddOrEditStockViewDelegate
@@ -81,5 +100,15 @@ extension AddOrEditStockViewController: AddOrEditStockViewDelegate {
     }
     func didTapInvestOrSaveButton() {
         callSaveInfo()
+    }
+}
+
+extension AddOrEditStockViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == customView.quantityTextField {
+            let invalidCharacters = CharacterSet(charactersIn: "0123456789").inverted
+            return string.rangeOfCharacter(from: invalidCharacters) == nil
+        }
+        return false
     }
 }

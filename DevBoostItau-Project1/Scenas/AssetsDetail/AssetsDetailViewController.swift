@@ -62,8 +62,7 @@ extension AssetsDetailViewController: AssetDetailViewDelegate {
     func pressEditButton() {
         guard let investment = viewModel.getAssetDetail()?.investment else {return}
         dismiss(animated: true) {
-            let addOrEditStockViewModel = AddOrEditStockViewModel(investment: investment)
-            self.cordinator?.editInvestment(viewModel: addOrEditStockViewModel)
+            self.cordinator?.editInvestment(investment: investment)
         }
     }
     
