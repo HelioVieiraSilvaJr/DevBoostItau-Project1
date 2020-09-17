@@ -20,14 +20,8 @@ class HomeView: BaseView {
     convenience init(delegate: HomeViewDelegate){
         self.init()
         self.delegate = delegate
+        self.backgroundColor = UIColor.itiDarkGrey
     }
-    
-    let contentView: UIView = {
-        let contentView = UIView(frame: .zero)
-        contentView.backgroundColor = .blue
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        return contentView
-    }()
     
     let emptyProfileImage: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "emptyProfileImage"))
@@ -41,7 +35,7 @@ class HomeView: BaseView {
         let label = UILabel(frame: .zero)
         label.text = Localization.userName
         label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
-        label.textColor = UIColor.white
+        label.textColor = .white
         label.alpha = 0.65
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -51,16 +45,17 @@ class HomeView: BaseView {
         let label = UILabel(frame: .zero)
         label.text = Localization.seeMyProfile
         label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        label.textColor = UIColor.white
+        label.textColor = .white
         label.alpha = 0.65
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let divisionLine: UIView = {
-        var lineView = UIView(frame: CGRect(x: 30, y: 276, width: 352, height: 1))
-        lineView.layer.borderWidth = 1.0
-        lineView.layer.borderColor = UIColor.black.cgColor
+        var lineView = UIView(frame: .zero)
+        lineView.translatesAutoresizingMaskIntoConstraints = false
+        lineView.backgroundColor = .black
+        lineView.alpha = 0.35
         return lineView
     }()
     
@@ -68,7 +63,7 @@ class HomeView: BaseView {
         let label = UILabel(frame: .zero)
         label.text = Localization.itiFunds
         label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        label.textColor = UIColor.white
+        label.textColor = .white
         label.alpha = 0.65
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -76,7 +71,7 @@ class HomeView: BaseView {
     
     let fundsContainerView: UIView = {
         let containerView = UIView(frame: .zero)
-        containerView.backgroundColor = .blue
+        containerView.backgroundColor = .clear
         containerView.translatesAutoresizingMaskIntoConstraints = false
         return containerView
     }()
@@ -85,7 +80,7 @@ class HomeView: BaseView {
         let label = UILabel(frame: .zero)
         label.text = "R$ 0,00"
         label.font = UIFont.boldSystemFont(ofSize: 25)
-        label.textColor = UIColor.white
+        label.textColor = .white
         label.alpha = 0.65
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -94,11 +89,12 @@ class HomeView: BaseView {
     let showBalanceButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "notVisibleEyeImage"), for: .normal)
+        button.alpha = 0.65
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    let rightArrowImage: UIImageView = {
+    let profileRightArrowImage: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "rightArrowImage"))
         imageView.contentMode = .scaleAspectFit
         imageView.alpha = 0.65
@@ -107,16 +103,30 @@ class HomeView: BaseView {
         return imageView
     }()
     
-    let menuCollectionView: UICollectionView = {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    let fundsRightArrowImage: UIImageView = {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "rightArrowImage"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.alpha = 0.65
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    lazy var menuCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 36)
         layout.itemSize = CGSize(width: 414, height: 338)
+        layout.minimumLineSpacing = 16
+        layout.minimumInteritemSpacing = 10
+        layout.scrollDirection = .horizontal
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(MenuCardCell.self, forCellWithReuseIdentifier: MenuCardCell.identifier)
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.backgroundColor = UIColor.itiGrey
+        collectionView.backgroundColor = .clear
+        collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
     
@@ -138,16 +148,16 @@ class HomeView: BaseView {
     }()
     
     override func initialize() {
-//        addSubview(contentView)
         addSubview(emptyProfileImage)
         addSubview(userNameLabel)
         addSubview(profileLabel)
         addSubview(divisionLine)
         addSubview(itiBalanceLabel)
+        addSubview(profileRightArrowImage)
         addSubview(fundsContainerView)
         fundsContainerView.addSubview(balanceLabel)
         fundsContainerView.addSubview(showBalanceButton)
-        fundsContainerView.addSubview(rightArrowImage)
+        fundsContainerView.addSubview(fundsRightArrowImage)
         addSubview(menuCollectionView)
         addSubview(aboutItiButton)
         addSubview(aboutItiLabel)
@@ -165,36 +175,49 @@ class HomeView: BaseView {
         profileLabel.leadingAnchor.constraint(equalTo: userNameLabel.leadingAnchor, constant: 0).isActive = true
         profileLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 13).isActive = true
 
-        divisionLine.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
-        safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: divisionLine.trailingAnchor, constant: 12).isActive = true
+        divisionLine.leadingAnchor.constraint(equalTo: divisionLine.superview!.layoutMarginsGuide.leadingAnchor, constant: 10).isActive = true
+        divisionLine.trailingAnchor.constraint(equalTo: divisionLine.superview!.layoutMarginsGuide.trailingAnchor, constant: -12).isActive = true
+        divisionLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
         divisionLine.topAnchor.constraint(equalTo: emptyProfileImage.bottomAnchor, constant: 8).isActive = true
         
         itiBalanceLabel.leadingAnchor.constraint(equalTo: divisionLine.leadingAnchor, constant: 0).isActive = true
         itiBalanceLabel.topAnchor.constraint(equalTo: divisionLine.bottomAnchor, constant: 18).isActive = true
         
-        rightArrowImage.centerYAnchor.constraint(equalTo: profileLabel.centerYAnchor, constant: 1).isActive = true
-        rightArrowImage.leadingAnchor.constraint(equalTo: profileLabel.trailingAnchor, constant: 3).isActive = true
-        rightArrowImage.widthAnchor.constraint(equalToConstant: 21).isActive = true
-        rightArrowImage.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        profileRightArrowImage.centerYAnchor.constraint(equalTo: profileLabel.centerYAnchor, constant: 1).isActive = true
+        profileRightArrowImage.leadingAnchor.constraint(equalTo: profileLabel.trailingAnchor, constant: 3).isActive = true
+        profileRightArrowImage.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        profileRightArrowImage.heightAnchor.constraint(equalToConstant: 22).isActive = true
         
         fundsContainerView.topAnchor.constraint(equalTo: itiBalanceLabel.bottomAnchor, constant: 15).isActive = true
         fundsContainerView.leadingAnchor.constraint(equalTo: divisionLine.leadingAnchor, constant: 0).isActive = true
         fundsContainerView.trailingAnchor.constraint(equalTo: divisionLine.trailingAnchor, constant: 0).isActive = true
         fundsContainerView.heightAnchor.constraint(equalToConstant: 46).isActive = true
         
+        balanceLabel.leadingAnchor.constraint(equalTo: fundsContainerView.leadingAnchor, constant: 0).isActive = true
+        balanceLabel.centerYAnchor.constraint(equalTo: fundsContainerView.centerYAnchor, constant: 0).isActive = true
+        
         showBalanceButton.widthAnchor.constraint(equalToConstant: 37).isActive = true
         showBalanceButton.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        showBalanceButton.leadingAnchor.constraint(equalTo: balanceLabel.trailingAnchor, constant: 15).isActive = true
+        showBalanceButton.centerYAnchor.constraint(equalTo: balanceLabel.centerYAnchor, constant: 0).isActive = true
+        
+        fundsRightArrowImage.widthAnchor.constraint(equalToConstant: 21).isActive = true
+        fundsRightArrowImage.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        fundsRightArrowImage.trailingAnchor.constraint(equalTo: fundsRightArrowImage.superview!.trailingAnchor, constant: 0).isActive = true
+        fundsRightArrowImage.centerYAnchor.constraint(equalTo: balanceLabel.centerYAnchor, constant: 0).isActive = true
         
         menuCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
         menuCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
         menuCollectionView.topAnchor.constraint(equalTo: fundsContainerView.bottomAnchor, constant: 20).isActive = true
-        menuCollectionView.heightAnchor.constraint(equalToConstant: 190).isActive = true
         
         aboutItiButton.centerXAnchor.constraint(equalTo: aboutItiLabel.centerXAnchor, constant: 0).isActive = true
         aboutItiButton.topAnchor.constraint(equalTo: menuCollectionView.bottomAnchor, constant: 20).isActive = true
+        aboutItiButton.heightAnchor.constraint(equalToConstant: 33).isActive = true
+        aboutItiButton.widthAnchor.constraint(equalToConstant: 35).isActive = true
         
         aboutItiLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: 0).isActive = true
         aboutItiLabel.topAnchor.constraint(equalTo: aboutItiButton.bottomAnchor, constant: 2).isActive = true
+        aboutItiLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 2).isActive = true
     }
     
     override func setupExtraConfigurations() {
@@ -213,4 +236,10 @@ class HomeView: BaseView {
         delegate?.fundsContainer()
     }
 
+}
+
+extension HomeView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 168, height: 217)
+    }
 }

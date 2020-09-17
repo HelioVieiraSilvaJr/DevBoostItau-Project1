@@ -16,7 +16,6 @@ final class HomeViewController: BaseViewController, HasCodeView {
     // MARK: Properties
     let viewModel = HomeViewModel()
     var menuCards: [CardMenu]?
-    var backImages = [UIImage(named: "money"), UIImage(named: "card"), UIImage(named: "question")]
     weak var coordinator: HomeCoordinator?
     
     override func loadView() {
@@ -31,12 +30,20 @@ final class HomeViewController: BaseViewController, HasCodeView {
         setupDelegates()
     }
     
-    // MARK: Mathods
-    func setupNavigationBar(){
+    // MARK: Methods
+    func setupNavigationBar() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
+        self.navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.systemFont(ofSize: 30),
+                                                                        .foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = .white
+        
+        self.navigationController?.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "qrcode"), style: .plain, target: self, action: nil)]
+        self.navigationController?.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(named: "xmark.seal"), style: .plain, target: self, action: nil)]
+        
+        title = "iti"
     }
     
     func setupMenuCards() {
