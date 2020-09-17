@@ -79,8 +79,8 @@ class AssetsViewModel: NSObject {
         return AssetsDetailViewModel(asset: AssetModel(from: getInvestment(at: indexPath)))
     }
     
-    func getEditInvestmentViewModelFor(_ indexPath: IndexPath) -> AddOrEditStockViewModel{
-        return AddOrEditStockViewModel(investment: getInvestment(at: indexPath))
+    func getEditInvestment(_ indexPath: IndexPath) -> Investment{
+        return getInvestment(at: indexPath)
     }
 }
 
