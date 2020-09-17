@@ -5,3 +5,4 @@ UserInterfaceState.xcuserstate
 DerivedData/
 Podfile.lock
 Pods/
+*.xcbkptlist
