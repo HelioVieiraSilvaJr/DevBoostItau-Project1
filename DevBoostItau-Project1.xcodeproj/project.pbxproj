@@ -23,6 +23,7 @@
 		BD829CAF250D1FD800499A52 /* AssetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CAE250D1FD800499A52 /* AssetModel.swift */; };
 		BD829CB1250D22AC00499A52 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CB0250D22AC00499A52 /* String+Extensions.swift */; };
 		BD829CB3250D2F0200499A52 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829CB2250D2F0200499A52 /* CustomButton.swift */; };
+		BD829D052512D76200499A52 /* AssetDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD829D042512D76200499A52 /* AssetDetail.swift */; };
 		BD96DC612503B6B700D569DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96DC602503B6B700D569DA /* AppDelegate.swift */; };
 		BD96DC682503B6B700D569DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD96DC662503B6B700D569DA /* Main.storyboard */; };
 		BD96DC6B2503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BD96DC692503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld */; };
@@ -35,7 +36,7 @@
 		BDB1F29B2503D4B70070079B /* LoadingCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F29A2503D4B70070079B /* LoadingCustom.swift */; };
 		BDB1F29D2503D4C60070079B /* LoadingCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDB1F29C2503D4C60070079B /* LoadingCustom.xib */; };
 		BDB1F2A32503E0660070079B /* AssetsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F2A22503E0660070079B /* AssetsDetailViewModel.swift */; };
-		BDB1F2A62503E9780070079B /* AssetDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F2A52503E9780070079B /* AssetDetail.swift */; };
+		BDB1F2A62503E9780070079B /* StockPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F2A52503E9780070079B /* StockPrice.swift */; };
 		BDB1F2A82503ECAE0070079B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F2A72503ECAE0070079B /* Network.swift */; };
 		BDB1F2AB2503F0390070079B /* AssetsDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F2AA2503F0390070079B /* AssetsDetailRepository.swift */; };
 		BDB1F2AE2503F1C20070079B /* AssetDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F2AD2503F1C20070079B /* AssetDetailService.swift */; };
@@ -77,6 +78,7 @@
 		BD829CAE250D1FD800499A52 /* AssetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetModel.swift; sourceTree = "<group>"; };
 		BD829CB0250D22AC00499A52 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		BD829CB2250D2F0200499A52 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		BD829D042512D76200499A52 /* AssetDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetail.swift; sourceTree = "<group>"; };
 		BD96DC5D2503B6B700D569DA /* DevBoostItau-Project1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DevBoostItau-Project1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD96DC602503B6B700D569DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD96DC672503B6B700D569DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,7 +93,7 @@
 		BDB1F29A2503D4B70070079B /* LoadingCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCustom.swift; sourceTree = "<group>"; };
 		BDB1F29C2503D4C60070079B /* LoadingCustom.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCustom.xib; sourceTree = "<group>"; };
 		BDB1F2A22503E0660070079B /* AssetsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsDetailViewModel.swift; sourceTree = "<group>"; };
-		BDB1F2A52503E9780070079B /* AssetDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetail.swift; sourceTree = "<group>"; };
+		BDB1F2A52503E9780070079B /* StockPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPrice.swift; sourceTree = "<group>"; };
 		BDB1F2A72503ECAE0070079B /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		BDB1F2AA2503F0390070079B /* AssetsDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsDetailRepository.swift; sourceTree = "<group>"; };
 		BDB1F2AD2503F1C20070079B /* AssetDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetailService.swift; sourceTree = "<group>"; };
@@ -361,8 +363,9 @@
 		BDB1F2A42503E96B0070079B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BDB1F2A52503E9780070079B /* AssetDetail.swift */,
+				BDB1F2A52503E9780070079B /* StockPrice.swift */,
 				BD829CAE250D1FD800499A52 /* AssetModel.swift */,
+				BD829D042512D76200499A52 /* AssetDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -565,9 +568,10 @@
 				BD96DC612503B6B700D569DA /* AppDelegate.swift in Sources */,
 				BDB1F2B525040AB30070079B /* UIImageView+Extensions.swift in Sources */,
 				BDB1F2A32503E0660070079B /* AssetsDetailViewModel.swift in Sources */,
+				BD829D052512D76200499A52 /* AssetDetail.swift in Sources */,
 				BD829CB1250D22AC00499A52 /* String+Extensions.swift in Sources */,
 				BDB1F2932503D3E50070079B /* AssetsDetailViewController.swift in Sources */,
-				BDB1F2A62503E9780070079B /* AssetDetail.swift in Sources */,
+				BDB1F2A62503E9780070079B /* StockPrice.swift in Sources */,
 				F5F80CF3250D206C00EEEB16 /* AssetsViewModel.swift in Sources */,
 				BD829CAD250D0E7B00499A52 /* TitleBodyLabel.swift in Sources */,
 				F5DD4A1125040CAF00120661 /* UIViewController+Extensions.swift in Sources */,
