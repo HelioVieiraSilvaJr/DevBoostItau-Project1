@@ -17,6 +17,7 @@ final class HomeViewController: BaseViewController, HasCodeView {
     let viewModel = HomeViewModel()
     var menuCards: [CardMenu]?
     weak var coordinator: HomeCoordinator?
+    lazy var navigationTitleImageView = UIImageView()
     
     override func loadView() {
         view = HomeView(delegate: self)
@@ -32,18 +33,22 @@ final class HomeViewController: BaseViewController, HasCodeView {
     
     // MARK: Methods
     func setupNavigationBar() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
-        self.navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.systemFont(ofSize: 30),
-                                                                        .foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.tintColor = .white
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icQrCode")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icSettings")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: .plain, target: self, action: nil)
         
-        self.navigationController?.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "qrcode"), style: .plain, target: self, action: nil)]
-        self.navigationController?.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(named: "xmark.seal"), style: .plain, target: self, action: nil)]
+        //Config image
+        self.navigationTitleImageView.image = UIImage.init(named: "itiLogoImage")
+        self.navigationTitleImageView.contentMode = .scaleAspectFit
+        self.navigationTitleImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        title = "iti"
+        if let navC = self.navigationController {
+            navC.navigationBar.addSubview(self.navigationTitleImageView)
+            self.navigationTitleImageView.centerXAnchor.constraint(equalTo: navC.navigationBar.centerXAnchor).isActive = true
+            self.navigationTitleImageView.centerYAnchor.constraint(equalTo: navC.navigationBar.centerYAnchor, constant: 0).isActive = true
+            self.navigationTitleImageView.widthAnchor.constraint(equalTo: navC.navigationBar.widthAnchor, multiplier: 0.2).isActive = true
+            self.navigationTitleImageView.heightAnchor.constraint(equalTo: navC.navigationBar.widthAnchor, multiplier: 0.088).isActive = true
+        }
     }
     
     func setupMenuCards() {
@@ -73,7 +78,7 @@ extension HomeViewController: HomeViewDelegate {
             let total = InvestmentsManager.getTotalInvestmentsValue(investments: investments)
             customView.balanceLabel.text = "\(total.formatMoney())"
         } catch {
-           print("error")
+            print("error")
         }
     }
     
@@ -83,7 +88,6 @@ extension HomeViewController: HomeViewDelegate {
 }
 
 extension HomeViewController: UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let menuCards = menuCards {
             return menuCards.count
