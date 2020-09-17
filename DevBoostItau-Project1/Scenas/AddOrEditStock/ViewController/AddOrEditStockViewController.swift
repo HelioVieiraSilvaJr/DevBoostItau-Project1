@@ -97,10 +97,24 @@ extension AddOrEditStockViewController: AddOrEditStockViewDelegate {
 
 extension AddOrEditStockViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == customView.priceTextField && ["0","1","2","3","4","5","6","7","8","9"].contains(string){
-            currentString += string
-            print(currentString)
-            formatCurrency(value: currentString)
+        if textField == customView.priceTextField{
+            switch string {
+            case "0","1","2","3","4","5","6","7","8","9":
+                currentString += string
+                print(currentString)
+                formatCurrency(value: currentString)
+            default:
+                let array = Array(string)
+                var currentStringArray = Array(currentString)
+                if array.count == 0 && currentStringArray.count != 0 {
+                    currentStringArray.removeLast()
+                    currentString = ""
+                    for character in currentStringArray {
+                        currentString += String(character)
+                    }
+                    formatCurrency(value: currentString)
+                }
+            }
         }
         
         if textField == customView.quantityTextField {
