@@ -20,13 +20,11 @@ class AddOrEditStockViewController: UIViewController, HasCodeView {
         view = customView
     }
     // MARK: - Properts
-    private var datePicker: UIDatePicker?
     var viewModel: AddOrEditStockViewModel?
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupDatePicker()
         setupTypeInvestment()
         addKeyboardController(for: [customView.startDateTextField, customView.stockTextField, customView.quantityTextField, customView.priceTextField])
     }
@@ -36,15 +34,6 @@ class AddOrEditStockViewController: UIViewController, HasCodeView {
         self.view.endEditing(true)
     }
     // MARK: - Setups
-    private func setupDatePicker() {
-        datePicker = UIDatePicker()
-        datePicker?.datePickerMode = .date
-        datePicker?.locale = Locale.init(identifier: "pt-br")
-        let yesterdayDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())
-        datePicker?.maximumDate = yesterdayDate
-        datePicker?.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
-        customView.startDateTextField.inputView = datePicker
-    }
     private func setupDelegate() {
         customView.quantityTextField.delegate = self
     }
@@ -62,14 +51,7 @@ class AddOrEditStockViewController: UIViewController, HasCodeView {
         customView.quantityTextField.text = "\(viewModel!.investment!.quantityOfStocks)"
         customView.priceTextField.text = "\(viewModel!.investment!.purchasePrice)"
         customView.setSaveButton()
-    }
-    // MARK: - Taps
-    @objc private func dateChanged(datePicker: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        customView.startDateTextField.text! = dateFormatter.string(from: datePicker.date)
-    }
-    
+    }    
     // MARK: - Functions
     private func callSaveInfo() {
         
