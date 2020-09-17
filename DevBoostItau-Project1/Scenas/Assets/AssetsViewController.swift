@@ -14,8 +14,6 @@ class AssetsViewController: BaseViewController, HasCodeView {
     typealias CustomView = AssetsView
 
     // MARK: Properties
-    private var totalFunds: Double = 0.0
-    private var balanceHidden = false
     lazy var viewModel = AssetsViewModel(context: context)
     weak var coordinator: AssetsCoordinator?
     
@@ -38,7 +36,7 @@ class AssetsViewController: BaseViewController, HasCodeView {
     func investmentsDidUpdate(){
         DispatchQueue.main.async {
             self.customView.tableView.reloadData()
-            self.updateTotalFunds()
+            self.customView.showTotalBalanceWith(value: self.viewModel.getTotalBalance())
         }
     }
 }
@@ -77,19 +75,11 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
         let assetDetailViewModel = viewModel.getAssetViewModelFor(indexPath)
         coordinator?.showInvestment(viewModel: assetDetailViewModel)
     }
-    
-    func updateTotalFunds() {
-        totalFunds = viewModel.getTotalBalance()
-        if !balanceHidden {
-            customView.balanceLabel.text = "R$ \(totalFunds)"
-        }
-    }
 }
 
 extension AssetsViewController: AssetsViewDelegate {
     func showBalance() {
-        balanceHidden.toggle()
-        customView.balanceLabel.text = balanceHidden ? "--" : "R$ \(totalFunds)"
+        self.customView.showTotalBalanceWith(value: viewModel.getTotalBalance())
     }
 
     func goToNewInvestment() {

@@ -16,6 +16,7 @@ protocol AssetsViewDelegate: AnyObject {
 class AssetsView: BaseView{
     
     weak var delegate: AssetsViewDelegate?
+    private var balanceHidden = false
     
     convenience init(delegate: AssetsViewDelegate){
         self.init()
@@ -117,8 +118,13 @@ class AssetsView: BaseView{
     }
     
     override func setupExtraConfigurations() {
+        self.backgroundColor = .white
         newInvestmentButton.addTarget(self, action: #selector(newInvestmentTapped), for: .touchUpInside)
         seeBalanceButton.addTarget(self, action: #selector(seeBalanceTapped), for: .touchUpInside)
+    }
+    
+    func showTotalBalanceWith(value: Double) {
+        balanceLabel.text = self.balanceHidden ? "--" : value.formatMoney()
     }
     
     @objc func newInvestmentTapped(){
@@ -126,6 +132,7 @@ class AssetsView: BaseView{
     }
     
     @objc func seeBalanceTapped(){
+        balanceHidden.toggle()
         delegate?.showBalance()
     }
 }
