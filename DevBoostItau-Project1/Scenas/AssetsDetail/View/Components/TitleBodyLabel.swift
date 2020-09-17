@@ -18,7 +18,7 @@ class TitleBodyLabel: UIStackView {
     var title: String = ""
     var body: String = ""
     
-    var titleLabel: UILabel = {
+    private var titleLabel: UILabel = {
         var label = UILabel()
         label.text = "Titulo"
         label.font = UIFont.systemFont(ofSize: 13)
@@ -27,7 +27,7 @@ class TitleBodyLabel: UIStackView {
         return label
     }()
     
-    var bodyLabel: UILabel = {
+    private var bodyLabel: UILabel = {
         var label = UILabel()
         label.text = "Conteudo"
         label.font = UIFont.systemFont(ofSize: 18)
@@ -85,11 +85,17 @@ class TitleBodyLabel: UIStackView {
         bodyLabel.textColor = bodyColor
         axis = .vertical
         distribution = .fill
-        alignment = .center
         spacing = 0
         translatesAutoresizingMaskIntoConstraints = false
         
         addArrangedSubview(titleLabel)
         addArrangedSubview(bodyLabel)
+    }
+    
+    // MARK: Helpers
+    func setInfos(body: String, style: Style = .simple) {
+        self.body = body
+        self.style = style
+        commonInit()
     }
 }

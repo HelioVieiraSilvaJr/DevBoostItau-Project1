@@ -64,7 +64,7 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .default, title: Localization.edit, handler: { (action, indexPath) in
-            self.coordinator?.editInvestment(viewModel: self.viewModel.getEditInvestmentViewModelFor(indexPath))
+            self.coordinator?.editInvestment(investment: self.viewModel.getEditInvestment(indexPath))
         })
         editAction.backgroundColor = UIColor.lightGray
         
@@ -76,9 +76,6 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let asset = viewModel.getInvestment(at: indexPath)
-//        guard let _ = asset.brokerCode else {return}
-        
         let assetDetailViewModel = viewModel.getAssetViewModelFor(indexPath)
         coordinator?.showInvestment(viewModel: assetDetailViewModel)
     }
@@ -98,6 +95,6 @@ extension AssetsViewController: AssetsViewDelegate {
     }
 
     func goToNewInvestment() {
-        self.coordinator?.editInvestment(viewModel: nil)
+        self.coordinator?.editInvestment(investment: nil)
     }
 }

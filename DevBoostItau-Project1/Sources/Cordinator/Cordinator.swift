@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol Coordinator: AnyObject {
     
@@ -25,5 +26,15 @@ extension Coordinator {
     }
     func remove(childCoordinator coordinator: Coordinator) {
         childCoordinators = childCoordinators.filter{$0 !== coordinator}
+    }
+}
+
+extension Coordinator {
+    var context: NSManagedObjectContext {
+           guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+               return NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+           }
+           return appDelegate.persistentContainer.viewContext
+           
     }
 }

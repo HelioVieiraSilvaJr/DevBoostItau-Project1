@@ -11,7 +11,7 @@ import Foundation
 class AssetDetailService {
     
     
-    func getAsset(url: URL, success: @escaping (AssetDetail) -> (), failure: @escaping (String) -> ()) {
+    func getStockPrice(url: URL, success: @escaping (StockPrice) -> (), failure: @escaping (String) -> ()) {
         Network.get(url: url) { (data, error) in
             if let error = error {
                 failure(error)
@@ -19,7 +19,7 @@ class AssetDetailService {
 
             do {
                 guard let data = data else { return }
-                let result = try JSONDecoder().decode(AssetDetail.self, from: data)
+                let result = try JSONDecoder().decode(StockPrice.self, from: data)
                 success(result)
             } catch let err {
                 failure(err.localizedDescription)

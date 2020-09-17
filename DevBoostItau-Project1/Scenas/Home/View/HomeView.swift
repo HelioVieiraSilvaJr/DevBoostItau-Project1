@@ -122,11 +122,11 @@ class HomeView: BaseView {
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(MenuCardCell.self, forCellWithReuseIdentifier: MenuCardCell.identifier)
-        collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
     
@@ -209,6 +209,7 @@ class HomeView: BaseView {
         menuCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
         menuCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
         menuCollectionView.topAnchor.constraint(equalTo: fundsContainerView.bottomAnchor, constant: 20).isActive = true
+        menuCollectionView.heightAnchor.constraint(equalToConstant: 190).isActive = true
         
         aboutItiButton.centerXAnchor.constraint(equalTo: aboutItiLabel.centerXAnchor, constant: 0).isActive = true
         aboutItiButton.topAnchor.constraint(equalTo: menuCollectionView.bottomAnchor, constant: 20).isActive = true
@@ -221,6 +222,7 @@ class HomeView: BaseView {
     }
     
     override func setupExtraConfigurations() {
+        self.backgroundColor = .itiDarkGrey
         showBalanceButton.addTarget(self, action: #selector(showBalanceTapped), for: .touchUpInside)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(fundsContainerTapped))
