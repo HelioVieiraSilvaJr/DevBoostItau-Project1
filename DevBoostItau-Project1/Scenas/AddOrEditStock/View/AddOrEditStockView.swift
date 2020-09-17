@@ -28,6 +28,16 @@ final class AddOrEditStockView: BaseView {
         scrollView.keyboardDismissMode = .interactive
         return scrollView
     }()
+    lazy var datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.locale = Locale.init(identifier: "pt-br")
+        let yesterdayDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())
+        datePicker.maximumDate = yesterdayDate
+        datePicker.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        return datePicker
+    }()
     let closeButton: UIButton = {
         let button = UIButton()
         button.isUserInteractionEnabled = true
@@ -195,6 +205,7 @@ final class AddOrEditStockView: BaseView {
         contentView.addSubview(titleLabel)
         contentView.addSubview(textsStackView)
         contentView.addSubview(investOrSaveButton)
+        startDateTextField.inputView = datePicker
     }
     
     override func installConstraints() {
@@ -244,13 +255,20 @@ final class AddOrEditStockView: BaseView {
         investOrSaveButton.addTarget(self, action: #selector(verifyErrorTapped), for: .touchUpInside)
     }
     
+    // MARK: - Actions
     @objc private func closeTapped() {
         delegate?.didTapCloseButton()
     }
     @objc private func verifyErrorTapped() {
         verifyError()
     }
+    @objc private func dateChanged(datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        startDateTextField.text! = dateFormatter.string(from: datePicker.date)
+    }
     
+    // MARK: - Functions
     func verifyError() {
         stockLabel.textColor = stockTextField.text?.isEmpty ?? false ? UIColor.red : UIColor.gray
         startDateLabel.textColor = startDateTextField.text?.isEmpty ?? false ? UIColor.red : UIColor.gray
