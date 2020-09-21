@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -16,25 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icIcon" translatesAutoresizingMaskIntoConstraints="NO" id="862-V6-B5z">
-                                <rect key="frame" x="0.0" y="61" width="414" height="512"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="VFu-rn-s7c">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time 4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sV6-80-p1x">
-                                <rect key="frame" x="16" y="445" width="382" height="48"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoIti" translatesAutoresizingMaskIntoConstraints="NO" id="NDM-71-Jrm">
+                                <rect key="frame" x="128.5" y="239" width="157" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="CMD-XA-AXf"/>
+                                    <constraint firstAttribute="width" constant="157" id="TTU-TB-9CM"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6z-dO-JsG">
+                                <rect key="frame" x="137.5" y="421.5" width="139" height="53"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="44"/>
+                                <color key="textColor" white="1" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.12941176470588234" green="0.18431372549019609" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="sV6-80-p1x" firstAttribute="bottom" secondItem="862-V6-B5z" secondAttribute="bottom" constant="-80" id="2g3-fP-U3i"/>
-                            <constraint firstItem="sV6-80-p1x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Bmt-Aa-64V"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="862-V6-B5z" secondAttribute="trailing" id="RyV-ZB-0fs"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sV6-80-p1x" secondAttribute="trailing" constant="16" id="Zvn-Xc-woa"/>
-                            <constraint firstItem="862-V6-B5z" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dc7-Le-fpr"/>
-                            <constraint firstItem="862-V6-B5z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gnq-xs-moC"/>
-                            <constraint firstItem="862-V6-B5z" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="120" id="qrq-5b-cC5"/>
+                            <constraint firstItem="F6z-dO-JsG" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="02n-vn-ORR"/>
+                            <constraint firstItem="VFu-rn-s7c" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="CGJ-k1-M6v"/>
+                            <constraint firstItem="F6z-dO-JsG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="IXv-gW-jtd"/>
+                            <constraint firstAttribute="bottom" secondItem="VFu-rn-s7c" secondAttribute="bottom" id="X9w-rq-KOX"/>
+                            <constraint firstItem="VFu-rn-s7c" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="eN1-C4-kH9"/>
+                            <constraint firstItem="VFu-rn-s7c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ieP-LW-CMf"/>
+                            <constraint firstItem="NDM-71-Jrm" firstAttribute="centerX" secondItem="VFu-rn-s7c" secondAttribute="centerX" id="nEM-Y0-J5S"/>
+                            <constraint firstItem="F6z-dO-JsG" firstAttribute="top" secondItem="NDM-71-Jrm" secondAttribute="bottom" constant="22.5" id="t4q-OU-BWj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -45,6 +53,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icIcon" width="512" height="512"/>
+        <image name="back" width="927" height="1847"/>
+        <image name="logoIti" width="374" height="373"/>
     </resources>
 </document>
