@@ -50,6 +50,7 @@ final class HomeViewController: BaseViewController, HasCodeView {
         navigationItem.titleView = navigationTitleImageView
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icQrCode")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: .plain, target: self, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icSettings")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: .plain, target: self, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem()
     }
     
     func setupMenuCards() {
