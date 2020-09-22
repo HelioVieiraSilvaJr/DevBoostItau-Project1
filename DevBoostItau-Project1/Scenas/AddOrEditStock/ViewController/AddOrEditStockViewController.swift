@@ -46,16 +46,18 @@ class AddOrEditStockViewController: UIViewController, HasCodeView {
         }
     }
     private func setupDateAndViews() {
+        guard let investment = viewModel?.investment else { return }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        customView.startDateTextField.text = dateFormatter.string(from: viewModel?.investment?.purchaseDate ?? Date())
-        customView.stockTextField.text = viewModel?.investment?.brokerName
-        customView.quantityTextField.text = "\(viewModel!.investment!.quantityOfStocks)"
+        customView.startDateTextField.text = dateFormatter.string(from: investment.purchaseDate ?? Date())
+        customView.stockTextField.text = investment.brokerName
+        customView.quantityTextField.text = "\(investment.quantityOfStocks)"
         let formatter = NumberFormatter()
         formatter.numberStyle = NumberFormatter.Style.currency
         formatter.locale = NSLocale(localeIdentifier: "pt_BR") as Locale
-        customView.priceTextField.text = formatter.string(from: NSNumber(value: viewModel!.investment!.purchasePrice))
-        let priceString = String(format: "%.2f", viewModel!.investment!.purchasePrice)
+        customView.priceTextField.text = formatter.string(from: NSNumber(value: investment.purchasePrice))
+        let priceString = String(format: "%.2f", investment.purchasePrice)
         currentString = String(priceString).replacingOccurrences(of: ",", with: "")
                                            .replacingOccurrences(of: ".", with: "")
         customView.setSaveButton()

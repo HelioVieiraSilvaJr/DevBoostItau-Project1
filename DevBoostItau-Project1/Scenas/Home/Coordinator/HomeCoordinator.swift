@@ -19,11 +19,6 @@ class HomeCoordinator: Coordinator {
     }
     
     func start() {
-//        let viewController = UIStoryboard(name: "HomeViewController", bundle: nil).instantiateViewController(withIdentifier: "NavHomeViewController")
-//        let name = String(describing: self)
-//        let storyboard = UIStoryboard(name: "HomeViewController", bundle: nil)
-//        storyboard.instantiateViewController(withIdentifier: name)
-        
         let vc = HomeViewController()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
