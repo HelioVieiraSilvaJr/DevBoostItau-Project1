@@ -44,6 +44,7 @@ class AssetsViewController: BaseViewController, HasCodeView {
 extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.count == 0 ? tableView.setEmptyMessage(Localization.assetsEmpty) : tableView.restore()
         return viewModel.count
     }
 
@@ -51,7 +52,7 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AssetCell", for: indexPath) as? AssetTableViewCell else{
             return UITableViewCell()
         }
-
+        cell.selectionStyle = .none
         let investmentCellViewModel = viewModel.cellViewModelFor(indexPath: indexPath)
         cell.configure(with: investmentCellViewModel, percent: viewModel.getInvestmentPercentFor(indexPath))
 

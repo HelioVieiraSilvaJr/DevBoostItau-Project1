@@ -22,6 +22,7 @@ class GradientButton: UIButton {
         gradient.startPoint = style == .horizontal ? CGPoint(x: 0, y: 0.5) : CGPoint(x: 0, y: 0)
         gradient.endPoint = style == .horizontal ? CGPoint(x: 1.0, y: 0.5) : CGPoint(x: 1, y: 1)
         self.layer.insertSublayer(gradient, at: 0)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
 
         self.clipsToBounds = true
         self.layer.cornerRadius = self.frame.height / 2

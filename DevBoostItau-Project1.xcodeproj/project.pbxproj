@@ -58,6 +58,7 @@
 		F5F80CF5250D21DE00EEEB16 /* AssetCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CF4250D21DE00EEEB16 /* AssetCellViewModel.swift */; };
 		F5F80CF8250D31D600EEEB16 /* AssetsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CF7250D31D600EEEB16 /* AssetsCoordinator.swift */; };
 		F5F80CFA250D37CF00EEEB16 /* Margin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CF9250D37CF00EEEB16 /* Margin.swift */; };
+		F5F80D5A251AD71200EEEB16 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80D59251AD71200EEEB16 /* UITableView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +121,7 @@
 		F5F80CF4250D21DE00EEEB16 /* AssetCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCellViewModel.swift; sourceTree = "<group>"; };
 		F5F80CF7250D31D600EEEB16 /* AssetsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsCoordinator.swift; sourceTree = "<group>"; };
 		F5F80CF9250D37CF00EEEB16 /* Margin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Margin.swift; sourceTree = "<group>"; };
+		F5F80D59251AD71200EEEB16 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,6 +387,7 @@
 				BDB1F2B825040AD60070079B /* UIView+Extensions.swift */,
 				F5DD4A122504129D00120661 /* Double+Extensions.swift */,
 				BD829CB0250D22AC00499A52 /* String+Extensions.swift */,
+				F5F80D59251AD71200EEEB16 /* UITableView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				BD829CA2250D006900499A52 /* Coordinator.swift in Sources */,
 				F5F80CF8250D31D600EEEB16 /* AssetsCoordinator.swift in Sources */,
 				BD829CA0250D005E00499A52 /* AppCoordinator.swift in Sources */,
+				F5F80D5A251AD71200EEEB16 /* UITableView+Extensions.swift in Sources */,
 				4C2466152503CA37004E1323 /* AddOrEditStockViewController.swift in Sources */,
 				BDB1F2A82503ECAE0070079B /* Network.swift in Sources */,
 				F1F116762503E282007466DE /* CardMenu.swift in Sources */,

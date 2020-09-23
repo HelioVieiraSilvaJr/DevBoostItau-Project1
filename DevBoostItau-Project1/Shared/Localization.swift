@@ -10,6 +10,7 @@ import Foundation
 
 enum Localization {
     static let seeMyProfile = "SEE_MY_PROFILE".localized
+    static let assetsEmpty = "ASSETS_EMPTY".localized
     static let invest = "INVEST".localized
     static let yourMoney = "YOUR_MONEY".localized
     static let signUp = "SIGN_UP".localized

@@ -31,7 +31,8 @@ final class AssetsDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.customView.assetNameLabel.text = viewModel.getAssetName()
+
         bindEvents()
         showLoading()
         viewModel.getStockPrice()

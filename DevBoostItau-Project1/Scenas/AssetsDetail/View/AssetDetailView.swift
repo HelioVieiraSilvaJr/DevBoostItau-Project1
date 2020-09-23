@@ -27,9 +27,10 @@ class AssetDetailView: BaseView {
     
     let closeButton: UIButton = {
         let button = UIButton(frame: .zero)
-        button.setBackgroundImage(#imageLiteral(resourceName: "icClose"), for: .normal)
+        button.setImage(UIImage(named: "close"), for: .normal)
+//        button.setBackgroundImage(UIImage(named: "close"), for: .normal)
         button.clipsToBounds = true
-        button.layer.cornerRadius = 20
+//        button.layer.cornerRadius = 20
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -91,7 +92,7 @@ class AssetDetailView: BaseView {
         var label = UILabel()
         label.text = "Seu investimento não foi encontrado!"
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .black
+        label.textColor = .itiGrey
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -141,8 +142,8 @@ class AssetDetailView: BaseView {
         
         closeButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
         closeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
-        closeButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        closeButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        closeButton.widthAnchor.constraint(equalToConstant: 15).isActive = true
         
         assetNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50).isActive = true
         assetNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
@@ -178,8 +179,8 @@ class AssetDetailView: BaseView {
         contentView.addSubview(imageNotFound)
         imageNotFound.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         imageNotFound.bottomAnchor.constraint(equalTo: editButton.topAnchor, constant: -100).isActive = true
-        imageNotFound.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        imageNotFound.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        imageNotFound.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        imageNotFound.widthAnchor.constraint(equalToConstant: 70).isActive = true
         
         contentView.addSubview(labelNotFound)
         labelNotFound.topAnchor.constraint(equalTo: imageNotFound.bottomAnchor, constant: 20).isActive = true

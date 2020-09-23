@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AssetModel {
+class AssetModel {
     let brokerCode: String
     let brokerName: String?
     let purchaseDate: Date?
@@ -27,12 +27,13 @@ struct AssetModel {
     }
            
     init(from investment: Investment) {
-        self.investment = investment
+//        self.investment = investment
         brokerCode = investment.brokerCode ?? "ITSA4"
         brokerName = investment.brokerName ?? "TTAUSA"
         purchaseDate = investment.purchaseDate
         purchasePrice = investment.purchasePrice
         quantityOfStocks = investment.quantityOfStocks
+        self.investment = nil
     }
 }
 

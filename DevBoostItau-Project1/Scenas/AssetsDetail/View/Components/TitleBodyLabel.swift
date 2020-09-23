@@ -21,8 +21,8 @@ class TitleBodyLabel: UIStackView {
     private var titleLabel: UILabel = {
         var label = UILabel()
         label.text = "Titulo"
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = .darkGray
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .itiGrey
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

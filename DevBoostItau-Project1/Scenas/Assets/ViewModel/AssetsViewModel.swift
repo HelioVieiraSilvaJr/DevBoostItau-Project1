@@ -36,7 +36,7 @@ class AssetsViewModel: NSObject {
     
     func loadInvestments() {
         let fetchRequest: NSFetchRequest<Investment> = Investment.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "purchaseDate", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "purchaseDate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         do {
             investments = try context.fetch(fetchRequest)
@@ -76,7 +76,7 @@ class AssetsViewModel: NSObject {
     }
 
     func getAssetViewModelFor(_ indexPath: IndexPath) -> AssetsDetailViewModel{
-        return AssetsDetailViewModel(asset: AssetModel(from: getInvestment(at: indexPath)))
+        return AssetsDetailViewModel(assetModel: AssetModel(from: getInvestment(at: indexPath)))
     }
     
     func getEditInvestment(_ indexPath: IndexPath) -> Investment{

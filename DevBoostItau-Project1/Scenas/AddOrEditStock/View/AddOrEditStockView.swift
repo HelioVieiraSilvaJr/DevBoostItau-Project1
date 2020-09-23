@@ -67,9 +67,10 @@ final class AddOrEditStockView: BaseView {
     let stockLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = Localization.active
+        label.font.withSize(14)
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.textColor = UIColor.darkGray
+        label.textColor = .itiGrey
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -95,9 +96,10 @@ final class AddOrEditStockView: BaseView {
     let quantityLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = Localization.quantity
+        label.font.withSize(14)
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.textColor = UIColor.darkGray
+        label.textColor = .itiGrey
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -122,9 +124,10 @@ final class AddOrEditStockView: BaseView {
     let priceLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = Localization.purchasePrice
+        label.font.withSize(14)
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.textColor = UIColor.darkGray
+        label.textColor = .itiGrey
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -149,9 +152,10 @@ final class AddOrEditStockView: BaseView {
     let startDateLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = Localization.startDate
+        label.font.withSize(14)
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.textColor = UIColor.darkGray
+        label.textColor = .itiGrey
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -221,7 +225,7 @@ final class AddOrEditStockView: BaseView {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             
-            titleLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
@@ -235,10 +239,10 @@ final class AddOrEditStockView: BaseView {
             investOrSaveButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             investOrSaveButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
-            closeButton.heightAnchor.constraint(equalToConstant: 40),
-            closeButton.widthAnchor.constraint(equalToConstant: 40),
-            closeButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            closeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            closeButton.heightAnchor.constraint(equalToConstant: 15),
+            closeButton.widthAnchor.constraint(equalToConstant: 15),
+            closeButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            closeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
             stockTextField.heightAnchor.constraint(equalToConstant: 40),
             quantityTextField.heightAnchor.constraint(equalToConstant: 40),

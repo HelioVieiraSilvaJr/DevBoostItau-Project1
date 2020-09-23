@@ -14,8 +14,8 @@ class AssetsDetailViewModel {
     private var asset: AssetModel?
     private var stockPrice: StockPrice?
     
-    init(asset: AssetModel?, _ repository: AssetDetailRepository = AssetDetailRepository()) {
-        self.asset = asset
+    init(assetModel: AssetModel?, _ repository: AssetDetailRepository = AssetDetailRepository()) {
+        self.asset = assetModel
         self.repository = repository
     }
     
@@ -30,6 +30,9 @@ class AssetsDetailViewModel {
         }) { [weak self] error in
             self?.onFail?(error)
         }
+    }
+    func getAssetName() -> String?{
+        return asset?.brokerName
     }
     
     func getAssetDetail() -> AssetDetail? {
