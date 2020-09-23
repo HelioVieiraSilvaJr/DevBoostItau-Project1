@@ -15,7 +15,7 @@ class LoginViewController: UIViewController, HasCodeView {
     weak var coordinator: LoginCoordinator?
     // MARK: - Lifecycle
     override func loadView() {
-        let customView = LoginView()
+        let customView = LoginView(delegate: self)
         view = customView
     }
     
@@ -24,16 +24,20 @@ class LoginViewController: UIViewController, HasCodeView {
 
         // Do any additional setup after loading the view.
     }
-    
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+
+extension LoginViewController: LoginViewDelegate{
+    func didTapLoginButton() {
+        print("login")
     }
-    */
-
+    
+    func didTapSignupButton() {
+        print("signup")
+    }
+    
+    func didTapTermsButton() {
+        print("terms")
+    }
 }
