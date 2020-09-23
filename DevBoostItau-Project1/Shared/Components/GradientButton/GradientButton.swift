@@ -28,3 +28,16 @@ class GradientButton: UIButton {
         self.layer.cornerRadius = self.frame.height / 2
     }
 }
+
+
+class OutlineButton: UIButton {
+    override func draw(_ rect: CGRect) {
+        self.layer.borderColor = UIColor.itiGrey.cgColor
+        self.layer.borderWidth = 1
+//        self.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+//        self.titleLabel?.textColor = .itiGrey
+//        self.backgroundColor = .white
+        self.clipsToBounds = true
+        self.layer.cornerRadius = self.frame.height / 2
+    }
+}

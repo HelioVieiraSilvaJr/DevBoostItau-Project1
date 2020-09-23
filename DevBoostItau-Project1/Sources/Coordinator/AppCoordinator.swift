@@ -32,7 +32,7 @@ class AppCoordinator: Coordinator {
         if AuthManager.shared.isLoggedIn() {
             childCoordinator = HomeCoordinator(navigationController: navigationController)
         } else {
-            //childCoordinator = LoginCoordinator(navigationController: navigationController)
+            childCoordinator = LoginCoordinator(navigationController: navigationController)
         }
         
         if let childCoordinator = childCoordinator {
