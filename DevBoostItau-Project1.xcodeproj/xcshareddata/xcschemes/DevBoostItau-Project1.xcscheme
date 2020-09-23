@@ -28,6 +28,36 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "32DF4D39251C04B400DEA14E"
+               BuildableName = "DevBoostItau-Project1Tests.xctest"
+               BlueprintName = "DevBoostItau-Project1Tests"
+               ReferencedContainer = "container:DevBoostItau-Project1.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "32DF4D47251C04E200DEA14E"
+               BuildableName = "DevBoostItau-Project1UITests.xctest"
+               BlueprintName = "DevBoostItau-Project1UITests"
+               ReferencedContainer = "container:DevBoostItau-Project1.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "32025DAF251C07F400FDD124"
+               BuildableName = "DevBoostItau-Project1SnapshotTests.xctest"
+               BlueprintName = "DevBoostItau-Project1SnapshotTests"
+               ReferencedContainer = "container:DevBoostItau-Project1.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
