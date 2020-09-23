@@ -10,18 +10,36 @@ import UIKit
 
 class LoginView: BaseView {
     
+    var backImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "loginBack")
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    var itiImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "itiOrangeLogo")
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private let whiteView: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let welcomeLabel: UILabel = {
        let label = UILabel()
-        label.text = "Bem vindo"
+        label.text = "Bem-vindo"
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.textColor = .itiGrey
+        label.textColor = .itiDarkGrey
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -59,11 +77,11 @@ class LoginView: BaseView {
         return button
     }()
     
-    let signUpButton: GradientButton = {
-       let button = GradientButton()
+    let signUpButton: OutlineButton = {
+       let button = OutlineButton()
         button.setTitle("criar cadastro", for: .normal)
-        button.clipsToBounds = true
-        button.layer.cornerRadius = 25
+//        button.layer.cornerRadius = 25
+        button.setTitleColor(.itiGrey, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -71,12 +89,15 @@ class LoginView: BaseView {
     let termsButton: UIButton = {
        let button = UIButton()
         button.setTitle("termos e privacidade", for: .normal)
+        button.setTitleColor(.itiOrange, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     
     override func initialize() {
+        addSubview(backImageView)
+        backImageView.addSubview(itiImageView)
         addSubview(whiteView)
         whiteView.addSubview(welcomeLabel)
         whiteView.addSubview(emailTextField)
@@ -88,12 +109,21 @@ class LoginView: BaseView {
     
     override func installConstraints() {
 //        whiteView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -Margin.verticalSmall).isActive = true
+        backImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        backImageView.bottomAnchor.constraint(equalTo: whiteView.topAnchor).isActive = true
+        backImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        backImageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        
+        itiImageView.topAnchor.constraint(equalTo: backImageView.topAnchor, constant: 50).isActive = true
+        itiImageView.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        itiImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        
         whiteView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height/2).isActive = true
         whiteView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         whiteView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
         whiteView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         
-        welcomeLabel.topAnchor.constraint(equalTo: whiteView.topAnchor, constant: 10).isActive = true
+        welcomeLabel.topAnchor.constraint(equalTo: whiteView.topAnchor, constant: 0).isActive = true
         welcomeLabel.bottomAnchor.constraint(equalTo: emailTextField.topAnchor, constant: 30).isActive = true
         welcomeLabel.centerXAnchor.constraint(equalToSystemSpacingAfter: whiteView.centerXAnchor, multiplier: 1).isActive = true
         
@@ -102,7 +132,7 @@ class LoginView: BaseView {
         emailTextField.trailingAnchor.constraint(equalTo: whiteView.trailingAnchor, constant: -16).isActive = true
         emailTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        passwordTextField.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -10).isActive = true
+        passwordTextField.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -30).isActive = true
         passwordTextField.leadingAnchor.constraint(equalTo: whiteView.leadingAnchor, constant: 16).isActive = true
         passwordTextField.trailingAnchor.constraint(equalTo: whiteView.trailingAnchor, constant: -16).isActive = true
         passwordTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -117,9 +147,13 @@ class LoginView: BaseView {
         signUpButton.trailingAnchor.constraint(equalTo: whiteView.trailingAnchor, constant: -16).isActive = true
         signUpButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        termsButton.bottomAnchor.constraint(equalTo: whiteView.bottomAnchor, constant: -10).isActive = true
+        termsButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
         termsButton.leadingAnchor.constraint(equalTo: whiteView.leadingAnchor).isActive = true
         termsButton.trailingAnchor.constraint(equalTo: whiteView.trailingAnchor).isActive = true
         termsButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    override func setupExtraConfigurations() {
+        self.backgroundColor = .itiOrange
     }
 }
