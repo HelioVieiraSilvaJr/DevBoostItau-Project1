@@ -62,6 +62,9 @@
 		F5F80CF8250D31D600EEEB16 /* AssetsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CF7250D31D600EEEB16 /* AssetsCoordinator.swift */; };
 		F5F80CFA250D37CF00EEEB16 /* Margin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80CF9250D37CF00EEEB16 /* Margin.swift */; };
 		F5F80D5A251AD71200EEEB16 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80D59251AD71200EEEB16 /* UITableView+Extensions.swift */; };
+		F5F80D5D251C036A00EEEB16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80D5C251C036A00EEEB16 /* LoginViewController.swift */; };
+		F5F80D60251C03E600EEEB16 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80D5F251C03E600EEEB16 /* LoginView.swift */; };
+		F5F80D63251C06DB00EEEB16 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F80D62251C06DB00EEEB16 /* LoginCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +133,9 @@
 		F5F80CF9250D37CF00EEEB16 /* Margin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Margin.swift; sourceTree = "<group>"; };
 		F5F80D59251AD71200EEEB16 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		F9482890C4CDD53360DCC474 /* Pods_DevBoostItau_Project1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevBoostItau_Project1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5F80D5C251C036A00EEEB16 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F5F80D5F251C03E600EEEB16 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F5F80D62251C06DB00EEEB16 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +293,7 @@
 		BD96DC772503B6C600D569DA /* Scenas */ = {
 			isa = PBXGroup;
 			children = (
+				F5F80D5B251C034E00EEEB16 /* Login */,
 				BDB1F2912503D3810070079B /* AssetsDetail */,
 				F5DD49FD2503F34800120661 /* Assets */,
 				BD96DC782503B6E700D569DA /* Base */,
@@ -505,6 +512,32 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		F5F80D5B251C034E00EEEB16 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F5F80D61251C06CA00EEEB16 /* Coordinator */,
+				F5F80D5E251C03C700EEEB16 /* View */,
+				F5F80D5C251C036A00EEEB16 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		F5F80D5E251C03C700EEEB16 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F5F80D5F251C03E600EEEB16 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F5F80D61251C06CA00EEEB16 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F5F80D62251C06DB00EEEB16 /* LoginCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -625,6 +658,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5F80D63251C06DB00EEEB16 /* LoginCoordinator.swift in Sources */,
 				BD829CA2250D006900499A52 /* Coordinator.swift in Sources */,
 				F5F80CF8250D31D600EEEB16 /* AssetsCoordinator.swift in Sources */,
 				BD829CA0250D005E00499A52 /* AppCoordinator.swift in Sources */,
@@ -639,6 +673,7 @@
 				F5DD4A022503F34800120661 /* AssetsViewController.swift in Sources */,
 				F5F80CE8250CF82E00EEEB16 /* BaseView.swift in Sources */,
 				4C2466122503CA23004E1323 /* AddOrEditStockViewModel.swift in Sources */,
+				F5F80D5D251C036A00EEEB16 /* LoginViewController.swift in Sources */,
 				BD829CA7250D018500499A52 /* AssetDetailCoordinator.swift in Sources */,
 				BD96DC612503B6B700D569DA /* AppDelegate.swift in Sources */,
 				BDB1F2B525040AB30070079B /* UIImageView+Extensions.swift in Sources */,
@@ -663,6 +698,7 @@
 				F1BA61BE250D276F00C5E5CB /* Localization.swift in Sources */,
 				F1F0C4EB251C06B10044A723 /* AuthManager.swift in Sources */,
 				BDB1F2B925040AD70070079B /* UIView+Extensions.swift in Sources */,
+				F5F80D60251C03E600EEEB16 /* LoginView.swift in Sources */,
 				BD96DC6B2503B6B700D569DA /* DevBoostItau_Project1.xcdatamodeld in Sources */,
 				F5DD4A042503F34800120661 /* AssetTableViewCell.swift in Sources */,
 				4C2B4FC5250D0BC8003DCEFE /* AddOrEditStockView.swift in Sources */,
