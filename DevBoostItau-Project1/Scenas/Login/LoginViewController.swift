@@ -13,6 +13,7 @@ class LoginViewController: UIViewController, HasCodeView {
     // MARK: - Properts
     typealias CustomView = LoginView
     weak var coordinator: LoginCoordinator?
+    var viewModel: LoginViewModel = LoginViewModel()
     // MARK: - Lifecycle
     override func loadView() {
         let customView = LoginView()
