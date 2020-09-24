@@ -36,3 +36,11 @@
 "ITI_FUNDS" = "iti funds";
 "USERNAME" = "Username";
 "START_DATE" = "Starting date";
+
+//Accessibility
+"BUTTON_LOGIN" = "Login button";
+"BUTTON_SIGNUP" = "Sign up button";
+"BUTTON_TERMS" = "Terms of use button";
+"TEXTFIELD_EMAIL" = "Field E-mail";
+"TEXTFIELD_PASSWORD" = "Field Password";
+"LABEL_WELCOME" = "Text Welcome";

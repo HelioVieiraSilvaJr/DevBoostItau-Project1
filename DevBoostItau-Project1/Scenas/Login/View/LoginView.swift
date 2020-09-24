@@ -55,6 +55,7 @@ class LoginView: BaseView {
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = .itiDarkGrey
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityLabel = Localization.labelWelcome
         return label
     }()
     
@@ -67,6 +68,7 @@ class LoginView: BaseView {
         textField.keyboardType = .default
         textField.autocapitalizationType = .words
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.accessibilityLabel = Localization.textFieldEmail
         return textField
     }()
     
@@ -79,6 +81,7 @@ class LoginView: BaseView {
         textField.keyboardType = .default
         textField.autocapitalizationType = .words
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.accessibilityLabel = Localization.textFieldPassword
         return textField
     }()
     
@@ -88,6 +91,7 @@ class LoginView: BaseView {
         button.clipsToBounds = true
         button.layer.cornerRadius = 25
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityLabel = Localization.buttonLogin
         return button
     }()
     
@@ -97,6 +101,7 @@ class LoginView: BaseView {
 //        button.layer.cornerRadius = 25
         button.setTitleColor(.itiGrey, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityLabel = Localization.buttonSignUp
         return button
     }()
     
@@ -105,6 +110,7 @@ class LoginView: BaseView {
         button.setTitle("termos e privacidade", for: .normal)
         button.setTitleColor(.itiOrange, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityLabel = "Botão Termos de Uso"
         return button
     }()
     
@@ -119,6 +125,8 @@ class LoginView: BaseView {
         whiteView.addSubview(loginButton)
         whiteView.addSubview(signUpButton)
         whiteView.addSubview(termsButton)
+        
+        
     }
     
     override func installConstraints() {
