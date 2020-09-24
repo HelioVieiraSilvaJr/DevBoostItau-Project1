@@ -80,6 +80,7 @@ class LoginView: BaseView {
         textField.clipsToBounds = true
         textField.keyboardType = .default
         textField.autocapitalizationType = .words
+        textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
