@@ -108,7 +108,7 @@ class AssetDetailView: BaseView {
     var stackQuantity = TitleBodyLabel(title: Localization.quantity, body: "--", style: .simple)
     var stackPricePurchase = TitleBodyLabel(title: Localization.purchasePrice, body: "--", style: .simple)
     var stackDatePurchase = TitleBodyLabel(title: Localization.purchaseDate, body: "--", style: .simple)
-    var stackValuePurchase = TitleBodyLabel(title: Localization.valueToday, body: "--", style: .simple)
+    var stackValuePurchase = TitleBodyLabel(title: Localization.totalValue, body: "--", style: .simple)
     var stackDateToday = TitleBodyLabel(title: Localization.quotationPriceToday, body: "--", style: .colorGreen)
     var stackValueToday = TitleBodyLabel(title: Localization.valueToday, body: "--", style: .colorGreen)
     

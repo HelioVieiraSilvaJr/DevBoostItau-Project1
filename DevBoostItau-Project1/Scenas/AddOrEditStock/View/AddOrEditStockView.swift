@@ -266,6 +266,7 @@ final class AddOrEditStockView: BaseView {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         startDateTextField.text! = dateFormatter.string(from: datePicker.date)
+        startDateTextField.resignFirstResponder()
     }
     // MARK: - Functions
     func verifyError() {

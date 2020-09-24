@@ -233,8 +233,8 @@ class LoginView: BaseView {
             if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
                 
                 var coveredFrame: CGRect = .zero
-                let scrollViewFrame = scrollView.window?.convert(scrollView.frame, from: scrollView.superview)
-                coveredFrame = scrollViewFrame!.intersection(keyboardSize)
+                guard let scrollViewFrame = scrollView.window?.convert(scrollView.frame, from: scrollView.superview) else {return}
+                coveredFrame = scrollViewFrame.intersection(keyboardSize)
                 
                 edgeInsetsToRestore = scrollView.contentInset
                 guard let edgeInsetsToRestore = edgeInsetsToRestore else { return }
