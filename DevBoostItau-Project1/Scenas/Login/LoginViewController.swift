@@ -32,7 +32,18 @@ class LoginViewController: UIViewController, HasCodeView {
 extension LoginViewController: LoginViewDelegate{
     func didTapLoginButton(email: String?, password: String?) {
         guard let email = email, let password = password else{ return }
-        viewModel.performLogin(email: email, password: password)
+        viewModel.performLogin(email: email, password: password){ [weak self] (result) in
+            switch result{
+            case .success(_):
+                self?.coordinator?.showHome()
+            case .failure(let error):
+                let messageError = error.errorMessage
+                let alert = UIAlertController(title: "Erro!", message: messageError, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self?.present(alert, animated: true)
+            }
+            
+        }
     }
     
     func didTapSignupButton(email: String?, password: String?) {

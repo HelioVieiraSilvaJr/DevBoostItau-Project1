@@ -25,7 +25,9 @@ class LoginCoordinator: Coordinator {
     }
     
     func logout(){
-        UIApplication.shared.windows.first?.rootViewController = LoginViewController()
+        let vc = LoginViewController()
+        vc.coordinator = self
+        UIApplication.shared.windows.first?.rootViewController = vc
         UIApplication.shared.windows.first?.makeKeyAndVisible()
         navigationController.popToRootViewController(animated: true)
     }

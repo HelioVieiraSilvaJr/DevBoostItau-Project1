@@ -23,13 +23,15 @@ class LoginViewModel {
         }
     }
     
-    func performLogin(email: String, password: String) {
+    func performLogin(email: String, password: String, _ completion: @escaping ((Result<String, APIError>) -> Void)) {
         AuthManager.shared.performLoginWith(email: email, password: password) { (error) in
             if let error = error {
                 // Alertar usuário com erro
                 print(error)
+                completion(Result.failure(APIError.error(error)))
             } else {
                 // Login successo, redirecionar para Home
+                completion(Result.success("Logged wit success"))
             }
         }
     }
