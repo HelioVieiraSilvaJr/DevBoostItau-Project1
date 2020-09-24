@@ -11,6 +11,7 @@ import UIKit
 protocol AssetDetailViewDelegate: AnyObject {
     func pressEditButton()
     func pressCloseButton()
+    func pressShareButton()
 }
 
 class AssetDetailView: BaseView {
@@ -28,9 +29,15 @@ class AssetDetailView: BaseView {
     let closeButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setImage(UIImage(named: "close"), for: .normal)
-//        button.setBackgroundImage(UIImage(named: "close"), for: .normal)
         button.clipsToBounds = true
-//        button.layer.cornerRadius = 20
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let shareButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.setImage(UIImage(named: "shareIcon"), for: .normal)
+        button.clipsToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -110,6 +117,7 @@ class AssetDetailView: BaseView {
         addSubview(contentView)
         contentView.addSubview(assetNameLabel)
         contentView.addSubview(closeButton)
+        contentView.addSubview(shareButton)
         
         contentView.addSubview(line1StackView)
         line1StackView.addArrangedSubview(stackQuantity)
@@ -145,7 +153,12 @@ class AssetDetailView: BaseView {
         closeButton.heightAnchor.constraint(equalToConstant: 15).isActive = true
         closeButton.widthAnchor.constraint(equalToConstant: 15).isActive = true
         
-        assetNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50).isActive = true
+        shareButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
+        shareButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
+        shareButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        shareButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        assetNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 70).isActive = true
         assetNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
         assetNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
         
@@ -205,6 +218,7 @@ class AssetDetailView: BaseView {
     override func setupExtraConfigurations() {
         closeButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         editButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        shareButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
     @objc
@@ -214,6 +228,8 @@ class AssetDetailView: BaseView {
             delegate?.pressCloseButton()
         case editButton:
             delegate?.pressEditButton()
+        case shareButton:
+            delegate?.pressShareButton()
         default:
             break
         }

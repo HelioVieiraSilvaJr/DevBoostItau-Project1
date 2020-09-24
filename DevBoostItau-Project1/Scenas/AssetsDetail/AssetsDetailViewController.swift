@@ -70,4 +70,15 @@ extension AssetsDetailViewController: AssetDetailViewDelegate {
     func pressCloseButton() {
         dismiss(animated: true, completion: nil)
     }
+    
+    func pressShareButton() {
+        let imageToShare = self.view.toImage()
+        
+        let activityItems : NSMutableArray = []
+        activityItems.add(imageToShare)
+        
+        
+        let activityVC = UIActivityViewController(activityItems:activityItems as [AnyObject] , applicationActivities: nil)
+        self.present(activityVC, animated: true, completion: nil)
+    }
 }
