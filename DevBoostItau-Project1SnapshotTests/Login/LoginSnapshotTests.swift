@@ -12,20 +12,39 @@ import FBSnapshotTestCase
 
 class LoginSnapshotTests: FBSnapshotTestCase {
     
-//    var sut: HomeViewController!//LoginViewController!
+    var sut: LoginViewController!
+    
+    var email: String = "matheus@itau.com"
+    var senha: String = "Test*123"
     
     override func setUp() {
         super.setUp()
         
-        recordMode = false
-        //usesDrawViewHierarchyInRect = true
-        fileNameOptions = [.device, .screenSize, .OS]
-        
-//        sut = HomeViewController()
+//        sut = LoginViewController()
+        self.recordMode = false
     }
 
     override func tearDown() {
-//        sut = nil
         super.tearDown()
+        sut = nil
+    }
+    
+//    func testLogin() {
+//        sut.be
+//        FBSnapshotVerifyView(sut.view)
+//    }
+    
+    func testView() {
+        //Give
+        var viewModel: LoginViewModel?
+        viewModel?.createUser(email: email, password: senha)
+        sut.viewModel = viewModel!
+        
+        //When
+        sut.beginAppearanceTransition(true, animated: false)
+        sut.endAppearanceTransition()
+        
+        //Then
+        FBSnapshotVerifyView(sut.view)
     }
 }

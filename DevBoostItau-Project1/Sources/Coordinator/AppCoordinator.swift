@@ -28,9 +28,17 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let childCoordinator = HomeCoordinator(navigationController: navigationController)
-        childCoordinator.parentCoordinator = self
-        add(childCoordinator: childCoordinator)
-        childCoordinator.start()
+        var childCoordinator: Coordinator?
+        if AuthManager.shared.isLoggedIn() {
+            childCoordinator = HomeCoordinator(navigationController: navigationController)
+        } else {
+            childCoordinator = LoginCoordinator(navigationController: navigationController)
+        }
+        
+        if let childCoordinator = childCoordinator {
+            childCoordinator.parentCoordinator = self
+            add(childCoordinator: childCoordinator)
+            childCoordinator.start()
+        }
     }
 }

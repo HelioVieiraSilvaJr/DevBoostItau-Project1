@@ -21,7 +21,6 @@ final class AddOrEditStockView: BaseView {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
     }()
-    
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -188,7 +187,6 @@ final class AddOrEditStockView: BaseView {
         self.init()
         self.delegate = delegate
     }
-    
     override func initialize() {
         contentView.backgroundColor = UIColor.white
         addSubview(scrollView)
@@ -211,7 +209,6 @@ final class AddOrEditStockView: BaseView {
         contentView.addSubview(investOrSaveButton)
         startDateTextField.inputView = datePicker
     }
-    
     override func installConstraints() {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -258,7 +255,6 @@ final class AddOrEditStockView: BaseView {
         closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
         investOrSaveButton.addTarget(self, action: #selector(verifyErrorTapped), for: .touchUpInside)
     }
-    
     // MARK: - Actions
     @objc private func closeTapped() {
         delegate?.didTapCloseButton()
@@ -271,7 +267,6 @@ final class AddOrEditStockView: BaseView {
         dateFormatter.dateFormat = "dd/MM/yyyy"
         startDateTextField.text! = dateFormatter.string(from: datePicker.date)
     }
-    
     // MARK: - Functions
     func verifyError() {
         stockLabel.textColor = stockTextField.text?.isEmpty ?? false ? UIColor.red : UIColor.gray
