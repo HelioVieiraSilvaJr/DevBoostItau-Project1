@@ -24,6 +24,12 @@ class LoginCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func logout(){
+        UIApplication.shared.windows.first?.rootViewController = LoginViewController()
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        navigationController.popToRootViewController(animated: true)
+    }
+    
     func showHome(){
         let childCoordinator = HomeCoordinator(navigationController: navigationController)
         childCoordinator.parentCoordinator = self

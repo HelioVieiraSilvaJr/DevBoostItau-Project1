@@ -34,5 +34,16 @@ class HomeViewModel {
             print("error")
         }
         return ""
+        
+    }
+    
+    func performLogout(_ completion: @escaping ((Result<String, APIError>) -> Void)) {
+        let logoutSuccess = AuthManager.shared.performLogout()
+        if logoutSuccess {
+            completion(Result.success(""))
+        } else {
+            completion(Result.failure(APIError.error("error ao fazer logout")))
+            print("Não foi possível realizar o logout.")
+        }
     }
 }

@@ -31,4 +31,9 @@ class HomeCoordinator: Coordinator {
         childCoordinator.start()
     }
     
+    func showLogin(){
+        let childCoordinator = LoginCoordinator(navigationController: navigationController)
+        childCoordinator.logout()
+    }
+    
 }

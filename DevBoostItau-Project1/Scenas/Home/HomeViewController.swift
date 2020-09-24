@@ -49,8 +49,14 @@ final class HomeViewController: BaseViewController, HasCodeView {
     func setupNavigationBar() {
         navigationItem.titleView = navigationTitleImageView
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icQrCode")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: .plain, target: self, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icSettings")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icSettings")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: .plain, target: self, action: #selector(logout))
         navigationItem.backBarButtonItem = UIBarButtonItem()
+    }
+    
+    @objc func logout(){
+        viewModel.performLogout{ result in
+            self.coordinator?.showLogin()
+        }
     }
     
     func setupMenuCards() {

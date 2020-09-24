@@ -9,8 +9,8 @@
 import UIKit
 
 protocol LoginViewDelegate: AnyObject {
-    func didTapLoginButton()
-    func didTapSignupButton()
+    func didTapLoginButton(email: String?, password: String?)
+    func didTapSignupButton(email: String?, password: String?)
     func didTapTermsButton()
 }
 
@@ -175,11 +175,11 @@ class LoginView: BaseView {
     }
     
     @objc func loginTapped(){
-        delegate?.didTapLoginButton()
+        delegate?.didTapLoginButton(email: emailTextField.text, password: passwordTextField.text)
     }
     
     @objc func signUpTapped(){
-        delegate?.didTapSignupButton()
+        delegate?.didTapSignupButton(email: emailTextField.text, password: passwordTextField.text)
     }
     
     @objc func termsTapped(){

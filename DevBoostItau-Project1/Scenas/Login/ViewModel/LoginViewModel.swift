@@ -11,13 +11,14 @@ import Foundation
 class LoginViewModel {
     // MARK: - Properties
     // MARK: - Methods
-    func createUser(email: String, password: String) {
+    func createUser(email: String, password: String, _ completion: @escaping ((Result<String, APIError>) -> Void)) {
         AuthManager.shared.createUser(email: email, password: password) { (error) in
             if let error = error {
                 // Alertar usuário com erro
                 print(error)
+                completion(Result.failure(APIError.error(error)))
             } else {
-                // Conta criado com successo, redirecionar para Home
+                completion(Result.success("Logged wit success"))
             }
         }
     }
