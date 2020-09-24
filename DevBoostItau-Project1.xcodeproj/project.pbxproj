@@ -47,6 +47,7 @@
 		F1BA61B8250D25CB00C5E5CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1BA61BA250D25CB00C5E5CB /* Localizable.strings */; };
 		F1BA61BE250D276F00C5E5CB /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BA61BD250D276F00C5E5CB /* Localization.swift */; };
 		F1F0C4EB251C06B10044A723 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0C4EA251C06B10044A723 /* AuthManager.swift */; };
+		F1F0C4F0251C0F4C0044A723 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0C4EF251C0F4C0044A723 /* LoginViewModel.swift */; };
 		F1F116762503E282007466DE /* CardMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F116752503E282007466DE /* CardMenu.swift */; };
 		F1F1167A2503E938007466DE /* InvestmentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F116792503E938007466DE /* InvestmentsManager.swift */; };
 		F1F1167D2503EB5B007466DE /* MenuCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F1167C2503EB5B007466DE /* MenuCardCell.swift */; };
@@ -117,6 +118,7 @@
 		F1BA61BC250D25D000C5E5CB /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F1BA61BD250D276F00C5E5CB /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		F1F0C4EA251C06B10044A723 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		F1F0C4EF251C0F4C0044A723 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		F1F116752503E282007466DE /* CardMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMenu.swift; sourceTree = "<group>"; };
 		F1F116792503E938007466DE /* InvestmentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentsManager.swift; sourceTree = "<group>"; };
 		F1F1167C2503EB5B007466DE /* MenuCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCardCell.swift; sourceTree = "<group>"; };
@@ -428,6 +430,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F1F0C4EE251C0F3C0044A723 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F1F0C4EF251C0F4C0044A723 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		F1F116742503E271007466DE /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -515,6 +525,7 @@
 		F5F80D5B251C034E00EEEB16 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				F1F0C4EE251C0F3C0044A723 /* ViewModel */,
 				F5F80D61251C06CA00EEEB16 /* Coordinator */,
 				F5F80D5E251C03C700EEEB16 /* View */,
 				F5F80D5C251C036A00EEEB16 /* LoginViewController.swift */,
@@ -665,6 +676,7 @@
 				F5F80D5A251AD71200EEEB16 /* UITableView+Extensions.swift in Sources */,
 				4C2466152503CA37004E1323 /* AddOrEditStockViewController.swift in Sources */,
 				BDB1F2A82503ECAE0070079B /* Network.swift in Sources */,
+				F1F0C4F0251C0F4C0044A723 /* LoginViewModel.swift in Sources */,
 				F1F116762503E282007466DE /* CardMenu.swift in Sources */,
 				F1F1167D2503EB5B007466DE /* MenuCardCell.swift in Sources */,
 				BD829CAF250D1FD800499A52 /* AssetModel.swift in Sources */,
@@ -870,8 +882,8 @@
 			baseConfigurationReference = 8D7B9A10AB1DAD29BDD5FD5C /* Pods-DevBoostItau-Project1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6K3965APXT;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "DevBoostItau-Project1/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -880,6 +892,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "DevBoostItau.com.br.DevBoostItau-Project1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -890,8 +903,8 @@
 			baseConfigurationReference = 67B1CD0C4DDCC9121533A9C9 /* Pods-DevBoostItau-Project1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6K3965APXT;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "DevBoostItau-Project1/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -900,6 +913,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "DevBoostItau.com.br.DevBoostItau-Project1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

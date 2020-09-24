@@ -26,6 +26,16 @@ class AuthManager {
         }
     }
     
+    func createUser(email: String, password: String, completion: @escaping (_ error: String?) -> Void) {
+        Auth.auth().createUser(withEmail: email, password: password) { (authDataResult, error) in
+            if let error = error {
+                completion(error.localizedDescription)
+                return
+            }
+            completion(nil)
+        }
+    }
+    
     func performLogout() -> Bool {
         do {
             try Auth.auth().signOut()
@@ -36,7 +46,13 @@ class AuthManager {
         }
     }
     
-    func performLoginWith(username: String, password: String) -> Bool {
-        return true
+    func performLoginWith(email: String, password: String, completion: @escaping (_ error: String?) -> Void)  {
+        Auth.auth().signIn(withEmail: email, password: password) { (authDataResult, error) in
+            if let error = error {
+                completion(error.localizedDescription)
+                return
+            }
+            completion(nil)
+        }
     }
 }

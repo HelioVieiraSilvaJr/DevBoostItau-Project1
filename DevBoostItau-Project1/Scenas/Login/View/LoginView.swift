@@ -8,7 +8,21 @@
 
 import UIKit
 
+protocol LoginViewDelegate: AnyObject {
+    func didTapLoginButton()
+    func didTapSignupButton()
+    func didTapTermsButton()
+}
+
 class LoginView: BaseView {
+    
+    // MARK: Properties
+    weak var delegate: LoginViewDelegate?
+    
+    convenience init(delegate: LoginViewDelegate){
+        self.init()
+        self.delegate = delegate
+    }
     
     var backImageView: UIImageView = {
         let imageView = UIImageView()
@@ -163,5 +177,20 @@ class LoginView: BaseView {
     
     override func setupExtraConfigurations() {
         self.backgroundColor = .itiOrange
+        loginButton.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(signUpTapped), for: .touchUpInside)
+        termsButton.addTarget(self, action: #selector(termsTapped), for: .touchUpInside)
+    }
+    
+    @objc func loginTapped(){
+        delegate?.didTapLoginButton()
+    }
+    
+    @objc func signUpTapped(){
+        delegate?.didTapSignupButton()
+    }
+    
+    @objc func termsTapped(){
+        delegate?.didTapTermsButton()
     }
 }
