@@ -40,6 +40,14 @@ enum Localization {
     static let itiFunds = "ITI_FUNDS".localized
     static let userName = "USERNAME".localized
     static let startDate = "START_DATE".localized
+    
+    //Accessibility
+    static let buttonLogin = "BUTTON_LOGIN".localized
+    static let buttonSignUp = "BUTTON_SIGNUP".localized
+    static let buttonTerms = "BUTTON_TERMS".localized
+    static let textFieldEmail = "TEXTFIELD_EMAIL".localized
+    static let textFieldPassword = "TEXTFIELD_PASSWORD".localized
+    static let labelWelcome = "LABEL_WELCOME".localized
 }
 
 extension String {

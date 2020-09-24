@@ -1,9 +1,0 @@
-/* 
-  AccessibilityLocalizable.strings
-  DevBoostItau-Project1
-
-  Created by Helio Junior on 23/09/20.
-  Copyright © 2020 DevBoost-Itau. All rights reserved.
-*/
-"BUTTON_LOGIN" = "see my profile";
-"BUTTON_SIGNUP" = "No investment at the moment";
